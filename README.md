@@ -14,3 +14,5 @@ EFREI follow-up of internships web platform
 
 
 # 5. References: 
+## 5.1. Figma 
+https://www.figma.com/file/dL9itDvLdbiaw4j4IbSLdV/Bridge_Project_-_Form-(Copy)?type=design&node-id=0%3A1&mode=design&t=BifjF3Fi9aKz1euO-1  
