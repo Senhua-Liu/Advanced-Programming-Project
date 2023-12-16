@@ -8,16 +8,17 @@ api_blueprint = Blueprint('api', __name__)
 def test_route():
     return "API is working!"
 
-@api_blueprint.route('/')
+@api_blueprint.route('/home')
 def home():
     return 'Welcome to my Flask app!'
 
-@api_blueprint.route('/test_db')
-def test_db():
-    #mysql = MySQL(current_app)
-    #cursor = mysql.connection.cursor()
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM user")
-    data = cursor.fetchall()
-    cursor.close()
-    return str(data)
+@api_blueprint.route('/db_connection')
+def db_connection():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("select * from internship_system.user;")
+        result = cursor.fetchall()
+        cursor.close()
+        return str(result)
+    except Exception as e:
+        return f"Database error: {str(e)}"
