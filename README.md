@@ -17,6 +17,10 @@ EFREI follow-up of internships web platform
     source venv/bin/activate or venv\Scripts\activate
     pip install -r backend/requirements.txt
 
+## 4.2 Frontend
+
+
+## 4.3 MySQL Database
 
 
 
