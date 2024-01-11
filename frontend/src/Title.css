@@ -1,0 +1,21 @@
+/*  src/Title.css  */
+.Title {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: rgb(26, 84, 192);
+    color: #fff;
+  }
+  
+  .buttonhdr1{
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      padding: 10px 60px;
+      border-radius: 5px;
+      margin: 10px 0px;
+  }
