@@ -2,7 +2,8 @@
 EFREI follow-up of internships web platform
 
 # 1. Description:
-
+- node.js
+- react.js
 
 # 2. Pre-requisites:
 
