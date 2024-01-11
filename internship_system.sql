@@ -2,6 +2,8 @@
 show databases;
 use internship_system;
 
+
+
 # create tables
 drop table if exists user;
 create table user(
@@ -164,15 +166,41 @@ create table manageNotification(
 );
 
 
+
 # insert data
 insert into internship_system.user (name, email, password, type) values ('admin', 'admin@efrei.fr', 'admin', 'admin');
 insert into internship_system.user (name, email, password, type) values ('student1', 'student1@efrei.net', 'student1', 'student');
+insert into internship_system.user (name, email, password, type) values ('student2', 'student2@efrei.net', 'student2', 'student');
+insert into internship_system.user (name, email, password, type) values ('student3', 'student3@efrei.net', 'student3', 'student');
+insert into internship_system.user (name, email, password, type) values ('student4', 'student4@efrei.net', 'student4', 'student');
+insert into internship_system.user (name, email, password, type) values ('student5', 'student5@efrei.net', 'student5', 'student');
+insert into internship_system.user (name, email, password, type) values ('student6', 'student6@efrei.net', 'student6', 'student');
+insert into internship_system.user (name, email, password, type) values ('student7', 'student7@efrei.net', 'student7', 'student');
+insert into internship_system.user (name, email, password, type) values ('student8', 'student8@efrei.net', 'student8', 'student');
+insert into internship_system.user (name, email, password, type) values ('student9', 'student9@efrei.net', 'student9', 'student');
+insert into internship_system.user (name, email, password, type) values ('student10', 'student10@efrei.net', 'student10', 'student');
 insert into internship_system.user (name, email, password, type) values ('tutor1', 'tutot1@efrei.com', 'tutor1', 'tutor');
+insert into internship_system.user (name, email, password, type) values ('tutor2', 'tutot2@efrei.com', 'tutor2', 'tutor');
+insert into internship_system.user (name, email, password, type) values ('tutor3', 'tutot3@efrei.com', 'tutor3', 'tutor');
+insert into internship_system.user (name, email, password, type) values ('tutor4', 'tutot4@efrei.com', 'tutor4', 'tutor');
+insert into internship_system.user (name, email, password, type) values ('tutor5', 'tutot5@efrei.com', 'tutor5', 'tutor');
 
-#INSERT INTO admin (userID, systemManager) VALUES (1, 'SystemManager');
-#INSERT INTO student (userID, promotion) VALUES (2, 2024);
-#insert into company (name, address, city, zipCode) values ('IBM', 'address1', 'city1', 'zipCode1');
-#INSERT INTO tutor (userID, companyID, oldPassword, telephone) VALUES (3, 1, 'tutor', '0613546699');
+INSERT INTO internship_system.admin (userID, systemManager) VALUES (1, 'SystemManager');
+INSERT INTO internship_system.student (userID, promotion) VALUES (2, 2024);
+INSERT INTO internship_system.student (userID, promotion) VALUES (3, 2025);
+INSERT INTO internship_system.student (userID, promotion) VALUES (4, 2026);
+INSERT INTO internship_system.student (userID, promotion) VALUES (5, 2027);
+INSERT INTO internship_system.student (userID, promotion) VALUES (6, 2028);
+INSERT INTO internship_system.student (userID, promotion) VALUES (7, 2024);
+INSERT INTO internship_system.student (userID, promotion) VALUES (8, 2025);
+INSERT INTO internship_system.student (userID, promotion) VALUES (9, 2026);
+INSERT INTO internship_system.student (userID, promotion) VALUES (10, 2027);
+INSERT INTO internship_system.student (userID, promotion) VALUES (11, 2028);
+insert into internship_system.company (name, address, city, zipCode) values ('IBM', 'address1', 'city1', 'zipCode1');
+INSERT INTO internship_system.tutor (userID, companyID, oldPassword, telephone) VALUES (3, 1, 'tutor', '0613546699');
+
+
+
 
 # test queries
-select * from internship_system.user;
+#select * from internship_system.user;

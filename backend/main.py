@@ -16,9 +16,6 @@ def create_app():
 
     # Initialize MySQL with app
     mysql.init_app(app)
-
-    
-
     return app
 
 if __name__ == '__main__':
