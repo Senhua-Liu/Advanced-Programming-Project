@@ -15,7 +15,8 @@ EFREI follow-up of internships web platform
 ### 4.1.1 activate virtual environment
     cd backend
     python3 -m venv venv
-    source venv/bin/activate or venv\Scripts\activate
+    source venv/bin/activate 
+    or venv\Scripts\activate (for windows)
 ### 4.1.2 install dependencies
     pip install -r backend/requirements.txt
 ### 4.1.3 run app
