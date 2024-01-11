@@ -13,6 +13,7 @@ EFREI follow-up of internships web platform
 # 4. Steps:
 ## 4.1 Backend
 ### 4.1.1 activate virtual environment
+    cd backend
     python3 -m venv venv
     source venv/bin/activate or venv\Scripts\activate
 ### 4.1.2 install dependencies
