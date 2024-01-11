@@ -21,6 +21,8 @@ EFREI follow-up of internships web platform
     pip install -r backend/requirements.txt
 ### 4.1.3 run app
     python3 backend/main.py
+    or 
+    python main.py
 
 
 ## 4.2 Frontend
