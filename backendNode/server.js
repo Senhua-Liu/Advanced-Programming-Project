@@ -4,21 +4,7 @@ const cors = require('cors');
 const loginRouter = require('./routes/login');
 
 const app = express();
-const port = 3001;
-
-const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize('mysql://root:root123@localhost:3306/internship_system'); // replace with your connection string
-
-
-app.use(express.json());
-app.use(session({
-  secret: 'secret-key',
-  resave: false,
-  saveUninitialized: false,
-}));
-
-app.use('/auth', loginRouter);
+const port = 3000;
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
