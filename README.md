@@ -2,18 +2,32 @@
 EFREI follow-up of internships web platform
 
 # 1. Description:
-- node.js
-- react.js
+## 1.1 Technical choices
+Frontend: React, Chakra UI, Tailwind CSS, TypeScript
+Backend: Node.js, Express
+Database: MySQL(Sequelize)
+
+## 1.2 MVP
+
+
+## 1.3 Architecture(s)
+
+
+## 1.4 Delivery Methodology
+
+
+
+## 1.5 Integration of clean code principles
+
+
 
 # 2. Pre-requisites:
 
-
 # 3. Manual:
 
+# 4. Steps:
 
-# 4. Steps:ù
-
-# 4.0 BackEnd Node
+## 4.0 BackEnd Node
     node server.js
 
 
