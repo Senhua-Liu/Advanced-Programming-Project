@@ -5,9 +5,8 @@ EFREI follow-up of internships web platform
 ## 1.1 Technical choices
 
     -   Frontend: React, Chakra UI, Tailwind CSS, TypeScript
-
-Backend: Node.js, Express
-Database: MySQL(Sequelize)
+    -   Backend: Node.js, Express
+    -   Database: MySQL(Sequelize)
 
 ## 1.2 MVP
 
