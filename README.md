@@ -2,7 +2,8 @@
 EFREI follow-up of internships web platform
 
 # 1. Description:
-
+- node.js
+- react.js
 
 # 2. Pre-requisites:
 
@@ -10,15 +11,24 @@ EFREI follow-up of internships web platform
 # 3. Manual:
 
 
-# 4. Steps:
-## 4.1 Backend
+# 4. Steps:ù
+
+# 4.0 BackEnd Node
+    node server.js
+
+
+## 4.1 Backend Flask
 ### 4.1.1 activate virtual environment
+    cd backend
     python3 -m venv venv
-    source venv/bin/activate or venv\Scripts\activate
+    source venv/bin/activate 
+    or venv\Scripts\activate (for windows)
 ### 4.1.2 install dependencies
     pip install -r backend/requirements.txt
 ### 4.1.3 run app
     python3 backend/main.py
+    or 
+    python main.py
 
 
 ## 4.2 Frontend

@@ -2,6 +2,7 @@ from flask import Blueprint
 from main import mysql
 
 api_blueprint = Blueprint('api', __name__)
+print(api_blueprint.route, 'api_blueprint.route')
 
 @api_blueprint.route('/test_route')
 def test_route():
@@ -9,6 +10,7 @@ def test_route():
 
 @api_blueprint.route('/home')
 def home():
+    print('sah')
     return 'Welcome to my Flask app!'
 
 @api_blueprint.route('/get/users')
