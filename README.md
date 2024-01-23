@@ -26,12 +26,12 @@ Node.js & Express: Node.js is a JavaScript runtime built on Chrome's V8 JavaScri
 MySQL with Sequelize: MySQL is a robust and widely-used relational database management system. Sequelize, an ORM for Node.js, will simplify database queries and allow easier manipulation of data. It supports strong data modeling and robust transaction support, which is vital for maintaining the integrity of students' reports and metadata.
 
 ## 1.1.4 Analysis
-Scalability & Performance: Node.js and MySQL are scalable solutions that can handle growth in data and user load. React's efficient DOM updates (via its virtual DOM) will keep the UI fast and responsive.
-Security: Managing sensitive internship reports requires a focus on security. Your stack supports robust authentication and authorization mechanisms, and Sequelize helps prevent SQL injection attacks.
-Maintainability: The use of TypeScript, along with the modular nature of React and Node.js, aids in keeping the codebase maintainable and well-structured.
-User Experience: React combined with Chakra UI and Tailwind CSS will ensure an engaging and accessible user interface.
-Documentation and Setup: Node.js and React ecosystems are well-documented, which should assist in making the setup and deployment process clear and straightforward.
-Risk and Innovation: Incorporating advanced features like AI/ML for document analysis or advanced search could be a challenging yet innovative addition. Also, using modern architectural patterns like microservices (if deemed necessary) can enhance the project's architecture.
+- Scalability & Performance: Node.js and MySQL are scalable solutions that can handle growth in data and user load. React's efficient DOM updates (via its virtual DOM) will keep the UI fast and responsive.
+- Security: Managing sensitive internship reports requires a focus on security. Your stack supports robust authentication and authorization mechanisms, and Sequelize helps prevent SQL injection attacks.
+- Maintainability: The use of TypeScript, along with the modular nature of React and Node.js, aids in keeping the codebase maintainable and well-structured.
+- User Experience: React combined with Chakra UI and Tailwind CSS will ensure an engaging and accessible user interface.
+- Documentation and Setup: Node.js and React ecosystems are well-documented, which should assist in making the setup and deployment process clear and straightforward.
+- Risk and Innovation: Incorporating advanced features like AI/ML for document analysis or advanced search could be a challenging yet innovative addition. Also, using modern architectural patterns like microservices (if deemed necessary) can enhance the project's architecture.
 
 
 
