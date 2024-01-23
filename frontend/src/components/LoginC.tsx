@@ -92,7 +92,7 @@ const LoginC = () => {
                         _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} // Focus effect
                     />
                     <Input
-                        placeholder="Mot de Passe"
+                        placeholder="Password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
