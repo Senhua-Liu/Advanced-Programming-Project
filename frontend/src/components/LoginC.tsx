@@ -111,7 +111,7 @@ const LoginC = () => {
                     >
                         Login
                     </Button>
-                    <Link to="/signup">
+                    <Link to="/register">
                         <Button
                             bgColor="#f2f2f2" // Lighter color for the secondary button
                             color="#0C2340"

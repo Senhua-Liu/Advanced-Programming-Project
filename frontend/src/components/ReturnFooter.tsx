@@ -6,7 +6,12 @@ import { AiOutlineCopyright, AiOutlineMail } from "react-icons/ai";
 import { FiLink } from "react-icons/fi";
 import { GiEarthAmerica } from "react-icons/gi";
 
-const ReturnFooter = () => {
+interface ReturnFooterProps {
+    linkPage: string;
+}
+
+
+const ReturnFooter : React.FC<ReturnFooterProps> = ({ linkPage })=> {
 
   return (
     <Flex p={10} align="center" justify="flex-end" bg="#dddddd" as="footer" position="fixed" bottom="0" width="100%" left="0" height="200px" >

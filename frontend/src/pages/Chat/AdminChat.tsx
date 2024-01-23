@@ -2,6 +2,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
+import Footer from '../../components/Footer';
 
 const AdminChat: React.FC = () => {
     return (
@@ -21,7 +22,7 @@ const AdminChat: React.FC = () => {
         {/* <Body  /> */}
         </Flex>
 
-        {/* <Footer /> */}
+        <Footer />
     </Flex>
     );
 };
