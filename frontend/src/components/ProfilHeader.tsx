@@ -11,7 +11,7 @@ const Header = () => {
             <Link as={RouterLink} to="/">
                 <Image src="../../../assets/efrei.png" alt="icon" width="500px" height="200px" />
             </Link>
-            <Text fontWeight="bold" fontSize="2xl" color="white">INTERNSHIP MANAGEMENT SYSTEM</Text>
+            <Text fontWeight="bold" fontSize="5xl" color="white">INTERNSHIP MANAGEMENT SYSTEM</Text>
         </Flex>
 
     </Flex>
