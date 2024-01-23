@@ -14,12 +14,6 @@ const TutorHome: React.FC = () => {
         minHeight="100vh"
       >
         <Header />
-
-
-
-
-
-
         <Flex flexDir="row" justify="flex-start" gap={20} align="center">
           <Flex flexDir="column" mt={-10} p={3} gap={2}>
             <Flex>
@@ -60,7 +54,7 @@ const TutorHome: React.FC = () => {
             </Flex>
 
             <Flex gap={10} justify="space-even" flexDir="row" >
-                <Link as={RouterLink} to="/register"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
+                <Link as={RouterLink} to="/reset"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
                 <Link as={RouterLink} to="/tutor/viewallfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL FILES</Text></Button></Link>
             </Flex>
 

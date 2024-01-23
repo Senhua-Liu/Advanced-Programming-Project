@@ -58,7 +58,7 @@ const StudentHome: React.FC = () => {
                 <Link as={RouterLink} to="/student/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >STUDENT SPACE</Text></Link>
             </Flex>
             <Flex gap={10}>
-                <Link as={RouterLink} to="/register"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
+                <Link as={RouterLink} to="/reset"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
                 <Link as={RouterLink} to="/student/viewallfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL FILES</Text></Button></Link>
             </Flex>
             <Flex gap={10}>

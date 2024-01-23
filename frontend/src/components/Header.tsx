@@ -18,25 +18,25 @@ const Header = () => {
             <Link as={RouterLink} to="/questionnaire">
               <Flex align="center">
                 <Icon as={FaFileUpload} boxSize={6} mr={2} color="white" />
-                <Text fontWeight="bold" fontSize="xl" color="white">Upload files</Text>
+                <Text fontWeight="bold" fontSize="3xl" color="white">Upload files</Text>
               </Flex>
             </Link>
             <Link as={RouterLink} to="/references">
               <Flex align="center">
                 <Icon as={FaHandshake} boxSize={6} mr={2} color="white" />
-                <Text fontWeight="bold" fontSize="xl" color="white">Meeting</Text>
+                <Text fontWeight="bold" fontSize="3xl" color="white">Meeting</Text>
               </Flex>
             </Link>
             <Link as={RouterLink} to="/actions">
               <Flex align="center">
                 <Icon as={FaClipboardList} boxSize={6} mr={2} color="white" />
-                <Text fontWeight="bold" fontSize="xl" color="white">Evaluation Form</Text>
+                <Text fontWeight="bold" fontSize="3xl" color="white">Evaluation Form</Text>
               </Flex>
             </Link>
             <Link as={RouterLink} to="/profil">
               <Flex align="center">
                 <Icon as={FaCheckCircle} boxSize={6} mr={2} color="white" />
-                <Text fontWeight="bold" fontSize="xl" color="white">Report Validation</Text>
+                <Text fontWeight="bold" fontSize="3xl" color="white">Report Validation</Text>
               </Flex>
             </Link>
         </Flex>
