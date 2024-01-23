@@ -21,7 +21,7 @@ const StudentChat: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>Studentchat</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

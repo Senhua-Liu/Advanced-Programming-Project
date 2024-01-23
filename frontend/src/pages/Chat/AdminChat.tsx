@@ -1,10 +1,12 @@
   
-import React from 'react';
+import React, {useState} from 'react';
 import Header from '../../components/Header';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import Footer from '../../components/Footer';
 
 const AdminChat: React.FC = () => {
+    const [chatLinkPage, setChatLinkPage] = useState('');
+
     return (
 
     <Flex
@@ -19,10 +21,10 @@ const AdminChat: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>AdminChat</Text>
         </Flex>
 
-        <Footer />
+        <Footer chatLinkPage={chatLinkPage} />
     </Flex>
     );
 };

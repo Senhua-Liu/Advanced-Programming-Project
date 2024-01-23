@@ -21,7 +21,7 @@ const AdminEditDeadlines: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>AdminEditDeadlines</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

@@ -5,11 +5,11 @@ import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/re
 import Footer from '../../components/Footer';
 import ReturnFooter from '../../components/ReturnFooter';
 
+
+
 const TutorChat: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
-
     return (
-
     <Flex
         direction="column"
         minHeight="100vh" 
@@ -22,7 +22,7 @@ const TutorChat: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>TutorChat</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

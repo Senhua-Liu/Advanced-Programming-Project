@@ -22,7 +22,7 @@ const StudentFillSecond: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>StudentFillSecond</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

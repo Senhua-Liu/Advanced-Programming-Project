@@ -20,7 +20,7 @@ const StudentViewAllFiles: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>StudentViewAllFiles</Text>
         </Flex>
         <ReturnFooter linkPage={linkPage} />
       </Flex>

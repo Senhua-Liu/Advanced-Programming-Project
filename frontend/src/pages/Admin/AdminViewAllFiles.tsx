@@ -23,7 +23,7 @@ const AdminViewAllFiles: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>AdminViewAllFiles</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage}  />

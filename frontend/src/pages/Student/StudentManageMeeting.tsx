@@ -22,7 +22,7 @@ const StudentManageMeeting: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>StudentManageMeeting</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage}  />

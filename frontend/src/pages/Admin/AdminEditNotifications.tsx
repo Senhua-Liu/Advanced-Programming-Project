@@ -21,6 +21,7 @@ const AdminEditNotifications: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
+            <Text>AdminEditNotifications</Text>
         </Flex>
         <ReturnFooter  linkPage={linkPage} />
     </Flex>

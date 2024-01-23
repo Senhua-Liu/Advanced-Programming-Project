@@ -1,11 +1,13 @@
   
-import React from 'react';
+import React, {useState} from 'react';
 import Header from '../../components/Header';
 import {Link as RouterLink, BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import Footer from '../../components/Footer';
 
 const AdminHome: React.FC = () => {
+    const [chatLinkPage, setChatLinkPage] = useState('');
+
     return (
 
     <Flex
@@ -61,7 +63,7 @@ const AdminHome: React.FC = () => {
 
         </Flex>
 
-        <Footer />
+        <Footer chatLinkPage="/chat/adminChat" />
     </Flex>
     );
 };

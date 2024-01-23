@@ -7,6 +7,7 @@ import ReturnFooter from '../../components/ReturnFooter';
 
 const StudentHome: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
+    const [chatLinkPage, setChatLinkPage] = useState('');
 
     return (
 
@@ -71,7 +72,7 @@ const StudentHome: React.FC = () => {
             </Flex>
         </Flex>
         {/* <ReturnFooter linkPage={linkPage} /> */}
-        <Footer />
+        <Footer chatLinkPage="/chat/studentChat"  />
       </Flex>
     );
   };

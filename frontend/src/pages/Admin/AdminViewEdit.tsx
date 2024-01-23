@@ -23,7 +23,7 @@ const AdminViewEdit: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>AdminViewEdit</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

@@ -22,7 +22,7 @@ const AdminManageDeadlines: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Body  /> */}
+        <Text>AdminManageDeadlines</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

@@ -22,7 +22,7 @@ const StudentManageInternships: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>StudentManageInternships</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

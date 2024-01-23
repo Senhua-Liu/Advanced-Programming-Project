@@ -12,7 +12,7 @@ interface ReturnFooterProps {
 }
 
 
-const ReturnFooter : React.FC<ReturnFooterProps> = ({ linkPage })=> {
+const ReturnFooter : React.FC<ReturnFooterProps> = ({ linkPage }) => {
 
   return (
     <Flex p={10} align="center" justify="flex-end" bg="#dddddd" as="footer" position="fixed" bottom="0" width="100%" left="0" height="200px" >

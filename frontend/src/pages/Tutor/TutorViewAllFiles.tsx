@@ -21,7 +21,7 @@ const TutorViewAllFiles: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>TutorViewAllFiles</Text>
         </Flex>
         <ReturnFooter linkPage={linkPage} />
       </Flex>

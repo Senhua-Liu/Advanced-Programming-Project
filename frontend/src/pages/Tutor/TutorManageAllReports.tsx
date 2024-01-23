@@ -21,7 +21,7 @@ const TutorManageAllReports: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>TutorManageAllReports</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

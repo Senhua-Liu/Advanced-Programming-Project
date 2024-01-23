@@ -22,7 +22,7 @@ const TutorFillIntermediate: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>TutorFillIntermediate</Text>
         </Flex>
         <ReturnFooter linkPage={linkPage} />
       </Flex>

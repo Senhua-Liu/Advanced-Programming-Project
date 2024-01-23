@@ -22,7 +22,7 @@ const StudentUploadFiles: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          {/* <Body  /> */}
+          <Text>StudentUploadFiles</Text>
         </Flex>
 
         <ReturnFooter linkPage={linkPage} />

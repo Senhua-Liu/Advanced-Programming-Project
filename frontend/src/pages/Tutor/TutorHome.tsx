@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import Header from '../../components/Header';
 // import Footer from '../../components/footer';
 // import Body from '../../components/body';
@@ -7,8 +7,9 @@ import {Link as RouterLink, BrowserRouter as Router, Routes, Route, } from "reac
 import Footer from '../../components/Footer';
 
 const TutorHome: React.FC = () => {
-    return (
+    const [chatLinkPage, setChatLinkPage] = useState('');
 
+    return (
       <Flex
         direction="column"
         minHeight="100vh"
@@ -67,7 +68,7 @@ const TutorHome: React.FC = () => {
             </Flex>
         </Flex>
 
-        <Footer />
+        <Footer chatLinkPage="/chat/tutorChat" />
       </Flex>
     );
   };
