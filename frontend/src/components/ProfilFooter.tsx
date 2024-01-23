@@ -10,9 +10,9 @@ const ProfilFooter = () => {
 
   return (
     <Flex p={10} flexDir="row" align="center" justify="flex-end" bg="#dddddd" as="footer" position="fixed" bottom="0" width="100%" left="0" height="200px" >
-        {/* <Flex align="center" justify="flex-end" gap={10} p={1}> */}
-        <Button bgColor="#0C2340" gap={3}  p={8} width="300px" ><FaUserPlus color="white" /><Text fontWeight="bold"  fontSize="2xl" color="white">Register / Reset</Text><FaRedo color="white" /></Button>
-        {/* </Flex> */}
+      <Link as={RouterLink} to="/reset">
+        <Button bgColor="#0C2340" gap={3}  p={8} width="200px" >{/* <FaUserPlus color="white" /> */}<Text fontWeight="bold"  fontSize="3xl" color="white">Reset</Text><FaRedo color="white" /></Button>
+      </Link> 
     </Flex>
 
   );

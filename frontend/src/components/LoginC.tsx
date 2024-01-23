@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Box, Button, Input, VStack, useToast, Flex, Center } from '@chakra-ui/react';
+import { Box, Button, Input, VStack, useToast, Flex, Center, Text } from '@chakra-ui/react';
 import {Link, BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import {useUser} from "../context/UserContext";
@@ -70,7 +70,7 @@ const LoginC = () => {
 
     return (
         <Center height="50vh"> 
-
+               
                 <VStack
                     spacing={4}
                     as="form"
@@ -83,6 +83,8 @@ const LoginC = () => {
                     boxShadow="sm" // Subtle shadow for depth
                     p={6} // Adjusted padding for spacing
                 >
+                    <Text /* bgColor="pink" */ fontSize='4xl' fontWeight="bold" mb={8}>Login</Text>
+
                     <Input
                         placeholder="Email"
                         value={email}

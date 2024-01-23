@@ -32,6 +32,7 @@ import TutorManageAllReports from './pages/Tutor/TutorManageAllReports';
 import TutorHome from './pages/Tutor/TutorHome';
 import TutorFillIntermediate from './pages/Tutor/TutorFillIntermediate';
 import Profil from './pages/Common/Profil';
+import Reset from './pages/Common/Reset';
 
 const AuthenticatedRoutes = () => {
     const userContext = useUser();
@@ -47,6 +48,7 @@ const AuthenticatedRoutes = () => {
         <Routes>
 
             <Route path="/" element={user ? <Profil /> : <Navigate to="/login" />} />
+            <Route path="/reset" element={<Reset />}/>
             <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
             <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
 

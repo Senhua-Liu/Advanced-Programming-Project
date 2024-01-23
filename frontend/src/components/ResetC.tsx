@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, Link, useLocation  } from 'react-router-dom';
 import { Button, Input, VStack, useToast } from '@chakra-ui/react';
-import { FaUserPlus } from "react-icons/fa";
+import { FaUserPlus, FaRedo } from "react-icons/fa";
 
 
-const RegisterC = () => {
+const ResetC = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -109,7 +109,16 @@ const RegisterC = () => {
                 _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
             />
             <Input 
-                placeholder="Password"
+                placeholder="Old password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                borderColor="#cccccc"
+                _hover={{ borderColor: "#0C2340" }}
+                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
+            />
+            <Input 
+                placeholder="New password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -120,12 +129,12 @@ const RegisterC = () => {
             <Button
                 colorScheme="blue"
                 type="submit"
-                leftIcon={<FaUserPlus />}
+                leftIcon={<FaRedo />}
                 bgColor="#0C2340" // Changed button color
                 color="white" // Text color for contrast
                 _hover={{ bgColor: "#003153" }} // Hover effect
             >
-                Register
+                Reset
             </Button>
             <Link to="/login">
                 <Button
@@ -144,4 +153,4 @@ const RegisterC = () => {
     );
 };
 
-export default RegisterC;
+export default ResetC;
