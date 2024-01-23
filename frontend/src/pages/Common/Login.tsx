@@ -28,15 +28,6 @@ const Login: React.FC = () => {
         <ProfilFooter />
       </Flex>
 
-
-    //   <Flex>
-    //     <ProfilHeader />
-    //     <Flex bgColor="pink">
-    //         <LoginC />
-    //     </Flex>
-        
-    //     <ProfilFooter />
-    // </Flex>
     );
   };
   

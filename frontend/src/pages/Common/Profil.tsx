@@ -15,19 +15,15 @@ const Profil: React.FC = () => {
         minHeight="100vh"
       >
         <ProfilHeader />
-        {/* <LoginC /> */}
         <Flex
           direction="column"
           flex="1"
           overflowY="auto" 
           paddingBottom="250px"
         >
-          
         </Flex>
-        
         <ProfilFooter />
       </Flex>
-
     );
   };
   

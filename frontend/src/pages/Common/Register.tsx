@@ -10,15 +10,13 @@ const Register: React.FC = () => {
 
       <Flex
         direction="column"
-        minHeight="100vh" // Ensure the minimum height of the entire page is the full viewport height
+        minHeight="100vh" 
         >
         <ProfilHeader />
-
         <Flex
           direction="column"
-          // flexGrow={1} // Allows this part to grow and take up available space
           flex="1"
-          overflowY="auto" // Makes the content scrollable if it overflows
+          overflowY="auto" 
           paddingBottom="250px"
         >
           <Flex gap={20} flexDirection="column" justify="space-between" align="center" mt={20}>
@@ -26,11 +24,8 @@ const Register: React.FC = () => {
             <RegisterC />
          </Flex>
         </Flex>
-
         <ProfilFooter />
       </Flex>
-
-
     );
   };
   
