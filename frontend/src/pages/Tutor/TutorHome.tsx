@@ -14,31 +14,7 @@ const TutorHome: React.FC = () => {
         direction="column"
         minHeight="100vh"
       >
-        <Header />
-        <Flex flexDir="row" justify="flex-start" gap={20} align="center">
-          <Flex flexDir="column" mt={-10} p={3} gap={2}>
-            <Flex>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                bg="grey" // Change the background color as needed
-                color="white" // Text color
-                borderRadius="full" // Makes the box a perfect circle
-                width="200px" // Width of the ellipse
-                height="150px" // Height of the ellipse
-                padding="30px"
-              >
-                <Text fontSize="3xl" fontWeight="bold">Tutor</Text>
-              </Box>
-            </Flex>
-            <Flex><Text fontSize="3xl" fontWeight="bold">tutor@efrei.com</Text></Flex>
-          </Flex>
-
-          <Flex>
-            <Text fontSize="2xl" fontWeight="bold" bgColor="grey" color="white" p={2} > ! The intermediate evaluation form should be filled before 12/31/2023 00:00:00.</Text>
-          </Flex>
-        </Flex>
+        <Header userName="tutor" userEmail="tutor@efrei.com" message="! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
 
 
         <Flex

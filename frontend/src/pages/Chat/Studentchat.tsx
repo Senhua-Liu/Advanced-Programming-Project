@@ -13,7 +13,7 @@ const StudentChat: React.FC = () => {
         direction="column"
         minHeight="100vh" 
     >
-        <Header />
+        <Header userName="student" userEmail="student@efrei.net" message=""/>
 
         <Flex
         direction="column"
@@ -24,7 +24,7 @@ const StudentChat: React.FC = () => {
         <Text>Studentchat</Text>
         </Flex>
 
-        <ReturnFooter linkPage={linkPage} />
+        <ReturnFooter linkPage="/student/home" />
     </Flex>
     );
 };

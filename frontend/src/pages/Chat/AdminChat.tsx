@@ -3,9 +3,10 @@ import React, {useState} from 'react';
 import Header from '../../components/Header';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import Footer from '../../components/Footer';
+import ReturnFooter from '../../components/ReturnFooter';
 
 const AdminChat: React.FC = () => {
-    const [chatLinkPage, setChatLinkPage] = useState('');
+    const [linkPage, setLinkPage] = useState('');
 
     return (
 
@@ -13,7 +14,7 @@ const AdminChat: React.FC = () => {
         direction="column"
         minHeight="100vh" 
     >
-        <Header />
+        <Header userName="admin" userEmail="admin@efrei.fr" message=""/>
 
         <Flex
         direction="column"
@@ -24,7 +25,7 @@ const AdminChat: React.FC = () => {
         <Text>AdminChat</Text>
         </Flex>
 
-        <Footer chatLinkPage={chatLinkPage} />
+        <ReturnFooter linkPage="/admin/home"/>
     </Flex>
     );
 };

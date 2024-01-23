@@ -14,7 +14,7 @@ const StudentFillThird: React.FC = () => {
         direction="column"
         minHeight="100vh"
       >
-        <Header />
+        <Header userName="student" userEmail="student@efrei.net" message="! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
 
         <Flex
           direction="column"
@@ -25,7 +25,7 @@ const StudentFillThird: React.FC = () => {
           <Text>StudentFillThird</Text>
         </Flex>
 
-        <ReturnFooter linkPage={linkPage} />
+        <ReturnFooter linkPage="/student/home" />
       </Flex>
     );
   };

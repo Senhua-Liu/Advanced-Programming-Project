@@ -15,36 +15,7 @@ const StudentHome: React.FC = () => {
         direction="column"
         minHeight="100vh"
       >
-        <Header />
-
-        <Flex flexDir="row" justify="flex-start" gap={20} align="center">
-          <Flex flexDir="column" mt={-10} p={3} gap={2}>
-            <Flex>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                bg="grey" // Change the background color as needed
-                color="white" // Text color
-                borderRadius="full" // Makes the box a perfect circle
-                width="200px" // Width of the ellipse
-                height="150px" // Height of the ellipse
-                padding="30px"
-              >
-                <Text fontSize="3xl" fontWeight="bold">Student</Text>
-              </Box>
-            </Flex>
-            <Flex><Text fontSize="3xl" fontWeight="bold">student@efrei.net</Text></Flex>
-          </Flex>
-
-          <Flex>
-            <Text fontSize="2xl" fontWeight="bold" bgColor="grey" color="white" p={2} > ! The second self-evaluation form should be filled before 12/31/2023 00:00:00.</Text>
-          </Flex>
-        </Flex>
-
-        
-
-
+        <Header userName="student" userEmail="student@efrei.net" message="! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
 
         <Flex
           direction="column"
@@ -67,7 +38,7 @@ const StudentHome: React.FC = () => {
                 <Link as={RouterLink} to="/student/managemeeting"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE MEETINGS</Text></Button></Link>
             </Flex>
             <Flex gap={10}>
-                <Link as={RouterLink} to="/student/managefillfirst"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">FILL ONLINE FORMS</Text></Button></Link>
+                <Link as={RouterLink} to="/student/fillfirst"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">FILL ONLINE FORMS</Text></Button></Link>
                 <Link as={RouterLink} to="/student/uploadfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">UPLOAD FILES</Text></Button></Link>
             </Flex>
         </Flex>

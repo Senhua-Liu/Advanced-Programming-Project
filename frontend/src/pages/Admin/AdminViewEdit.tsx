@@ -15,7 +15,7 @@ const AdminViewEdit: React.FC = () => {
         direction="column"
         minHeight="100vh" 
     >
-        <Header />
+        <Header userName="admin" userEmail="admin@efrei.fr" message="! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
 
         <Flex
         direction="column"
@@ -26,7 +26,7 @@ const AdminViewEdit: React.FC = () => {
         <Text>AdminViewEdit</Text>
         </Flex>
 
-        <ReturnFooter linkPage={linkPage} />
+        <ReturnFooter linkPage="/admin/home" />
     </Flex>
     );
 };

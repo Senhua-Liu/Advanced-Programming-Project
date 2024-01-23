@@ -14,8 +14,8 @@ const AdminHome: React.FC = () => {
         direction="column"
         minHeight="100vh" 
     >
-        <Header />
-
+        <Header userName="admin" userEmail="admin@efrei.fr" message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00."/>
+{/* 
         <Flex flexDir="column" mt={-10} p={3} gap={2}>
           <Flex>
             <Box
@@ -33,7 +33,7 @@ const AdminHome: React.FC = () => {
             </Box>
           </Flex>
           <Flex><Text fontSize="3xl" fontWeight="bold">admin@efrei.fr</Text></Flex>
-        </Flex>
+        </Flex> */}
 
         <Flex
         direction="column"
@@ -44,7 +44,6 @@ const AdminHome: React.FC = () => {
         justify="center"
         align="center"
         >
-
             <Flex>
                 <Link as={RouterLink} to="/admin/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text></Link>
             </Flex>
