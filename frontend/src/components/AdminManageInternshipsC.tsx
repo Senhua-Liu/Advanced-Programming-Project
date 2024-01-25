@@ -115,7 +115,7 @@ const AdminManageInternshipsC = () => {
 
             {/* Add Button */}
             <Flex justifyContent="center" alignItems="center" mt={4}>
-                <Button bgColor="#0C2340" color="white" onClick={handleAddClick} >
+                <Button bgColor="#0C2340"  color="white" onClick={handleAddClick} >
                     <Text fontSize="xl" fontWeight="bold">Add</Text>
                 </Button>
             </Flex>

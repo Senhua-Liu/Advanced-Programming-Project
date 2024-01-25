@@ -26,8 +26,8 @@ const AdminViewAllStatusC = ()  => {
       ];
     
       return (
-        <Container maxW="container.xl" p={5}>
-          <Flex direction="column" overflowX="auto">
+        <Container maxW="container.xl" p={5} mt={10} >
+          <Flex direction="column" overflowX="auto" justify="center" align="center">
             <Table variant="striped" colorScheme="teal" size="sm">
               <Thead>
                 <Tr>
@@ -54,7 +54,7 @@ const AdminViewAllStatusC = ()  => {
             </Table>
             
             {/* Page navigation */}
-            <Flex justifyContent="center" my={4}>
+            <Flex justifyContent="center" my={10} >
               <Button size="sm" mr={2}>&lt;</Button>
               <Text mx={2}>Page 1 of 5</Text>
               <Button size="sm">&gt;</Button>
