@@ -4,7 +4,12 @@ const cors = require('cors');
 const loginRouter = require('./routes/login');
 
 const app = express();
-const port = 3000;
+const port = 3001;
+
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize('mysql://root:root123@localhost:3306/internship_system'); // replace with your connection string
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
