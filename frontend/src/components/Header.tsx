@@ -25,31 +25,31 @@ const Header: React.FC<HeaderProps> = ({userName, userEmail, message}) => {
               <Link as={RouterLink} to="/">
                 <Flex align="center">
                   <Icon as={FaFileUpload} boxSize={6} mr={2} color="white" />
-                  <Text fontWeight="bold" fontSize="3xl" color="white">Upload files</Text>
+                  <Text fontWeight="bold" fontSize="xl" color="white">Upload files</Text>
                 </Flex>
               </Link>
               <Link as={RouterLink} to="/">
                 <Flex align="center">
                   <Icon as={FaHandshake} boxSize={6} mr={2} color="white" />
-                  <Text fontWeight="bold" fontSize="3xl" color="white">Meeting</Text>
+                  <Text fontWeight="bold" fontSize="xl" color="white">Meeting</Text>
                 </Flex>
               </Link>
               <Link as={RouterLink} to="/">
                 <Flex align="center">
                   <Icon as={FaClipboardList} boxSize={6} mr={2} color="white" />
-                  <Text fontWeight="bold" fontSize="3xl" color="white">Evaluation Form</Text>
+                  <Text fontWeight="bold" fontSize="xl" color="white">Evaluation Form</Text>
                 </Flex>
               </Link>
               <Link as={RouterLink} to="/">
                 <Flex align="center">
                   <Icon as={FaCheckCircle} boxSize={6} mr={2} color="white" />
-                  <Text fontWeight="bold" fontSize="3xl" color="white">Report Validation</Text>
+                  <Text fontWeight="bold" fontSize="xl" color="white">Report Validation</Text>
                 </Flex>
               </Link>
           </Flex>
         </Flex>
 
-        <Flex flexDir="column" justify="flex-start"  mt={-10} p={3} gap={2}>
+        <Flex flexDir="column" justify="flex-start"  mt={-200} p={3} gap={2}>
           <Flex flexDir="row" align="center" justify="flex-start" gap={20} >
             <Box
               display="flex"
@@ -58,17 +58,17 @@ const Header: React.FC<HeaderProps> = ({userName, userEmail, message}) => {
               bg="grey" 
               color="white" 
               borderRadius="full" 
-              width="200px" 
-              height="150px" 
+              width="100px" 
+              height="50px" 
               padding="30px"
             >
-              <Text fontSize="3xl" fontWeight="bold">{userName}</Text>
+              <Text fontSize="xl" fontWeight="bold">{userName}</Text>
             </Box>
-            <Text fontSize="2xl" fontWeight="bold" mb={-15} color="green" p={2} >{message}</Text>
+            <Text fontSize="xl" fontWeight="bold" mb={-15} color="green" p={2} >{message}</Text>
           </Flex>
           
           <Flex justify="flex-start" gap={20} alignItems="center" >
-            <Text fontSize="3xl" fontWeight="bold">{userEmail}</Text>
+            <Text fontSize="xl" fontWeight="bold">{userEmail}</Text>
             <Flex flexDir="column" alignItems="center"  justify="center" bgColor="pink">
             </Flex>
           </Flex>
