@@ -1,5 +1,5 @@
 # Advanced-Programming-Project
-EFREI follow-up of internships web platform
+EFREI Paris internship system
 
 ## Goal:
 Build a secure, maintainable, and user-friendly web application for EFREI Paris's internship management needs. 
