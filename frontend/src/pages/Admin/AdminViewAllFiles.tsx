@@ -25,7 +25,7 @@ const AdminViewAllFiles: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        <Text>AdminViewAllFiles</Text>
+        {/* <Text>AdminViewAllFiles</Text> */}
         <AdminViewAllFilesC /> 
         <AdminViewAllStatusC /> 
         </Flex>

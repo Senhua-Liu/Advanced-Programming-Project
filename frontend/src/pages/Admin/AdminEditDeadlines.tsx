@@ -22,7 +22,7 @@ const AdminEditDeadlines: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        <Text>AdminEditDeadlines</Text>
+        {/* <Text>AdminEditDeadlines</Text> */}
         <AdminEditDeadlinesC />
         </Flex>
 

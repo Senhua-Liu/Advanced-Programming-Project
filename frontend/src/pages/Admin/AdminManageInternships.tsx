@@ -23,7 +23,7 @@ const AdminManageInternships: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        <Text>AdminManageInternships</Text>
+        {/* <Text>AdminManageInternships</Text> */}
 
 
         <AdminManageInternshipsC />

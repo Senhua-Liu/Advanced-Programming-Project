@@ -22,7 +22,7 @@ const AdminManageNotifications: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        <Text>AdminManageNotifications</Text>
+        {/* <Text>AdminManageNotifications</Text> */}
         <AdminManageNotificationsC />
         </Flex>
 

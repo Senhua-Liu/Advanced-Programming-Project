@@ -24,7 +24,7 @@ const AdminViewEdit: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        <Text>AdminViewEdit</Text>
+        {/* <Text>AdminViewEdit</Text> */}
         <AdminViewEditC />
         
         </Flex>

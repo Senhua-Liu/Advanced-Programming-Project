@@ -23,7 +23,7 @@ const AdminEditNotifications: React.FC = () => {
         paddingBottom="250px"
         >
             
-            <Text>AdminEditNotifications</Text>
+            {/* <Text>AdminEditNotifications</Text> */}
             <AdminEditNotificationsC />
 
         </Flex>
