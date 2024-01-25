@@ -51,17 +51,17 @@ const AdminHome: React.FC = () => {
             <Flex gap={10}>
                 <Link as={RouterLink} to="/reset"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
                 <Link as={RouterLink} to="/admin/manageinternships"><Button p={8}  bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE INTERNSHIPS</Text></Button></Link>
+                {/* <Link as={RouterLink} to="/admin/viewedit"><Button p={8}  bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE INTERNSHIPS</Text></Button></Link> */}
+                
                 <Link as={RouterLink} to="/admin/managenotifications"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE NOTIFICATIONS</Text></Button></Link>
             </Flex>
             
             <Flex gap={10}>
                 <Link as={RouterLink} to="/admin/managedeadlines"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE DEADLINES</Text></Button></Link>
-                <Link as={RouterLink} to="/admin/viewEdit"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL STATUS</Text></Button></Link>
+                <Link as={RouterLink} to="/admin/viewallstatus"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL STATUS</Text></Button></Link>
                 <Link as={RouterLink} to="/admin/viewallfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL FILES</Text></Button></Link>
             </Flex>
-
         </Flex>
-
         <Footer chatLinkPage="/chat/adminChat" />
     </Flex>
     );

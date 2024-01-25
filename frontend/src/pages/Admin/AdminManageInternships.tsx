@@ -5,6 +5,7 @@ import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/re
 import Footer from '../../components/Footer';
 import ReturnFooter from '../../components/ReturnFooter';
 import AdminManageInternshipsC from '../../components/AdminManageInternshipsC';
+import AdminViewEditC from '../../components/AdminViewEditC';
 
 const AdminManageInternships: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
@@ -27,6 +28,7 @@ const AdminManageInternships: React.FC = () => {
 
 
         <AdminManageInternshipsC />
+        {/* <AdminViewEditC /> */}
 
         </Flex>
 

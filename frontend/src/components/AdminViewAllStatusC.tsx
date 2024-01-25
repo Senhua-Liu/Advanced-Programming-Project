@@ -18,11 +18,11 @@ import {
 const AdminViewAllStatusC = ()  => {
 
     const data = [
-        { group: 'M2', name: 'NON', cdc: 'OUI', group1: 'M2', name1: 'NON', cdc1: 'OUI' },
-        { group: 'M1', name: 'NON', cdc: 'OUI', group1: 'M2', name1: 'NON', cdc1: 'OUI' },
-        { group: 'L3', name: 'NON', cdc: 'OUI', group1: 'M2', name1: 'NON', cdc1: 'OUI' },
-        { group: 'L2', name: 'NON', cdc: 'OUI', group1: 'M2', name1: 'NON', cdc1: 'OUI' },
-        { group: 'L1', name: 'NON', cdc: 'OUI', group1: 'M2', name1: 'NON', cdc1: 'OUI' },
+        { group: 'M2', name: 'NON', cdc: 'OUI', fichevisite: 'OUI', sondageweb: 'NON', rapportrendu: 'OUI' },
+        { group: 'M1', name: 'NON', cdc: 'OUI', fichevisite: 'OUI', sondageweb: 'NON', rapportrendu: 'OUI' },
+        { group: 'L3', name: 'NON', cdc: 'OUI', fichevisite: 'OUI', sondageweb: 'OUI', rapportrendu: 'OUI' },
+        { group: 'L2', name: 'NON', cdc: 'OUI', fichevisite: 'OUI', sondageweb: 'NON', rapportrendu: 'OUI' },
+        { group: 'L1', name: 'NON', cdc: 'OUI', fichevisite: 'NON', sondageweb: 'NON', rapportrendu: 'OUI'  },
       ];
     
       return (
@@ -35,9 +35,8 @@ const AdminViewAllStatusC = ()  => {
                   <Th>NOM</Th>
                   <Th>CdC</Th>
                   <Th>FICHE VISITE</Th>
-                  <Th>FICHE EVAL ENTR</Th>
                   <Th>SONDAGE WEB</Th>
-                  {/* ... more <Th> elements for each column */}
+                  <Th>RAPPORT RENDU</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -46,7 +45,9 @@ const AdminViewAllStatusC = ()  => {
                     <Td>{item.group}</Td>
                     <Td>{item.name}</Td>
                     <Td>{item.cdc}</Td>
-                    {/* ... more <Td> elements for each cell */}
+                    <Td>{item.fichevisite}</Td>
+                    <Td>{item.sondageweb}</Td>
+                    <Td>{item.rapportrendu}</Td>
                   </Tr>
                 ))}
               </Tbody>
@@ -55,15 +56,11 @@ const AdminViewAllStatusC = ()  => {
             {/* Page navigation */}
             <Flex justifyContent="center" my={4}>
               <Button size="sm" mr={2}>&lt;</Button>
-              {/* Page numbers could be rendered dynamically here */}
               <Text mx={2}>Page 1 of 5</Text>
               <Button size="sm">&gt;</Button>
             </Flex>
             
-            {/* Return button */}
-            <Flex justifyContent="flex-end" my={4}>
-              <Button colorScheme="blue">Return</Button>
-            </Flex>
+
           </Flex>
         </Container>
       );

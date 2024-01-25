@@ -4,15 +4,12 @@ import Header from '../../components/Header';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import Footer from '../../components/Footer';
 import ReturnFooter from '../../components/ReturnFooter';
-import AdminViewAllFilesC from '../../components/AdminViewAllFilesC';
 import AdminViewAllStatusC from '../../components/AdminViewAllStatusC';
 
 const AdminViewAllStatus: React.FC = () => {
-
     const [linkPage, setLinkPage] = useState('');
 
     return (
-
     <Flex
         direction="column"
         minHeight="100vh" 
@@ -25,12 +22,13 @@ const AdminViewAllStatus: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Text>AdminViewAllFiles</Text> */}
-        {/* <AdminViewAllFilesC />  */}
-        <AdminViewAllFilesC /> 
+        {/* <Text>AdminManageNotifications</Text> */}
+        {/* <AdminManageNotificationsC /> */}
+
+        <AdminViewAllStatusC />
         </Flex>
 
-        <ReturnFooter linkPage="/admin/home" />
+        <ReturnFooter  linkPage="/admin/home" />
     </Flex>
     );
 };

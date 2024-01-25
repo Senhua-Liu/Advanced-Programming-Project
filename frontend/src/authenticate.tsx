@@ -10,6 +10,7 @@ import TutorChat from './pages/Chat/TutorChat';
 import AdminEditDeadlines from './pages/Admin/AdminEditDeadlines';
 import AdminViewEdit from './pages/Admin/AdminViewEdit';
 import AdminViewAllFiles from './pages/Admin/AdminViewAllFiles';
+import AdminViewAllStatus from './pages/Admin/AdminViewAllStatus';
 import AdminManageDeadlines from './pages/Admin/AdminManageDeadlines';
 import AdminEditNotifications from './pages/Admin/AdminEditNotifications';
 import AdminManageInternships from './pages/Admin/AdminManageInternships';
@@ -64,6 +65,7 @@ const AuthenticatedRoutes = () => {
             <Route path="/admin/managenotifications" element={<AdminManageNotifications />} />
             <Route path="/admin/viewallfiles" element={<AdminViewAllFiles/>} />
             <Route path="/admin/viewedit" element={<AdminViewEdit />} />
+            <Route path="/admin/viewallstatus" element={<AdminViewAllStatus />} />
             
 
 

@@ -1,6 +1,6 @@
 // AdminManageDeadlinesC
 
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Box,
   Flex,
@@ -15,12 +15,19 @@ import {
   VStack,
   HStack
 } from "@chakra-ui/react";
+// AdminEditDeadlinesC
+import AdminEditDeadlinesC from './AdminEditDeadlinesC';
 
 
 const AdminManageDeadlinesC = () => {
+    const [showViewEdit, setShowViewEdit] = useState(false);
+    const handleAddClick = () => {
+        setShowViewEdit(true);
+    };
+
     return (
         <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
-            <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
+            {/* <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
                 <Text fontSize="2xl" fontWeight="bold" mb={4}>ADMIN SPACE</Text>
                 
                 <Table variant="simple">
@@ -72,12 +79,20 @@ const AdminManageDeadlinesC = () => {
 
                     </Tbody>
                 </Table>
-            </Box>
+            </Box> */}
 
-            <VStack mt={4} spacing={4}>
-                <Button colorScheme="blue">Add</Button>
-                <Button colorScheme="gray">Return</Button>
+            {/* <VStack mt={4} spacing={4}>
+                <Button colorScheme="blue"  onClick={handleAddClick} >Add</Button>
             </VStack>
+
+            {showViewEdit && <AdminEditDeadlinesC />} */}
+
+
+            {/* <Box w="full" p={5} borderWidth="1px" borderRadius="lg"> */}
+                <AdminEditDeadlinesC />
+            {/* </Box> */}
+
+
         </Flex>
     );
 }; 

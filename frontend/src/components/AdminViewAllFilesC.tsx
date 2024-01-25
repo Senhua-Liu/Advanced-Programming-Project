@@ -29,6 +29,13 @@ const AdminViewAllFilesC = () => {
             <Text mb={4}>
               Here, you can find all files related to internships. Different files have different levels.
             </Text>
+            <Text mb={4}>
+              - Normal level (view, download, copy-paste, print) : Final report
+            </Text>
+            <Text mb={4}>
+              - Sensitive level (view) : Self-evaluation form, Company evaluation form, Intermediate evaluation form, Fiche visit
+            </Text>
+
     
             <Flex mb={4}>
               <Input placeholder="Tape keyword..." />
@@ -46,7 +53,7 @@ const AdminViewAllFilesC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {/* Replace with your data fetched from the server */}
+             
                 <Tr>
                   <Td>2022 - 2023</Td>
                   <Td>Final evaluation form - student1</Td>
@@ -55,25 +62,53 @@ const AdminViewAllFilesC = () => {
                   <Td>
                     <IconButton aria-label="View" icon={<ViewIcon />} />
                     <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
-                    {/* ... other action buttons ... */}
                   </Td>
                 </Tr>
-                {/* ... other rows ... */}
+
+                <Tr>
+                  <Td>2022 - 2023</Td>
+                  <Td>Final evaluation form - student1</Td>
+                  <Td>Student1</Td>
+                  <Td>Final evaluation form</Td>
+                  <Td>
+                    <IconButton aria-label="View" icon={<ViewIcon />} />
+                    <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>2022 - 2023</Td>
+                  <Td>Final evaluation form - student1</Td>
+                  <Td>Student1</Td>
+                  <Td>Final evaluation form</Td>
+                  <Td>
+                    <IconButton aria-label="View" icon={<ViewIcon />} />
+                    <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
+                  </Td>
+                </Tr>
+                
+                <Tr>
+                  <Td>2022 - 2023</Td>
+                  <Td>Final evaluation form - student1</Td>
+                  <Td>Student1</Td>
+                  <Td>Final evaluation form</Td>
+                  <Td>
+                    <IconButton aria-label="View" icon={<ViewIcon />} />
+                    <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
+                  </Td>
+                </Tr>
+
               </Tbody>
             </Table>
     
-            {/* Page navigation */}
+          
             <Flex justifyContent="center" my={4}>
               <Button size="sm" mr={2}>{"<"}</Button>
-              {/* Page numbers would be rendered dynamically here */}
+    
               <Text mx={2}>Page 1 of 5</Text>
               <Button size="sm">{" >"}</Button>
             </Flex>
     
-            {/* Return button */}
-            <Flex justifyContent="flex-end" my={4}>
-              <Button colorScheme="blue">Return</Button>
-            </Flex>
           </Flex>
         </Container>
     );
