@@ -9,7 +9,7 @@ import { GiEarthAmerica } from "react-icons/gi";
 const ProfilFooter = () => {
 
   return (
-    <Flex p={10} flexDir="row" align="center" justify="flex-end" bg="#dddddd" as="footer" position="fixed" bottom="0" width="100%" left="0" height="200px" >
+    <Flex p={10} flexDir="row" align="center" justify="flex-end" bg="#dddddd" as="footer" /* position="fixed" bottom="0" width="100%" left="0" */ height="200px" >
       <Link as={RouterLink} to="/reset">
         <Button bgColor="#0C2340" gap={3}  p={8} width="200px" >{/* <FaUserPlus color="white" /> */}<Text fontWeight="bold"  fontSize="3xl" color="white">Reset</Text><FaRedo color="white" /></Button>
       </Link> 

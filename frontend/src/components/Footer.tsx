@@ -13,7 +13,7 @@ interface ChatLinkPageProps {
 const Footer : React.FC<ChatLinkPageProps> = ({ chatLinkPage }) => {
 
   return (
-    <Flex p={10} align="center" justify="space-around" bg="#dddddd" as="footer" position="fixed" bottom="0" width="100%" left="0" height="200px" >
+    <Flex p={10} align="center" justify="space-around" bg="#dddddd" as="footer" /* position="fixed" bottom="0" width="100%" left="0" */ height="200px" >
         <Flex align="center" justify="flex-start" gap={10} p={1}>
           <Link as={RouterLink} to="/" >
             <Button bgColor="darkred" p={7} ><Icon as={FaSignOutAlt} boxSize={8} mr={4} color="white" /><Text fontWeight="bold"  fontSize="2xl" color="white">Logout</Text></Button>

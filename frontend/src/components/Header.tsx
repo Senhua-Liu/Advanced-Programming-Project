@@ -13,9 +13,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({userName, userEmail, message}) => {
 
   return (
-    <Flex justify="space-between"  flexDir="column" width="100%" height="400px">
+    <Flex justify="space-between"  flexDir="column" width="100%" height="300px">
         
-        <Flex flexDir="row"  bg="#0C2340" align="center"  justify="space-between" height="250px" p={4} >
+        <Flex flexDir="row"  bg="#0C2340" align="center"  justify="space-between" height="200px" p={4} >
           <Flex align="center" justify="space-between" gap={10} p={1}>
               <Link as={RouterLink} to="/">
                   <Image src="../../../assets/efrei.png" alt="icon" width="400px" />
@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({userName, userEmail, message}) => {
           </Flex>
         </Flex>
 
-        <Flex flexDir="column" justify="flex-start"  mt={-200} p={3} gap={2}>
+        <Flex flexDir="column" justify="flex-start"  mt={-300} p={3} gap={2}>
           <Flex flexDir="row" align="center" justify="flex-start" gap={20} >
             <Box
               display="flex"
