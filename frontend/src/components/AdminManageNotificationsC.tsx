@@ -28,7 +28,7 @@ const AdminManageNotificationsC = () => {
 
     return (
         <Flex direction="column" p={5} w="80%" justify="center" align="center" maxW="960px" mx="auto">
-            <Box w="full" p={5} borderWidth="1px" borderRadius="lg" >
+            {/* <Box w="full" p={5} borderWidth="1px" borderRadius="lg" > */}
                 {/* <Text fontSize="2xl" fontWeight="bold" textAlign="center"> ADMIN SPACE</Text> 
 
                 <Table variant="simple">
@@ -95,7 +95,7 @@ const AdminManageNotificationsC = () => {
                 </Flex> */}
 
                 <AdminEditNotificationsC />
-            </Box>
+            {/* </Box> */}
 
             {/* {showViewEdit && <AdminEditNotificationsC />} */}
 

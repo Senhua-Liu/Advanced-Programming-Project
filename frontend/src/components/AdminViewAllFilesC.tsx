@@ -24,25 +24,27 @@ import {
 const AdminViewAllFilesC = () => {
 
     return (
-        <Container maxW="container.xl" p={5}>
-          <Flex direction="column" overflowX="auto">
-            <Text mb={4}>
-              Here, you can find all files related to internships. Different files have different levels.
-            </Text>
-            <Text mb={4}>
-              - Normal level (view, download, copy-paste, print) : Final report
-            </Text>
-            <Text mb={4}>
-              - Sensitive level (view) : Self-evaluation form, Company evaluation form, Intermediate evaluation form, Fiche visit
-            </Text>
-
-    
+        <Container maxW="container.xl" p={5} >
+          <Flex direction="column" overflowX="auto" gap={5}>
+            
             <Flex mb={4}>
               <Input placeholder="Tape keyword..." />
               <Button ml={2}><SearchIcon /></Button>
             </Flex>
-    
-            <Table variant="striped" colorScheme="teal" size="sm">
+            
+
+            <Text>
+                Here, you can find all files related to internships. Different files have different levels.
+            </Text>
+            <Text>
+                - Normal level (view, download, copy-paste, print) : Final report
+            </Text>
+            <Text>
+                - Sensitive level (view) : Self-evaluation form, Company evaluation form, Intermediate evaluation form, Fiche visit
+            </Text>
+      
+            
+            <Table variant="striped" colorScheme="teal" size="sm" mt={4}>
               <Thead>
                 <Tr>
                   <Th>Years</Th>

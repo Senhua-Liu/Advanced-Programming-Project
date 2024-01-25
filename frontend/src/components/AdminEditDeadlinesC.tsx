@@ -69,7 +69,7 @@ const AdminEditDeadlinesC = () => {
             </FormControl>
           </HStack>
           
-          <HStack w="full" justify="space-between">
+          <HStack w="full" justify="center" align="center">
             <Button colorScheme="blue">Save Draft</Button>
             <Button colorScheme="teal">Save Definitively</Button>
           </HStack>
