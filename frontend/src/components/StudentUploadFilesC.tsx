@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext }  from 'react';
-import { Box,Flex,Text,Button,FormControl,FormLabel,Heading,Select,VStack,useToast } from "@chakra-ui/react";
+import { Box,Flex,Text,Button,FormControl,FormLabel,Heading,Select,VStack,useToast,Center,Divider,HStack } from "@chakra-ui/react";
+import { AttachmentIcon } from '@chakra-ui/icons';
 
 const StudentUploadFilesC = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -23,37 +24,54 @@ const StudentUploadFilesC = () => {
     };
 
     return (
-        <Flex justify="center" align="center">
-            
-            <Box borderWidth="2px" borderRadius="lg" p={6} mb={4} borderColor="gray.300">
-                <Heading mb={6}>Upload Files</Heading>
-                
-                <Text fontSize="sm" mb={2}>
-                    DEADLINE OF CDC: 12/10/2023 00:00:00
+        <Center p={10} flexDirection="column">
+            <Box
+                borderWidth="2px"
+                borderRadius="lg"
+                p={6}
+                w="4xl"
+                boxShadow="lg"
+                borderColor="gray.200"
+            >
+                <VStack spacing={4}>
+                <Heading size="md">Document</Heading>
+                <Text fontSize="sm" textAlign="center" color="red">
+                    DEADLINE OF CdC: 12/10/2023 00:00:00
                     <br />
                     DEADLINE OF FINAL REPORT: 12/31/2023 00:00:00
                 </Text>
-                <FormControl mb={4}>
-                    <FormLabel>File type:</FormLabel>
-                    <Select placeholder="Select file type" onChange={(e) => setFileType(e.target.value)}>
-                    <option value="cdc">CDC</option>
-                    <option value="final_report">FINAL REPORT</option>
+                <Divider />
+                <Box
+                    p={6}
+                    borderWidth="2px"
+                    borderRadius="lg"
+                    borderColor="gray.300"
+                    w="full"
+                    textAlign="center"
+                    _hover={{ bg: "gray.50" }}
+                    cursor="pointer"
+                >
+                    <AttachmentIcon mx="auto" boxSize={12} />
+                    <Text mt={2}>Drag and drop here or Browse</Text>
+                </Box>
+                <Text fontSize="sm">File: please select a pdf file.</Text>
+                <HStack w="full" justifyContent="space-between">
+                    <Button variant="outline">Browse</Button>
+                    <Select placeholder="CdC/FINAL REPORT" onChange={(e) => setFileType(e.target.value)}>
+                    <option value="cdc">CdC</option>
+                    <option value="final-report">FINAL REPORT</option>
                     </Select>
-                </FormControl>
-
-                <Button colorScheme="blue" onClick={handleUpload}>Upload</Button>
-
-                <VStack mt={4} spacing={4}>
-                    <Button colorScheme="red">Cancel</Button>
-                    <Button colorScheme="blue">Save in Draft</Button>
-                    <Button colorScheme="blue">Save</Button>
+                    <Button colorScheme="blue" onClick={handleUpload}>Upload</Button>
+                </HStack>
+                <HStack w="full" justifyContent="space-between">
+                    <Button variant="solid" colorScheme="red">Cancel</Button>
+                    <Button variant="solid" colorScheme="blue">Save in Draft</Button>
+                    <Button variant="solid" colorScheme="green">Save</Button>
+                </HStack>
                 </VStack>
             </Box>
-
-            
-        </Flex>
+        </Center>
     );
 };
-
 
 export default StudentUploadFilesC;
