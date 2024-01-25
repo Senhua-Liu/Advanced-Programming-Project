@@ -109,21 +109,21 @@ const AdminViewEditC = () => {
 
 
           <HStack w="full" justify="space-between">
-            <FormControl id="" flex="1">
-              <FormLabel>Tutor Name:</FormLabel>
-              <Input placeholder="Tutor Name" />
+            <FormControl id="start-date" flex="1">
+              <FormLabel>Start Date</FormLabel>
+              <Input placeholder="Start Date" />
             </FormControl>
-            <FormControl id="tutor-phone-number" flex="1">
-              <FormLabel>Tutor's Phone number:</FormLabel>
-              <Input placeholder="Tutor's Phone number" />
+            <FormControl id="end-date" flex="1">
+              <FormLabel>End Date</FormLabel>
+              <Input placeholder="End Date" />
             </FormControl>
-            <FormControl id="tutor-mail" flex="1">
-              <FormLabel>Tutor's Mail:</FormLabel>
-              <Input placeholder="tutor's mail" />
+            <FormControl id="salary" flex="1">
+              <FormLabel>Salary</FormLabel>
+              <Input placeholder="salary" />
             </FormControl>
-            <FormControl id="tutor-mail" flex="1">
-              <FormLabel>Tutor's Mail:</FormLabel>
-              <Input placeholder="tutor's mail" />
+            <FormControl id="number-of-days" flex="1">
+              <FormLabel>Number of days</FormLabel>
+              <Input placeholder="Number of days" />
             </FormControl>
           </HStack>
 
