@@ -1,5 +1,5 @@
 # Advanced-Programming-Project
-EFREI Paris internship system
+
 
 ## Goal:
 Build a secure, maintainable, and user-friendly web application for EFREI Paris's internship management needs. 
@@ -12,6 +12,7 @@ Allow for efficient development and has the potential to incorporate advanced fe
     Frontend: React, Chakra UI, Tailwind CSS, TypeScript
     Backend: Node.js, Express
     Database: MySQL(Sequelize)
+
 
 ## 1.1.1 Frontend: 
 - React: A JavaScript library for building user interfaces. It's an excellent choice for building complex, interactive web applications. React's component-based architecture makes it easy to manage the state and lifecycle of various UI elements, which is ideal for project's requirement of a user-friendly and intuitive interface.

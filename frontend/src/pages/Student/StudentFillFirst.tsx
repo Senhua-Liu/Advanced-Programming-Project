@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext }  from 'react';
 import Header from '../../components/Header';
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 import StudentFillFirstC from '../../components/StudentFillFirstC';
+import StudentFillSecondC from '../../components/StudentFillSecondC';
+import StudentFillThirdC from '../../components/StudentFillThirdC';
 
 const StudentFillFirst: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
+    const [fillFormClick, setFillFormClick] = useState(true);
 
     return (
 
@@ -20,8 +23,18 @@ const StudentFillFirst: React.FC = () => {
           flex="1"
           overflowY="auto" 
           paddingBottom="250px"
+          gap={10}
+          justify="center"
+          align="center"
         >
-          <StudentFillFirstC />
+          <Button width="150px" color="white" bgColor="blue.500">First form</Button>
+          <Button width="150px" color="white" bgColor="blue.500">Second form</Button>
+          <Button width="150px" color="white" bgColor="blue.500">Third form</Button>
+
+          {fillFormClick &&  <StudentFillFirstC />}
+          {fillFormClick &&  <StudentFillSecondC />}
+          {fillFormClick && <StudentFillThirdC />}
+
         </Flex>
 
         <ReturnFooter  linkPage="/student/home" />
