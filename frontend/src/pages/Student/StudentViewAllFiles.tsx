@@ -6,7 +6,6 @@ import StudentViewAllFilesC from '../../components/StudentViewAllFilesC';
 
 
 const StudentViewAllFiles: React.FC = () => {
-  
 
   return (
     <Flex
@@ -22,7 +21,7 @@ const StudentViewAllFiles: React.FC = () => {
         paddingBottom="250px"
         >
         <StudentViewAllFilesC /> 
-        </Flex>
+      </Flex>
 
       <ReturnFooter linkPage="/student/home"/>
     </Flex>
@@ -31,4 +30,3 @@ const StudentViewAllFiles: React.FC = () => {
 
 
 export default StudentViewAllFiles;
-  

@@ -15,8 +15,8 @@ Allow for efficient development and has the potential to incorporate advanced fe
 
 ## 1.1.1 Frontend: 
 - React: A JavaScript library for building user interfaces. It's an excellent choice for building complex, interactive web applications. React's component-based architecture makes it easy to manage the state and lifecycle of various UI elements, which is ideal for project's requirement of a user-friendly and intuitive interface.
-- Chakra UI: This is a simple, modular, and accessible component library that gives you the building blocks to build React applications. Chakra UI will speed up the development process and ensure that the application is accessible and visually appealing.
-- Tailwind CSS: A utility-first CSS framework for rapidly building custom designs. Tailwind CSS will allow you to design a clean, responsive UI efficiently. It can be combined effectively with Chakra UI for more control over the layout and design.
+- Chakra UI: This is a simple, modular, and accessible component library that gives us the building blocks to build React applications. Chakra UI will speed up the development process and ensure that the application is accessible and visually appealing.
+- Tailwind CSS: A utility-first CSS framework for rapidly building custom designs. Tailwind CSS will allow us to design a clean, responsive UI efficiently. It can be combined effectively with Chakra UI for more control over the layout and design.
 - TypeScript: A superset of JavaScript that adds static types. Using TypeScript is a wise choice for enhancing code quality, making it easier to maintain, understand, and catch errors early.
 
 ## 1.1.2 Backend:
@@ -42,7 +42,6 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 
 
 ## 1.4 Delivery Methodology
-
 
 
 ## 1.5 Integration of clean code principles

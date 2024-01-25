@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext }  from 'react';
 import Header from '../../components/Header';
-import { Flex,Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
+import StudentFillFirstC from '../../components/StudentFillFirstC';
 
 const StudentFillFirst: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
@@ -20,7 +21,7 @@ const StudentFillFirst: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          <Text>StudentFillFirst</Text>
+          <StudentFillFirstC />
         </Flex>
 
         <ReturnFooter  linkPage="/student/home" />
@@ -28,5 +29,4 @@ const StudentFillFirst: React.FC = () => {
     );
   };
   
-  export default StudentFillFirst;
-  
+export default StudentFillFirst;
