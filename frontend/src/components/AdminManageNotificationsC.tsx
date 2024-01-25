@@ -18,9 +18,9 @@ import {
 const AdminManageNotificationsC = () => {
 
     return (
-        <Flex direction="column" p={5} w="full" maxW="960px" mx="auto">
+        <Flex direction="column" p={5} w="80%" justify="center" align="center" maxW="960px" mx="auto">
             <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
-                <Text fontSize="2xl" fontWeight="bold" mb={4}>ADMIN SPACE</Text>
+                <Text fontSize="2xl" fontWeight="bold" justify="center" align="center" mb={4}>ADMIN SPACE</Text>
 
                 <Table variant="simple">
                 <Thead bg="blue.500">
@@ -81,9 +81,8 @@ const AdminManageNotificationsC = () => {
                 </Tbody>
                 </Table>
 
-                <Flex mt={4} justify="space-between">
+                <Flex mt={4} justify="center" align="center" >
                 <Button colorScheme="blue">Add</Button>
-                <Button colorScheme="gray">Return</Button>
                 </Flex>
             </Box>
         </Flex>
