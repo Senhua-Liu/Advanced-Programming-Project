@@ -29,28 +29,51 @@ const StudentFillFirstC = () => {
     return (
         <Box p={5} borderWidth="1px" borderRadius="lg">
             <VStack spacing={5}>
-                <Heading size="lg" textAlign="center">BILAN PÉRIODIQUE (DÉBUT DE STAGE: 1 MOIS)</Heading>
-                <Text fontSize="sm" textAlign="center">
-                DEADLINE OF THIS FILE: 01/20/2023 00:00:00
+                <Text fontSize="sm" textAlign="center" color="red">
+                    DEADLINE OF THIS FILE: 01/20/2023 00:00:00
                 </Text>
+                <Heading size="lg" textAlign="center">BILAN PÉRIODIQUE (DÉBUT DE STAGE: 1 MOIS)</Heading>
                 <Divider />
-                <FormControl id="studentName">
-                    <FormLabel>Student Name</FormLabel>
-                    <Input name="studentName" onChange={handleChange} />
+
+
+
+
+
+
+                <FormControl id="student">
+                    <FormLabel>Student</FormLabel>
+                    <Input name="studentName" placeholder="Student Name"  onChange={handleChange} />
                 </FormControl>
+
                 <FormControl id="tutorName">
                     <FormLabel>Tutor Name</FormLabel>
                     <Input name="tutorName" onChange={handleChange} />
                 </FormControl>
                
+
+
+
+
+
+
+
                 <FormControl id="studentSignature">
                     <FormLabel>Student Signature</FormLabel>
                     <Input name="studentSignature" onChange={handleChange} />
                 </FormControl>
+
                 <FormControl id="tutorSignature">
                     <FormLabel>Tutor Signature</FormLabel>
                     <Input name="tutorSignature" onChange={handleChange} />
                 </FormControl>
+
+
+
+
+
+
+
+
                 <HStack spacing={10}>
                     <Button colorScheme="blue" onClick={handleSubmit}>Save Draft</Button>
                     <Button colorScheme="teal" onClick={handleSubmit}>Save Definitively</Button>

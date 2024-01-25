@@ -6,7 +6,7 @@ import { useUser } from "./context/UserContext";
 import Login from "./pages/Common/Login";
 import Register from "./pages/Common/Register";
 import AdminChat from "./pages/Chat/AdminChat";
-import StudentChat from "./pages/Chat/Studentchat";
+// import StudentChat from "./pages/Chat/Studentchat";
 import TutorChat from "./pages/Chat/TutorChat";
 import AdminEditDeadlines from "./pages/Admin/AdminEditDeadlines";
 import AdminViewEdit from "./pages/Admin/AdminViewEdit";
@@ -55,7 +55,7 @@ const AuthenticatedRoutes = () => {
       <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
 
       <Route path="/chat/adminChat" element={<AdminChat />} />
-      <Route path="/chat/studentChat" element={<StudentChat />} />
+      {/* <Route path="/chat/studentChat" element={<StudentChat />} /> */}
       <Route path="/chat/tutorChat" element={<TutorChat />} />
 
       <Route path="/admin/editdeadlines" element={<AdminEditDeadlines />} />
