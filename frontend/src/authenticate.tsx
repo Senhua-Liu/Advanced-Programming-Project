@@ -18,10 +18,8 @@ import AdminManageInternships from "./pages/Admin/AdminManageInternships";
 import AdminHome from "./pages/Admin/AdminHome";
 import AdminManageNotifications from "./pages/Admin/AdminManageNotifications";
 import StudentAddNewInternship from "./pages/Student/StudentAddNewInternship";
-import StudentFillFirst from "./pages/Student/StudentFillFirst";
-import StudentFillSecond from "./pages/Student/StudentFillSecond";
-import StudentFillThird from "./pages/Student/StudentFillThird";
 import StudentHome from "./pages/Student/StudentHome";
+import StudentFill from "./pages/Student/StudentFill";
 import StudentManageInternships from "./pages/Student/StudentManageInternships";
 import StudentManageMeeting from "./pages/Student/StudentManageMeeting";
 import StudentUploadFiles from "./pages/Student/StudentUploadFiles";
@@ -81,9 +79,7 @@ const AuthenticatedRoutes = () => {
         path="/student/addnewinternship"
         element={<StudentAddNewInternship />}
       />
-      <Route path="/student/fillfirst" element={<StudentFillFirst />} />
-      <Route path="/student/fillsecond" element={<StudentFillSecond />} />
-      <Route path="/student/fillthird" element={<StudentFillThird />} />
+      <Route path="/student/fill" element={<StudentFill />} />
       <Route path="/student/home" element={<StudentHome />} />
       <Route
         path="/student/manageinternships"

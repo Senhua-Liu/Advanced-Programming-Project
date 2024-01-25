@@ -43,7 +43,7 @@ const StudentHome: React.FC = () => {
             </Button>
           </Flex>
           <Flex justify="space-between" direction={isSmallerThan768 ? 'column' : 'row'}>
-            <Button as={RouterLink} to="/student/fillfirst" bgColor="#0C2340" color="white" p={8} m={6} flex="1" mb={5}>
+            <Button as={RouterLink} to="/student/fill" bgColor="#0C2340" color="white" p={8} m={6} flex="1" mb={5}>
               FILL ONLINE FORMS
             </Button>
             <Button as={RouterLink} to="/student/uploadfiles" bgColor="#0C2340" color="white" p={8} m={6} flex="1" mb={5}>
