@@ -1,8 +1,7 @@
   
-import React, { useState, useEffect, useContext, ReactNode }  from 'react';
+import React, { useState }  from 'react';
 import Header from '../../components/Header';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
-import Footer from '../../components/Footer';
+import { Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 import AdminManageNotificationsC from '../../components/AdminManageNotificationsC';
 
@@ -22,7 +21,6 @@ const AdminManageNotifications: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Text>AdminManageNotifications</Text> */}
         <AdminManageNotificationsC />
         </Flex>
 

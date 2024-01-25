@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useContext, ReactNode }  from 'react';
+import React, { useState, useEffect, useContext }  from 'react';
 import Header from '../../components/Header';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon,VStack,useMediaQuery } from "@chakra-ui/react";
-import {Link as RouterLink, BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import { Flex,Text,Button,VStack,useMediaQuery } from "@chakra-ui/react";
+import {Link as RouterLink, BrowserRouter as Router } from "react-router-dom";
 import Footer from '../../components/Footer';
-import ReturnFooter from '../../components/ReturnFooter';
+
 
 const StudentHome: React.FC = () => {
-  // Responsive media query hook to adjust button sizes on smaller screens
   const [isSmallerThan768] = useMediaQuery('(max-width: 768px)');
 
   return (
@@ -54,7 +53,7 @@ const StudentHome: React.FC = () => {
         </VStack>
       </VStack>
 
-      <Footer chatLinkPage="/Student/StudentHome/"/>
+      <Footer chatLinkPage="/chat/studentChat/"/>
     </Flex>
   );
 };

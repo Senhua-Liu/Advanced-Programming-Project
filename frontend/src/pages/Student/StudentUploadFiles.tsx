@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext, ReactNode } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Header from '../../components/Header';
-// import Footer from '../../components/footer';
-// import Body from '../../components/body';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon,FormControl,FormLabel,Heading,Input,Select,VStack,useToast } from "@chakra-ui/react";
+import { Box,Flex,Text,Button,FormControl,FormLabel,Heading,Select,VStack,useToast } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 //import { FileUpload } from '../../components/FileUpload';// ASSUMING WE HAVE THE COMPONENT, WHICH WE DO NOT HAVE!!!!
 
@@ -12,8 +10,6 @@ const StudentUploadFiles: React.FC = () => {
     const [fileType, setFileType] = useState('');
     const toast = useToast();
 
-    
-  
     const handleFileChange = (selectedFile: File) => {
       if (selectedFile) {
         setFile(selectedFile);
@@ -21,7 +17,6 @@ const StudentUploadFiles: React.FC = () => {
     };
   
     const handleUpload = () => {
-      // Implement the file upload logic here
       toast({
         title: "File uploaded.",
         description: "Your file has been uploaded successfully.",

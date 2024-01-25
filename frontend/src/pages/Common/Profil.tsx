@@ -1,8 +1,5 @@
 import React from 'react';
-
-// import Footer from '../../components/footer';
-// import Body from '../../components/body';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import ProfilHeader from '../../components/ProfilHeader';
 import ProfilFooter from '../../components/ProfilFooter';
 import LoginC from '../../components/LoginC';
@@ -22,7 +19,6 @@ const Profil: React.FC = () => {
           paddingBottom="250px"
         >
         </Flex>
-        {/* <ProfilFooter /> */}
       </Flex>
     );
   };

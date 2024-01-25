@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext, ReactNode } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Header from '../../components/Header';
-// import Footer from '../../components/footer';
-// import Body from '../../components/body';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon, FormControl, FormLabel,Input, Heading, VStack, HStack, Textarea, useColorModeValue } from "@chakra-ui/react";
-import Footer from '../../components/Footer';
+import { Box,Flex, Button, FormControl, FormLabel,Input, Heading, VStack, HStack, Textarea, useColorModeValue } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 
 const StudentAddNewInternship: React.FC = () => {
-  const bg = useColorModeValue('white', 'gray.700'); // Adjust color based on color mode if needed
+  const bg = useColorModeValue('white', 'gray.700'); 
 
   return (
     <Flex direction="column" minHeight="100vh">
@@ -15,7 +12,6 @@ const StudentAddNewInternship: React.FC = () => {
       <Heading mb={6}>STUDENT SPACE</Heading>
 
       <VStack spacing={4} align="stretch">
-        {/* Company Section */}
         <Box>
           <Heading size="md" mb={4}>Company</Heading>
           <HStack spacing={4}>
@@ -40,7 +36,6 @@ const StudentAddNewInternship: React.FC = () => {
           </HStack>
         </Box>
 
-        {/* Contact Section */}
         <Box>
           <Heading size="md" mb={4}>Contact</Heading>
           <HStack spacing={4}>
@@ -59,7 +54,6 @@ const StudentAddNewInternship: React.FC = () => {
           </HStack>
         </Box>
 
-        {/* Internship Section */}
         <Box>
           <Heading size="md" mb={4}>Internship</Heading>
           <FormControl id="mission-description" mb={2}>
@@ -86,7 +80,6 @@ const StudentAddNewInternship: React.FC = () => {
           </HStack>
         </Box>
 
-        {/* Form Action Buttons */}
         <HStack spacing={4} justify="center">
           <Button colorScheme="red">Delete</Button>
           <Button colorScheme="blue">Save in Draft</Button>

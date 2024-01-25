@@ -1,22 +1,8 @@
 // AdminManageNotificationsC
 
 import React, { useState } from 'react';
-import {
-    Box,
-    Flex,
-    Text,
-    Button,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    Select
-} from "@chakra-ui/react";
+import { Box,Flex,Text,Button,Table,Thead,Tbody,Tr,Th,Td,Select } from "@chakra-ui/react";
 import AdminEditNotificationsC from "./AdminEditNotificationsC";
-
-
 
 
 const AdminManageNotificationsC = () => {

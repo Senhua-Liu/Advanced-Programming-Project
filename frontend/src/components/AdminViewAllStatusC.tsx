@@ -1,19 +1,7 @@
 // AdminViewAllStatusC
 
 import React from 'react';
-import {
-  Box,
-  Flex,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Button,
-  Container,
-  Text
-} from "@chakra-ui/react";
+import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Container,Text } from "@chakra-ui/react";
 
 const AdminViewAllStatusC = ()  => {
 

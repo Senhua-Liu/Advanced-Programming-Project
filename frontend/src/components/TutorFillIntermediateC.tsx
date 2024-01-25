@@ -1,20 +1,7 @@
 // TutorFillIntermediateC
 
 import React, { useContext, useState } from 'react';
-import {
-    Box,
-    VStack,
-    FormControl,
-    FormLabel,
-    Textarea,
-    Radio,
-    RadioGroup,
-    Stack,
-    Button,
-    Heading,
-    Container,
-    Text,
-  } from "@chakra-ui/react";
+import { Box,VStack,FormControl,FormLabel,Textarea,Radio,RadioGroup,Stack,Button,Heading,Container,Text, } from "@chakra-ui/react";
 
 
 const TutorFillIntermediateC = () => {

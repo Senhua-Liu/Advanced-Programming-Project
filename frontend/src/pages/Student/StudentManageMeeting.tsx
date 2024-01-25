@@ -1,19 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Radio,
-  RadioGroup,
-  Stack,
-  Select,
-  HStack,
-} from "@chakra-ui/react";
+import { Box,Flex,Heading,Text,Button,FormControl,FormLabel,Input,Radio,RadioGroup,Stack,Select,HStack } from "@chakra-ui/react";
 import Header from '../../components/Header';
 import ReturnFooter from '../../components/ReturnFooter';
 
@@ -35,7 +21,6 @@ const StudentManageMeeting: React.FC = () => {
 
   const handleSubmit = () => {
     console.log({ meetingType, dates, locations });
-    // Implement your submission logic here
   };
 
   return (

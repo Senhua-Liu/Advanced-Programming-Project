@@ -1,11 +1,12 @@
 // AuthenticatedRoutes.js
+
 import React from 'react';
 import { Navigate, Routes, Route } from 'react-router-dom';
 import { useUser } from './context/UserContext'; 
 import Login from "./pages/Common/Login";
 import Register from './pages/Common/Register';
 import AdminChat from './pages/Chat/AdminChat';
-import StudentChat from './pages/Chat/Studentchat';
+import StudentChat from './pages/Chat/StudentChat';
 import TutorChat from './pages/Chat/TutorChat';
 import AdminEditDeadlines from './pages/Admin/AdminEditDeadlines';
 import AdminViewEdit from './pages/Admin/AdminViewEdit';
@@ -35,14 +36,13 @@ import TutorFillIntermediate from './pages/Tutor/TutorFillIntermediate';
 import Profil from './pages/Common/Profil';
 import Reset from './pages/Common/Reset';
 
+
 const AuthenticatedRoutes = () => {
     const userContext = useUser();
-    console.log("User context value:", userContext);
 
     if (!userContext) {
         return <div>Loading...</div>;
     }
-
     const { user } = userContext;
 
     return (

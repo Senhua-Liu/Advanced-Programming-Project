@@ -1,23 +1,8 @@
 // TutorFillFinalC
 
-
-
 import React, { useContext, useState } from 'react';
-import {
-    VStack,
-    HStack,
-    FormControl,
-    FormLabel,
-    Radio,
-    RadioGroup,
-    Stack,
-    Button,
-    Textarea,
-    Text,
-    Box,
-    Heading,
-    Container
-} from "@chakra-ui/react";
+import {VStack,HStack,FormControl,FormLabel,Radio,RadioGroup,Stack,Button,Textarea,Text,Box,Heading,Container} from "@chakra-ui/react";
+
 
 const TutorFillFinalC = () => {
 

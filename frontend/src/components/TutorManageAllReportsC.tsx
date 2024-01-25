@@ -1,21 +1,7 @@
 // TutorManageAllReportsC
 
-
 import React, { useContext, useState } from 'react';
-import {
-    Box,
-    Flex,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    Button,
-    Text,
-    Container
-} from "@chakra-ui/react";
-
+import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Text,Container } from "@chakra-ui/react";
 
 
 const TutorManageAllReportsC = () => {
@@ -25,7 +11,6 @@ const TutorManageAllReportsC = () => {
         { year: "2022 - 2023", status: "validated", student: "Student3", fileType: "Final report" },
         { year: "2022 - 2023", status: "Invalidated", student: "Student4", fileType: "Final report" },
         { year: "2022 - 2023", status: "validated", student: "Student5", fileType: "Final report" },
- 
       ];
 
 

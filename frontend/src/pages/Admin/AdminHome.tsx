@@ -1,40 +1,19 @@
   
 import React, {useState} from 'react';
 import Header from '../../components/Header';
-import {Link as RouterLink, BrowserRouter as Router, Routes, Route, } from "react-router-dom";
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
+import {Link as RouterLink, BrowserRouter as Router } from "react-router-dom";
+import { Flex,Link,Text,Button } from "@chakra-ui/react";
 import Footer from '../../components/Footer';
 
 const AdminHome: React.FC = () => {
     const [chatLinkPage, setChatLinkPage] = useState('');
 
     return (
-
     <Flex
         direction="column"
         minHeight="100vh" 
     >
         <Header userName="admin" userEmail="admin@efrei.fr" message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00."/>
-{/* 
-        <Flex flexDir="column" mt={-10} p={3} gap={2}>
-          <Flex>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              bg="grey" // Change the background color as needed
-              color="white" // Text color
-              borderRadius="full" // Makes the box a perfect circle
-              width="200px" // Width of the ellipse
-              height="150px" // Height of the ellipse
-              padding="30px"
-            >
-              <Text fontSize="3xl" fontWeight="bold">Admin</Text>
-            </Box>
-          </Flex>
-          <Flex><Text fontSize="3xl" fontWeight="bold">admin@efrei.fr</Text></Flex>
-        </Flex> */}
-
         <Flex
         direction="column"
         flex="1"
@@ -45,18 +24,13 @@ const AdminHome: React.FC = () => {
         align="center"
         >
             <Flex>
-                {/* <Link as={RouterLink} to="/admin/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text></Link> */}
                 <Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text>
             </Flex>
-
             <Flex gap={10}>
                 <Link as={RouterLink} to="/reset"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
                 <Link as={RouterLink} to="/admin/manageinternships"><Button p={8}  bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE INTERNSHIPS</Text></Button></Link>
-                {/* <Link as={RouterLink} to="/admin/viewedit"><Button p={8}  bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE INTERNSHIPS</Text></Button></Link> */}
-                
                 <Link as={RouterLink} to="/admin/managenotifications"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE NOTIFICATIONS</Text></Button></Link>
             </Flex>
-            
             <Flex gap={10}>
                 <Link as={RouterLink} to="/admin/managedeadlines"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE DEADLINES</Text></Button></Link>
                 <Link as={RouterLink} to="/admin/viewallstatus"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL STATUS</Text></Button></Link>

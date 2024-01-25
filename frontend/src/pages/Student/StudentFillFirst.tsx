@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext, ReactNode }  from 'react';
+import React, { useState, useEffect, useContext }  from 'react';
 import Header from '../../components/Header';
-// import Footer from '../../components/footer';
-// import Body from '../../components/body';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
+import { Flex,Text } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 
 const StudentFillFirst: React.FC = () => {

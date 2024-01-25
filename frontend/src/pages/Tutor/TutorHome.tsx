@@ -1,9 +1,7 @@
 import React, {useState}  from 'react';
 import Header from '../../components/Header';
-// import Footer from '../../components/footer';
-// import Body from '../../components/body';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
-import {Link as RouterLink, BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import { Flex,Link,Text,Button } from "@chakra-ui/react";
+import {Link as RouterLink, BrowserRouter as Router, } from "react-router-dom";
 import Footer from '../../components/Footer';
 
 const TutorHome: React.FC = () => {
@@ -15,7 +13,6 @@ const TutorHome: React.FC = () => {
         minHeight="100vh"
       >
         <Header userName="tutor" userEmail="tutor@efrei.com" message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
-
 
         <Flex
           direction="column"

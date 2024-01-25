@@ -1,21 +1,7 @@
 // TutorManageInternshipsC
 
-
 import React, { useContext, useState } from 'react';
-import {
-    Box,
-    Flex,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    Button,
-    Text,
-    Badge,
-    Container,
-} from "@chakra-ui/react";
+import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Text,Badge,Container } from "@chakra-ui/react";
 import TutorManageMeetingC from './TutorManageMeetingC';
 import TutorFillIntermediateC from './TutorFillIntermediateC';
 import TutorFillFinalC from './TutorFillFinalC';

@@ -2,17 +2,7 @@
 
 
 import React from 'react';
-import {
-  Box,
-  Flex,
-  Select,
-  Button,
-  VStack,
-  HStack,
-  Text,
-  FormControl,
-  FormLabel
-} from "@chakra-ui/react";
+import { Box,Flex,Select,Button,VStack,HStack,Text,FormControl,FormLabel } from "@chakra-ui/react";
 
 const AdminEditDeadlinesC = () => {
 

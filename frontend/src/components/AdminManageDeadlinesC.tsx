@@ -1,21 +1,9 @@
 // AdminManageDeadlinesC
 
 import React, { useContext, useState } from 'react';
-import {
-  Box,
-  Flex,
-  Text,
-  Button,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  VStack,
-  HStack
-} from "@chakra-ui/react";
+import { Box,Flex,Text,Button,Table,Thead,Tbody,Tr,Th,Td,VStack,HStack } from "@chakra-ui/react";
 // AdminEditDeadlinesC
+
 import AdminEditDeadlinesC from './AdminEditDeadlinesC';
 
 

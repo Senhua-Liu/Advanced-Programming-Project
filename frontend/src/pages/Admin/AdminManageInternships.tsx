@@ -1,11 +1,9 @@
   
-import React, { useState, useEffect, useContext, ReactNode } from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
-import Footer from '../../components/Footer';
+import { Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 import AdminManageInternshipsC from '../../components/AdminManageInternshipsC';
-import AdminViewEditC from '../../components/AdminViewEditC';
 
 const AdminManageInternships: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
@@ -24,12 +22,7 @@ const AdminManageInternships: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        {/* <Text>AdminManageInternships</Text> */}
-
-
         <AdminManageInternshipsC />
-        {/* <AdminViewEditC /> */}
-
         </Flex>
 
         <ReturnFooter linkPage="/admin/home" />

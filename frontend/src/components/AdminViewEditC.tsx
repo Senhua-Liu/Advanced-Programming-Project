@@ -1,21 +1,7 @@
 // AdminViewEditC
 
-
-
 import React from 'react';
-import {
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
-  Select,
-  Button,
-  Heading,
-  VStack,
-  HStack,
-  Box
-} from "@chakra-ui/react";
+import { Flex,FormControl,FormLabel,Input,Textarea,Select,Button,Heading,VStack,HStack,Box } from "@chakra-ui/react";
 
 const AdminViewEditC = () => {
   return (

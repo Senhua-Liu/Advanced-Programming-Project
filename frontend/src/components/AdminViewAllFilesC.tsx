@@ -2,23 +2,8 @@
 
 
 import React from 'react';
-
-import {
-    Box,
-    Flex,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    Button,
-    Input,
-    Text,
-    IconButton,
-    Container
-  } from "@chakra-ui/react";
-  import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
+import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Input,Text,IconButton,Container } from "@chakra-ui/react";
+import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
   
 
 const AdminViewAllFilesC = () => {

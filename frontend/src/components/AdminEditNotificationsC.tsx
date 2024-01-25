@@ -1,18 +1,8 @@
 // AdminEditNotificationsC
 
 import React from 'react';
-import {
-    Box,
-    Flex,
-    Text,
-    Button,
-    VStack,
-    HStack,
-    Select,
-    Input,
-    Textarea
-  } from "@chakra-ui/react";
-  
+import { Box,Flex,Text,Button,VStack,HStack,Select,Input,Textarea } from "@chakra-ui/react";
+
 
 const AdminEditNotificationsC = () => {
 

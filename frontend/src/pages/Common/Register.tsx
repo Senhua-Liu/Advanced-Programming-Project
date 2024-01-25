@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon,Input } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import ProfilHeader from '../../components/ProfilHeader';
 import ProfilFooter from '../../components/ProfilFooter';
 import RegisterC from '../../components/RegisterC';
