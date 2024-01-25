@@ -16,7 +16,7 @@ const AdminManageInternshipsC = () => {
             </Flex>
 
             <Flex width="80%" mb={-8} >
-                <Text bgColor="pink" textAlign="center" p={3} width="100%" fontSize="2xl" fontWeight="bold">INTERNSHIPS</Text>
+                <Text bgColor="blue.500" color="white" textAlign="center" p={3} width="100%" fontSize="2xl" fontWeight="bold">INTERNSHIPS</Text>
             </Flex>
 
             <Flex flexDir="row" gap={20} width="80%">
