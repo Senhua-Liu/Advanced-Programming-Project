@@ -45,7 +45,8 @@ const AdminHome: React.FC = () => {
         align="center"
         >
             <Flex>
-                <Link as={RouterLink} to="/admin/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text></Link>
+                {/* <Link as={RouterLink} to="/admin/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text></Link> */}
+                <Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text>
             </Flex>
 
             <Flex gap={10}>
