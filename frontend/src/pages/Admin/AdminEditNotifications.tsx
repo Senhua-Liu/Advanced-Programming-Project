@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import Footer from '../../components/Footer';
 import ReturnFooter from '../../components/ReturnFooter';
+import AdminEditNotificationsC from '../../components/AdminEditNotificationsC';
 
 const AdminEditNotifications: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
@@ -21,8 +22,12 @@ const AdminEditNotifications: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
+            
             <Text>AdminEditNotifications</Text>
+            <AdminEditNotificationsC />
+
         </Flex>
+
         <ReturnFooter  linkPage="/admin/home" />
     </Flex>
     );

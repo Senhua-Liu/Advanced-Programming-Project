@@ -1,9 +1,20 @@
+// AdminManageInternshipsC
+
 import React, { useContext, useState } from 'react';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon, Table, Thead, Tbody, Tr, Th, Td, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FaSearch } from 'react-icons/fa';
+import AdminViewEditC from './AdminViewEditC';
 
 
 const AdminManageInternshipsC = () => {
+    const [showViewEdit, setShowViewEdit] = useState(false);
+    const currentPage = 1;
+    const totalPages = 200; 
+
+    const handleAddClick = () => {
+        setShowViewEdit(true);
+    };
+
     return (
         <Flex flexDir="column" gap={10} justify="center" align="center">
             <Flex width="80%" gap={10} justify="flex-end" align="center">
@@ -93,13 +104,25 @@ const AdminManageInternshipsC = () => {
                 </Flex>
             </Flex>
 
+            {/* Page Scroller */}
+            <Flex justifyContent="center" alignItems="center" mt={4}>
+                <Button disabled={currentPage <= 1}>{"<"}</Button>
+                <Text mx={2}>
+                    Page {currentPage} of {totalPages}
+                </Text>
+                <Button disabled={currentPage >= totalPages}>{">"}</Button>
+            </Flex>
 
-            <Flex>
-                <Button bgColor="#0C2340" color="white" ><Text fontSize="2xl" fontWeight="bold">Page scroller</Text></Button>
+            {/* Add Button */}
+            <Flex justifyContent="center" alignItems="center" mt={4}>
+                <Button bgColor="#0C2340" color="white" onClick={handleAddClick} >
+                    <Text fontSize="xl" fontWeight="bold">Add</Text>
+                </Button>
             </Flex>
-            <Flex>
-                <Button bgColor="#0C2340" color="white" ><Text fontSize="2xl" fontWeight="bold">Add</Text></Button>
-            </Flex>
+
+
+            {showViewEdit && <AdminViewEditC />}
+
         </Flex>
     );
 
