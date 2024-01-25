@@ -46,23 +46,26 @@ const AdminEditNotificationsC = () => {
                     <Box flex={1}>
                     <Text mb={2}>Available date from</Text>
                     <Input type="date" />
-                    </Box>
-                    
-                    <Box flex={1}>
-                    <Text mb={2}>to</Text>
-                    <Input type="date" />
-                    </Box>
-                    
-                    <Box flex={1}>
-                    <Text mb={2}>Time</Text>
                     <Select placeholder="Select time">
                         <option value="23:59">23:59</option>
                         {/* More options */}
                     </Select>
                     </Box>
+
+                    
+                    <Box flex={1}>
+                    <Text mb={2}>to</Text>
+                    <Input type="date" />
+                    <Select placeholder="Select time">
+                        <option value="23:59">23:59</option>
+                        {/* More options */}
+                    </Select>
+                    </Box>
+                    
+                    
                 </HStack>
 
-                <HStack spacing={10}>
+                <HStack spacing={10} justify="center" align="center">
                     <Button colorScheme="gray">Save Draft</Button>
                     <Button colorScheme="blue">Save Definitively</Button>
                 </HStack>

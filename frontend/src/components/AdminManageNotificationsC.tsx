@@ -1,6 +1,6 @@
 // AdminManageNotificationsC
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Box,
     Flex,
@@ -14,13 +14,22 @@ import {
     Td,
     Select
 } from "@chakra-ui/react";
+import AdminEditNotificationsC from "./AdminEditNotificationsC";
+
+
+
 
 const AdminManageNotificationsC = () => {
+    const [showViewEdit, setShowViewEdit] = useState(false);
+
+    const handleAddClick = () => {
+        setShowViewEdit(true);
+    };
 
     return (
         <Flex direction="column" p={5} w="80%" justify="center" align="center" maxW="960px" mx="auto">
-            <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
-                <Text fontSize="2xl" fontWeight="bold" justify="center" align="center" mb={4}>ADMIN SPACE</Text>
+            <Box w="full" p={5} borderWidth="1px" borderRadius="lg" >
+                <Text fontSize="2xl" fontWeight="bold" textAlign="center"> ADMIN SPACE</Text> 
 
                 <Table variant="simple">
                 <Thead bg="blue.500">
@@ -82,9 +91,14 @@ const AdminManageNotificationsC = () => {
                 </Table>
 
                 <Flex mt={4} justify="center" align="center" >
-                <Button colorScheme="blue">Add</Button>
+                <Button colorScheme="blue" onClick={handleAddClick}>Add</Button>
                 </Flex>
+
+
             </Box>
+
+
+            {showViewEdit && <AdminEditNotificationsC />}
         </Flex>
 
     );
