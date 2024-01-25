@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 // import Body from '../../components/body';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
+import TutorFillFinalC from '../../components/TutorFillFinalC';
 
 const TutorFillFinal: React.FC = () => {
     const [linkPage, setLinkPage] = useState('')
@@ -22,7 +23,8 @@ const TutorFillFinal: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          <Text>TutorFillFinal</Text>
+          {/* <Text>TutorFillFinal</Text> */}
+          <TutorFillFinalC />
         </Flex>
 
         <ReturnFooter linkPage="/tutor/home" />

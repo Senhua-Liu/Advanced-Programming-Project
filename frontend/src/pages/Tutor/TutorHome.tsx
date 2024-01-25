@@ -27,7 +27,8 @@ const TutorHome: React.FC = () => {
           align="center"
         >
             <Flex>
-                <Link as={RouterLink} to="/tutor/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >TUTOR SPACE</Text></Link>
+                {/* <Link as={RouterLink} to="/tutor/home"><Text color="#0C2340" fontSize="6xl" fontWeight="bold" >TUTOR SPACE</Text></Link> */}
+                <Text color="#0C2340" fontSize="6xl" fontWeight="bold" >TUTOR SPACE</Text>
             </Flex>
 
             <Flex gap={10} justify="space-even" flexDir="row" >

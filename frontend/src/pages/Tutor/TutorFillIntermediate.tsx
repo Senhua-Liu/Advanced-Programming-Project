@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 // import Body from '../../components/body';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
-
+import TutorFillIntermediateC from '../../components/TutorFillIntermediateC';
 
 
 const TutorFillIntermediate: React.FC = () => {
@@ -22,7 +22,9 @@ const TutorFillIntermediate: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          <Text>TutorFillIntermediate</Text>
+          {/* <Text>TutorFillIntermediate</Text> */}
+          <TutorFillIntermediateC />
+
         </Flex>
         <ReturnFooter linkPage="/tutor/home" />
       </Flex>

@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 // import Body from '../../components/body';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
+import TutorManageAllReportsC from '../../components/TutorManageAllReportsC';
 
 
 const TutorManageAllReports: React.FC = () => {
@@ -21,7 +22,9 @@ const TutorManageAllReports: React.FC = () => {
           overflowY="auto" 
           paddingBottom="250px"
         >
-          <Text>TutorManageAllReports</Text>
+          {/* <Text>TutorManageAllReports</Text> */}
+          <TutorManageAllReportsC />
+
         </Flex>
 
         <ReturnFooter linkPage="/tutor/home" />
