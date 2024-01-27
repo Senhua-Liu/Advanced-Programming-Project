@@ -1,14 +1,26 @@
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
-const loginRouter = require('./routes/login');
+const port = process.env.PORT || 3001;
+// const loginRouter = require('./routes/login');
+// const { Sequelize } = require('sequelize');
+const db_connection = require('./config/db_connection');
+const sequelize = require('./config/sequelize');
+const userRoutes = require('./routes/userRoutes');
+
+
+
+
 
 const app = express();
-const port = 3001;
+app.use(cors());
+app.use(express.json());
 
-const { Sequelize } = require('sequelize');
+app.use('/api/user', userRoutes); 
 
-const sequelize = new Sequelize('mysql://root:root123@localhost:3306/internship_system'); // replace with your connection string
+
+
+
 
 
 app.get('/', (req, res) => {
@@ -25,4 +37,3 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`)
 });
 
-app.use(cors());

@@ -32,7 +32,7 @@ const RegisterC = () => {
         }
 
 
-        fetch('http://localhost:3001/api/users/signup', {
+        fetch('http://localhost:3001/api/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

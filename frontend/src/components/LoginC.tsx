@@ -12,6 +12,7 @@ import {
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import { useUser } from "../context/UserContext";
+import RegisterC from "./RegisterC";
 
 const LoginC = () => {
   const [email, setEmail] = useState("");
@@ -115,7 +116,7 @@ const LoginC = () => {
         >
           Login
         </Button>
-        <Link to="/signup">
+        <Link to="/register">
           <Button
             bgColor="#f2f2f2" // Lighter color for the secondary button
             color="#0C2340"
@@ -125,6 +126,8 @@ const LoginC = () => {
             Register
           </Button>
         </Link>
+
+        {/* <RegisterC /> */}
       </VStack>
     </Center>
   );
