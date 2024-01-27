@@ -47,7 +47,6 @@ const LoginC = () => {
           isClosable: true,
         });
         login(data);
-        // navigate("/profil", { state: { user: data } });
         switch (data.type) {
           case 'admin':
               navigate('/admin/home', { state: { user: data } });
@@ -59,10 +58,8 @@ const LoginC = () => {
               navigate('/student/home', { state: { user: data } });
               break;
           default:
-              navigate('/'); // default redirection if type is not recognized
+              navigate('/'); 
         }
-
-
       })
       .catch((error) => {
         console.error("Error:", error);

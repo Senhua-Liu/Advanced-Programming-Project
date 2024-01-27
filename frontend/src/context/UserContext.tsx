@@ -6,11 +6,11 @@ interface UserProviderProps {
 }
 
 interface UserData {
-    userId: number;
-    tempId: string;
+    id: number;
     name: string;
     email: string;
     password: string;
+    type: string;
 }
 
 interface UserContextType {
@@ -22,8 +22,6 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | null>(null);
 export const useUser = () => useContext(UserContext);
-
-
 
 
 export const UserProvider = ({ children }: UserProviderProps) => {
@@ -43,7 +41,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const logout = () => {
     console.log("Logging out user");
     localStorage.removeItem('user'); 
-    setUser(null); // Clear user data upon logout
+    setUser(null); 
   };
 
   const contextValue: UserContextType = {

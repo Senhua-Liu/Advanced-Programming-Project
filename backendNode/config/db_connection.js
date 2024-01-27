@@ -3,6 +3,9 @@ const mysql = require('mysql2');
 
 let connection;
 
+
+// REACT_APP_BACKENDNODE_URL=http://localhost:3001
+// DB_URL=mysql://root:@localhost:3306/internship_system
 const dbUrl = process.env.DB_URL;
 console.log('DB URL:', dbUrl);
 
@@ -19,6 +22,5 @@ if (dbUrl) {
 } else {
   console.error('DB URL is not set');
 }
-
 
 module.exports = connection;

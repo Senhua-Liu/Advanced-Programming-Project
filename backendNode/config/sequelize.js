@@ -4,18 +4,11 @@ const Sequelize = require('sequelize');
 
 let sequelize;
 
-// if (process.env.BACKENDNODE_URL) {
-//     const match = process.env.BACKENDNODE_URL.match(/mysql:\/\/([^:]+)(?::([^@]+))?@([^:]+):(\d+)\/([^?]+)/);
-//     sequelize = new Sequelize(match[5], match[1], match[2] || '', {
-//         host: match[3],
-//         dialect: 'mysql',
-//         logging: false
-//     });
-// } 
-
-
+// REACT_APP_BACKENDNODE_URL=http://localhost:3001
+// DB_URL=mysql://root:@localhost:3306/internship_system
 const dbUrl = process.env.DB_URL;
 console.log('DB URL:', dbUrl);
+
 
 if (dbUrl) {
     const regex = /mysql:\/\/([^:]+)(?::([^@]*))?@([^:]+):(\d+)\/([^?]+)/;
@@ -33,9 +26,5 @@ if (dbUrl) {
 } else {
     console.error('DB URL is not set');
 }
-
-
-
-
 
 module.exports = sequelize;

@@ -46,7 +46,8 @@ const AuthenticatedRoutes = () => {
     <Routes>
       <Route path="/register" element={ <Register />} />
       <Route path="/login" element={ <Login />} />
-      <Route path="/" element={user ? <Profil /> : <Navigate to="/login" />} />
+      <Route path="/" element={ <Login />} />
+      {/* <Route path="/" element={user ? <Profil /> : <Navigate to="/login" />} /> */}
       <Route path="/reset" element={<Reset />} />
       {/* <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} /> */}
       {/* <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} /> */}
