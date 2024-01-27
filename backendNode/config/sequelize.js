@@ -14,7 +14,7 @@ let sequelize;
 // } 
 
 
-const dbUrl = process.env.BACKENDNODE_URL;
+const dbUrl = process.env.DB_URL;
 console.log('DB URL:', dbUrl);
 
 if (dbUrl) {

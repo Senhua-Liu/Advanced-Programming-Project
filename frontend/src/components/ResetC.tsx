@@ -32,7 +32,7 @@ const ResetC = () => {
         }
 
 
-        fetch('http://localhost:3001/api/users/signup', {
+        fetch(`${process.env.BACKENDNODE_URL}/api/user/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

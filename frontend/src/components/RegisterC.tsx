@@ -17,8 +17,6 @@ const RegisterC = () => {
     const navigatedTempId = location.state?.tempId;
 
 
-
-
     const sendUser = () => {
         if (!name.trim() || !email.trim() || !password.trim()) {
             toast({
@@ -32,7 +30,7 @@ const RegisterC = () => {
         }
 
 
-        fetch('http://localhost:3001/api/users/register', {
+        fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

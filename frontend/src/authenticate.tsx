@@ -45,10 +45,11 @@ const AuthenticatedRoutes = () => {
   return (
     <Routes>
       <Route path="/register" element={ <Register />} />
+      <Route path="/login" element={ <Login />} />
       <Route path="/" element={user ? <Profil /> : <Navigate to="/login" />} />
       <Route path="/reset" element={<Reset />} />
       {/* <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} /> */}
-      <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+      {/* <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} /> */}
 
       <Route path="/chat/adminChat" element={<AdminChat />} />
       {/* <Route path="/chat/studentChat" element={<StudentChat />} /> */}
