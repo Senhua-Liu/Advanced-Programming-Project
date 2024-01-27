@@ -1,8 +1,8 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/sequelize');
-class Meeting extends Model {}
+class Authentication extends Model {}
 
-Meeting.init({
+Authentication.init({
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -10,14 +10,15 @@ Meeting.init({
     allowNull: false,
   },
   type: {
-    type: DataTypes.ENUM('visit', 'defense'),
+    type: DataTypes.ENUM('login', 'search files'),
     allowNull: false,
   }
 }, {
   sequelize,
-  modelName: 'meeting',
-  tableName: 'meeting',
+  modelName: 'authentication',
+  tableName: 'authentication',
 });
 
 
-module.exports = Meeting;
+
+module.exports = Authentication;

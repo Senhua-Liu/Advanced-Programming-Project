@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes, Model } = require('sequelize');
-// const sequelize = new Sequelize('mysql://root:root123@localhost:3306/internship_system');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/sequelize');
 class User extends Model {}
+
 
 User.init({
   id: {
@@ -10,19 +10,28 @@ User.init({
     primaryKey: true,
     allowNull: false,
   },
+  firstName: { 
+    type: DataTypes.STRING,
+  },
+  lastName: {
+    type: DataTypes.STRING,
+  },
   email: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     unique: true
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
-  type: { type: DataTypes.STRING }
+  type: { 
+    type: DataTypes.STRING 
+  }
 }, {
   sequelize,
-  modelName: 'user'
+  modelName: 'user',
+  tableName: 'user',
 });
 
 module.exports = User;
