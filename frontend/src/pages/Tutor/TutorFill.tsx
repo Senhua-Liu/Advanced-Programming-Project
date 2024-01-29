@@ -146,8 +146,8 @@ const TutorFill: React.FC = () => {
           justify="center"
           align="center"
         >
-          {activeForm === 'first' && <TutorFillC  formTitle="BILAN PÉRIODIQUE (DÉBUT DE STAGE: 1 MOIS)" formDeadline="01/20/2023 00:00:00"  questions={questionForm1} fileCategory={4} />}
-          {activeForm === 'second' && <TutorFillC formTitle="BILAN PÉRIODIQUE (MILIEU DE STAGE: 3 MOIS)" formDeadline="04/20/2023 00:00:00" questions={questionForm2} fileCategory={5}  />}
+          {/* {activeForm === 'first' && <TutorFillC  formTitle="BILAN PÉRIODIQUE (DÉBUT DE STAGE: 1 MOIS)" formDeadline="01/20/2023 00:00:00"  questions={questionForm1} fileCategory={4} />}
+          {activeForm === 'second' && <TutorFillC formTitle="BILAN PÉRIODIQUE (MILIEU DE STAGE: 3 MOIS)" formDeadline="04/20/2023 00:00:00" questions={questionForm2} fileCategory={5}  />} */}
         </Flex>
 
         <ReturnFooter  linkPage="/Tutor/home" />

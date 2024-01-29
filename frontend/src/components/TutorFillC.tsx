@@ -19,6 +19,7 @@ interface TutorFillProps {
     formDeadline: string;
     questions: { [key: string]: Question };
     fileCategory: number;
+    selectedInternship: Internship;
 }
 
 interface User {
@@ -91,7 +92,7 @@ interface Internship {
 };
 
 
-const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questions, fileCategory }) => {
+const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questions, fileCategory, selectedInternship }) => {
     const [value, setValue] = useState('1');
     const userContext = useUser();
     const [user, setUser] = useState<User | null>(null);
@@ -101,8 +102,8 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
 
     useEffect(() => {
-        console.log("Latest Internship updated: ", latestInternship);
-    }, [latestInternship]);
+        console.log("selectedInternship: ", selectedInternship);
+    }, [selectedInternship]);
 
     useEffect(() => {
         console.log("Latest Tutor updated: ", tutor);

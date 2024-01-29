@@ -1,7 +1,7 @@
 // TutorManageInternshipsC
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Text,Badge,Container, HStack } from "@chakra-ui/react";
+import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Text,Badge,Container, HStack, useToast } from "@chakra-ui/react";
 import TutorManageMeetingC from './TutorManageMeetingC';
 import TutorFillC from './TutorFillC';
 
@@ -185,6 +185,11 @@ const TutorManageInternshipsC = () => {
     const [activeForm, setActiveForm] = useState('first');
     const [studentData, setStudentData] = useState<Student | null>(null);
     const [internshipData, setInternshipData] = useState<Internship[] | null >(null);
+    const [selectedInternship, setSelectedInternship] = useState<Internship | null>(null);
+    const [selectedInternshipFileCategory, setSelectedInternshipFileCategory] = useState(0);
+    const [selectedInternshipFileType, setSelectedInternshipFileType] = useState('');
+    const [selectedInternshipFileDeadline, setSelectedInternshipFileDeadline] = useState('');
+    const toast = useToast();
 
 
     useEffect(() => {
@@ -206,22 +211,6 @@ const TutorManageInternshipsC = () => {
         console.log("Updated Internship Data: ", internshipData);
     }, [internshipData]); 
     
-
-    // useEffect(() => {
-    //     const fetchInternships = async () => {
-    //         const storedUser = localStorage.getItem('user');
-    //         if (storedUser) {
-    //             const user = JSON.parse(storedUser);
-    //             setUser(user);
-    //             const response = await fetch(`/api/internships/tutor/${user.id}`);
-    //             if (response.ok) {
-    //                 const internships = await response.json();
-    //                 setInternshipData(internships); 
-    //             }
-    //         }
-    //     };
-    //     fetchInternships();
-    // }, []);
 
     const fetchStudentInfo = async (studentID: any) => {
         try {
@@ -306,6 +295,13 @@ const TutorManageInternshipsC = () => {
         setActiveForm(formName); 
     };
   
+    const handleButtonClick = (internship: Internship, fileCategory: number, fileType: string, fileDeadline: string) => {
+        setSelectedInternship(internship);
+        setSelectedInternshipFileCategory(fileCategory);
+        setSelectedInternshipFileType(fileType);
+        setSelectedInternshipFileDeadline(fileDeadline);
+    };
+      
 
     if (!user || !internshipData) {
         return <div>Loading...</div>;
@@ -369,16 +365,17 @@ const TutorManageInternshipsC = () => {
                             p={2}
                             borderRadius="lg"
                             >
-                            {file.type}: {file.finished ? "Finished" : "Not Finished"}
+                                <Button
+                                    colorScheme="blue"
+                                    onClick={() => handleButtonClick(internship, file.category, file.type, file.deadline)}
+                                >
+                                   {file.type}: {file.finished ? "Finished" : "Not Finished"}
+                                </Button>
                             </Badge>
                         ))}
                         </Td>
                     </Tr>
                     ))}
-
-
-
-
                 </Tbody>
                 </Table>
                 <Flex justifyContent="center" my={4}>
@@ -386,27 +383,12 @@ const TutorManageInternshipsC = () => {
                 <Text mx={2}>Page 1 of 5</Text>
                 <Button>{">"}</Button>
                 </Flex>
-
-
-
             </Box>
-
-
-
-
+            
             <TutorManageMeetingC />
 
-            
-            <HStack spacing={4} my={10} justify="center" direction="row">
-                <Button onClick={() => handleFormButtonClick('first')} width="350px" color="white" bgColor="blue.500">
-                    Intermediate evaluation form
-                </Button>
-                <Button onClick={() => handleFormButtonClick('second')} width="250px" color="white" bgColor="blue.500">
-                    Final evaluation form
-                </Button>
-            </HStack>
-
             <Flex
+                mt={10}
                 direction="column"
                 flex="1"
                 overflowY="auto" 
@@ -415,10 +397,15 @@ const TutorManageInternshipsC = () => {
                 justify="center"
                 align="center"
                 >
-                {activeForm === 'first' && <TutorFillC  formTitle="intermediate evaluation form" formDeadline="01/20/2023 00:00:00"  questions={questionForm1} fileCategory={7} />}
-                {activeForm === 'second' && <TutorFillC formTitle="final evaluation form" formDeadline="04/20/2023 00:00:00" questions={questionForm2} fileCategory={8}  />}
+                {selectedInternship &&  
+                <TutorFillC  
+                    formTitle={selectedInternshipFileType} 
+                    formDeadline={selectedInternshipFileDeadline} 
+                    questions={selectedInternshipFileCategory === 7 ? questionForm1 : questionForm2}
+                    fileCategory={selectedInternshipFileCategory}  
+                    selectedInternship={selectedInternship}  
+                />}
             </Flex>
-
         </Container>
     );
 }; 
@@ -426,6 +413,4 @@ const TutorManageInternshipsC = () => {
 
 export default TutorManageInternshipsC;
 
-function toast(arg0: { title: string; description: string; status: string; duration: number; isClosable: boolean; }) {
-    throw new Error('Function not implemented.');
-}
+
