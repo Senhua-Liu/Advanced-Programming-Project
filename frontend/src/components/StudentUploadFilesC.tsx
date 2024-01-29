@@ -3,6 +3,28 @@ import { Box,Flex,Text,Button,FormControl,FormLabel,Heading,Select,VStack,useToa
 import { AttachmentIcon } from '@chakra-ui/icons';
 import { useUser } from '../context/UserContext';
 
+
+
+interface User {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+};
+
+
 interface Internship {
     id?: number;
     duration: number;
@@ -35,19 +57,30 @@ interface Internship {
 
 
 const StudentUploadFilesC = () => {
-    const user = useUser();
+    // const user = useUser();
+    const [user, setUser] = useState<User | null>(null);
     const [file, setFile] = useState<File | null>(null);
     const [fileType, setFileType] = useState('');
     const toast = useToast();
     const [latestInternship, setLatestInternship] = useState<Internship | null>(null);
     const [latestInternshipId, setLatestInternshipId] = useState(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
-    
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            console.log("TEST user.promotion: ", `${user?.promotion}`);
+            console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+        };
+    }, []);
+
+
     useEffect(() => {
         const fetchLatestInternshipId = async () => {
-            if (user?.user?.id) {
+            if (user?.id) {
                 try {
-                    const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/student/${user?.user?.id}/latest`);
+                    const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/student/${user?.id}/latest`);
                     if (!response.ok) throw new Error('Failed to fetch latest internship');
                     const data = await response.json();
                     setLatestInternshipId(data.id);
@@ -61,7 +94,7 @@ const StudentUploadFilesC = () => {
         };
 
         fetchLatestInternshipId();
-    }, [user?.user?.id]);
+    }, [user?.id]);
 
     const handleFileChange = (selectedFile: React.SetStateAction<File | null>) => {
         console.log("Selected File: ", selectedFile);

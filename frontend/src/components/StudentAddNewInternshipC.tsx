@@ -75,7 +75,6 @@ const formatDateForInput = (date: string | number | Date) => {
 
 const StudentAddNewInternshipC = () => {
     const toast = useToast();
-    // const { user } = useUser()!;
     const [user, setUser] = useState<User | null>(() => {
         const storedUser = localStorage.getItem('user');
         return storedUser ? JSON.parse(storedUser) : null;

@@ -6,12 +6,46 @@ import StudentAddNewInternshipC from '../../components/StudentAddNewInternshipC'
 import StudentAddNewInternshipC2 from '../../components/StudentAddNewInternshipC2';
 import { useUser } from '../../context/UserContext';
 
+
+interface User {
+  id?: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  type: string;
+  telephone: string;
+  oldPassword: string;
+  promotion: number;
+  year: string;
+  company: {
+      name: string;
+      address: string;
+      city: string;
+      zipCode: string;
+  };
+};
+
+
+
+
 const StudentAddNewInternship: React.FC = () => {
-  const user = useUser();
+  // const user = useUser();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+        setUser(JSON.parse(storedUser));
+        console.log("TEST user.promotion: ", `${user?.promotion}`);
+        console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+    };
+  }, []);
+
   
   return (
     <Flex direction="column" minHeight="100vh">
-      <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email}  message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+      <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email}  message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
 
       <Flex
         direction="column"
@@ -19,7 +53,7 @@ const StudentAddNewInternship: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
         >
-        <StudentAddNewInternshipC /> 
+        {/* <StudentAddNewInternshipC />  */}
         <StudentAddNewInternshipC2 onCompletion={function (): void {
           throw new Error('Function not implemented.');
         } } /> 
@@ -32,4 +66,3 @@ const StudentAddNewInternship: React.FC = () => {
 
   
 export default StudentAddNewInternship;
-   

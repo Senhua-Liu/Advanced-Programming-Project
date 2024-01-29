@@ -112,6 +112,24 @@ const questionForm4 : Questions = {
 
 
 
+interface User {
+  id?: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  type: string;
+  telephone: string;
+  oldPassword: string;
+  promotion: number;
+  year: string;
+  company: {
+      name: string;
+      address: string;
+      city: string;
+      zipCode: string;
+  };
+};
 
 
 
@@ -123,7 +141,21 @@ const StudentFill: React.FC = () => {
     const [formDeadline, setFormDeadline] = useState('');
     const [questions, setQuestions] = useState<Questions>({});
     const [fileCategory, setFileCategory] = useState(0);
-    const user = useUser();
+    // const user = useUser();
+
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+          setUser(JSON.parse(storedUser));
+          console.log("TEST user.promotion: ", `${user?.promotion}`);
+          console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+      };
+    }, []);
+
+
+
 
     const handleFormButtonClick = (formName: React.SetStateAction<string>) => {
       setActiveForm(formName); 
@@ -134,7 +166,8 @@ const StudentFill: React.FC = () => {
         direction="column"
         minHeight="100vh"
       >
-        <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email}  message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+        <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email}  message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+
 
         <HStack spacing={4} my={10} justify="center" direction="row">
           <Button onClick={() => handleFormButtonClick('first')} width="150px" color="white" bgColor="blue.500">

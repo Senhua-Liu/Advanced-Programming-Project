@@ -1,12 +1,49 @@
 // AdminViewAllFilesC
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Input,Text,IconButton,Container } from "@chakra-ui/react";
 import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
   
 
+
+
+interface User {
+  id?: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  type: string;
+  telephone: string;
+  oldPassword: string;
+  promotion: number;
+  year: string;
+  company: {
+      name: string;
+      address: string;
+      city: string;
+      zipCode: string;
+  };
+};
+
+
+
+
+
 const AdminViewAllFilesC = () => {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+        setUser(JSON.parse(storedUser));
+        console.log("TEST user.promotion: ", `${user?.promotion}`);
+        console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+    };
+  }, []);
+
+
 
     return (
         <Container maxW="container.xl" p={5} >

@@ -1,10 +1,46 @@
 // AdminEditNotificationsC
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box,Flex,Text,Button,VStack,HStack,Select,Input,Textarea } from "@chakra-ui/react";
 
 
+
+
+interface User {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+  };
+  
+
+
+
 const AdminEditNotificationsC = () => {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            console.log("TEST user.promotion: ", `${user?.promotion}`);
+            console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+        };
+    }, []);
+
+
 
     return (
         <Flex direction="column" p={5} w="full" maxW="960px" mx="auto">

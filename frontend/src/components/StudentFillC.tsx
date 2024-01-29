@@ -97,12 +97,6 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
     const [user, setUser] = useState<User | null>(null);
     const [latestInternship, setLatestInternship] = useState<Internship | null>(null);
     const [tutor, setTutor] = useState<Tutor | null>(null);
-    const [evaluation, setEvaluation] = useState({
-        studentName: '',
-        studentSignature: '',
-        tutorName: '',
-        tutorSignature: '',
-    });
     const toast = useToast();
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
 
@@ -338,7 +332,7 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
                         {renderQuestionInput(key, question)}
                     </FormControl>
                     ))}
-                    <Button colorScheme="blue" onClick={handleSubmit}>Save</Button>
+                    <Button colorScheme="blue" onClick={handleSubmit}>Submit</Button>
                 </VStack>
                 </Box>
 

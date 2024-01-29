@@ -1,10 +1,46 @@
 // TutorViewAllFilesC
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Input,Text,IconButton,Container } from "@chakra-ui/react";
 import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
 
+
+
+
+interface User {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+};
+  
+
+
 const TutorViewAllFilesC = () => {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            console.log("TEST user.promotion: ", `${user?.promotion}`);
+            console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+        };
+    }, []);
+
+
 
     return (
         // <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">

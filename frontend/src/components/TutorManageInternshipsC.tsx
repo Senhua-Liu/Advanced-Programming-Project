@@ -1,13 +1,47 @@
 // TutorManageInternshipsC
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Text,Badge,Container } from "@chakra-ui/react";
 import TutorManageMeetingC from './TutorManageMeetingC';
 import TutorFillIntermediateC from './TutorFillIntermediateC';
 import TutorFillFinalC from './TutorFillFinalC';
 
 
+
+interface User {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+};
+  
+
+
+
 const TutorManageInternshipsC = () => {
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+          setUser(JSON.parse(storedUser));
+          console.log("TEST user.promotion: ", `${user?.promotion}`);
+          console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+      };
+    }, []);
+
     const internships = [
         { year: "2022 - 2023", student: "Student1", position: "Developer frontend", period: "01/11/2023 - 31/03/2024" },
         { year: "2022 - 2023", student: "Student1", position: "Developer frontend", period: "01/11/2023 - 31/03/2024" },

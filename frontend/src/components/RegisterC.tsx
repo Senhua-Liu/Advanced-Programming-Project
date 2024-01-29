@@ -4,6 +4,9 @@ import { Button, Input, VStack, useToast, InputGroup,InputRightElement,IconButto
 import { FaUserPlus, FaEye, FaEyeSlash  } from "react-icons/fa";
 
 
+
+
+
 const RegisterC = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -12,11 +15,11 @@ const RegisterC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
-    // const { tempId, setTempId } = useTempId();
-    // const clearTempId = () => setTempId(null);
-    // const [ newUserId, setNewUserId ] = useState();
     const location = useLocation();
-    const navigatedTempId = location.state?.tempId;
+
+
+
+
 
 
     const sendUser = () => {

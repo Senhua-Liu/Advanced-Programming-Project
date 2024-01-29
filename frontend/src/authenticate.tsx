@@ -33,6 +33,7 @@ import TutorHome from "./pages/Tutor/TutorHome";
 import TutorFillIntermediate from "./pages/Tutor/TutorFillIntermediate";
 import Profil from "./pages/Common/Profil";
 import Reset from "./pages/Common/Reset";
+import StudentChat from "./pages/Chat/StudentChat";
 
 const AuthenticatedRoutes = () => {
   const userContext = useUser();
@@ -54,7 +55,7 @@ const AuthenticatedRoutes = () => {
       {/* <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} /> */}
 
       <Route path="/chat/adminChat" element={<AdminChat />} />
-      {/* <Route path="/chat/studentChat" element={<StudentChat />} /> */}
+      <Route path="/chat/studentChat" element={<StudentChat />} />
       <Route path="/chat/tutorChat" element={<TutorChat />} />
 
       <Route path="/admin/editdeadlines" element={<AdminEditDeadlines />} />

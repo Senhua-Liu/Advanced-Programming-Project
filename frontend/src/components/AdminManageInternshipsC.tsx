@@ -1,15 +1,57 @@
 // AdminManageInternshipsC
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon, Table, Thead, Tbody, Tr, Th, Td, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { FaSearch } from 'react-icons/fa';
 import AdminViewEditC from './AdminViewEditC';
+
+
+
+
+
+
+
+interface User {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+  };
+  
+
+
+
+
 
 
 const AdminManageInternshipsC = () => {
     const [showViewEdit, setShowViewEdit] = useState(false);
     const currentPage = 1;
     const totalPages = 200; 
+
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            console.log("TEST user.promotion: ", `${user?.promotion}`);
+            console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+        };
+    }, []);
+
 
     const handleAddClick = () => {
         setShowViewEdit(true);
