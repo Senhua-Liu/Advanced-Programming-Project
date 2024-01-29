@@ -199,22 +199,6 @@ router.put('/updateFileContent/:internshipId/:fileCategory', async (req, res) =>
         await Internship.update({ files }, { where: { id: internshipId } });
         res.send('Internship file content updated successfully');
 
-        // let filesUpdated = false;
-        // internship.files.forEach(file => {
-        //     if (file.category === parseInt(fileCategory)) {
-        //         file.content = content; 
-        //         filesUpdated = true;
-        //         // file.category.finished = true;
-        //     }
-        //     console.log("TEST internship.files.forEach...");
-        // });
-        // if (!filesUpdated) return res.status(404).send('File category not found');
-        // internship.setDataValue('files', internship.files);
-        // console.log("TEST : ", );
-        // await internship.save(); 
-        // console.log("TEST : ", );
-        // res.json({ message: 'Internship file content updated successfully' });
-
     } catch (error) {
         console.error('Error updating internship file content:', error);
         res.status(500).send('Internal Server Error');
@@ -224,6 +208,42 @@ router.put('/updateFileContent/:internshipId/:fileCategory', async (req, res) =>
 
 
 
+// Example route to update meeting list for an internship
+router.put('/updateMeetingList/:internshipId', async (req, res) => {
+    const { internshipId } = req.params;
+    const { meetingType, date, location } = req.body; 
+    console.log("TEST internshipId, meetingType, date, location : ", internshipId, meetingType, date, location);
+
+    try {
+        const internship = await Internship.findByPk(internshipId);
+        if (!internship) {
+            return res.status(404).send('Internship not found');
+        }
+        const meetingList = typeof internship.meetingList === 'string' ? JSON.parse(internship.meetingList) : internship.meetingList || [];
+        // meetingList.push({
+        //     type: meetingType,
+        //     date: date,
+        //     location: location,
+        //     finished: false 
+        // });
+        let updated = false;
+        for (let i = 0; i < meetingList.length; i++) {
+            if (meetingList[i].type === meetingType) {
+                meetingList[i] = { type: meetingType, date: date, location: location, finished: false };
+                updated = true;
+                break; 
+            }
+        }
+        if (!updated) {
+            return res.status(404).send('Meeting type not found');
+        }
+        await Internship.update({ meetingList }, { where: { id: internshipId } });
+        res.send('Meeting list updated successfully');
+    } catch (error) {
+        console.error('Error updating meeting list:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
 module.exports = router;
