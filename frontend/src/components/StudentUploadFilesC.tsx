@@ -83,22 +83,33 @@ const StudentUploadFilesC = () => {
         console.log("TEST handleUpload...");
         console.log("File: ", file, "FileType: ", fileType);
         console.log("TEST latestInternship.id: ", latestInternship?.id);
-        if ( !file || !fileType || !latestInternship?.id || !user?.user?.id || !latestInternshipId ) {
-          toast({
-            title: "Error",
-            description: "Please select a file and specify the file type.",
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-          });
-          return;
+        // if ( !file || !fileType || !latestInternship?.id || !user?.user?.id || !latestInternshipId ) {
+        //   toast({
+        //     title: "Error",
+        //     description: "Please select a file and specify the file type.",
+        //     status: "error",
+        //     duration: 9000,
+        //     isClosable: true,
+        //   });
+        //   return;
+        // }
+        if ( !file || !fileType ) {
+            toast({
+              title: "Error",
+              description: "Please select a file and specify the file type.",
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
+            return;
         }
+
       
         const formData = new FormData();
         formData.append('file', file);
         formData.append('fileType', fileType);
-        formData.append('studentID', user.user.id.toString());
-        formData.append('internshipId', latestInternship.id.toString());
+        // formData.append('studentID', user.user.id.toString());
+        // formData.append('internshipId', latestInternship.id.toString());
         console.log("TEST formData: ", formData);
       
         try {

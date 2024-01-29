@@ -8,14 +8,16 @@ import { useUser } from '../../context/UserContext';
 
 const StudentHome: React.FC = () => {
   const [isSmallerThan768] = useMediaQuery('(max-width: 768px)');
-  const user = useUser();
+  const userContext = useUser();
+
+
 
   return (
     <Flex
       direction="column"
       minHeight="100vh"
     >
-      <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email} message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+      <Header userFirstName={userContext?.user?.firstName} userLastName={userContext?.user?.lastName} userEmail={userContext?.user?.email} message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
 
       <VStack
         spacing={8}
@@ -26,6 +28,9 @@ const StudentHome: React.FC = () => {
       >
         <Text textAlign="center" color="#0C2340" fontSize="6xl" fontWeight="bold">
           STUDENT SPACE
+        </Text>
+        <Text textAlign="center" color="#0C2340" fontSize="6xl" fontWeight="bold">
+          {userContext?.user?.firstName} {userContext?.user?.lastName} 
         </Text>
         <VStack spacing={5}>
           <Flex justify="space-between" direction={isSmallerThan768 ? 'column' : 'row'}>

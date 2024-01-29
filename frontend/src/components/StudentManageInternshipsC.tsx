@@ -61,6 +61,8 @@ const StudentManageInternshipsC = () => {
     const [internshipData, setInternshipData] = useState<Internship[] | null >(null);
     const [fileData, setFileData] = useState<File[] | null>(null);
     const toast = useToast();
+    // const { user } = useUser();
+
     const [user, setUser] = useState<User | null>(() => {
         const storedUser = localStorage.getItem('user');
         console.log("TEST storedUser: ", storedUser);

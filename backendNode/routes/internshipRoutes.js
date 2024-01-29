@@ -114,8 +114,8 @@ router.delete('/:id', async (req, res) => {
 // POST route for file upload
 router.post('/upload/:internshipId/:fileType', upload.single('file'), async (req, res) => {
     const { internshipId, fileType } = req.params;
-    const studentID = req.body.studentID;
-    console.log("File:", req.file, "FileType:", fileType, "StudentID:", studentID);
+    // const studentID = req.body.studentID;
+    // console.log("File:", req.file, "FileType:", fileType, "StudentID:", studentID);
   
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
