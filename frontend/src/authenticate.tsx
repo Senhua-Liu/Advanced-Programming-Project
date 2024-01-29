@@ -34,6 +34,7 @@ import TutorFillIntermediate from "./pages/Tutor/TutorFillIntermediate";
 import Profil from "./pages/Common/Profil";
 import Reset from "./pages/Common/Reset";
 import StudentChat from "./pages/Chat/StudentChat";
+import TutorFill from "./pages/Tutor/TutorFill";
 
 const AuthenticatedRoutes = () => {
   const userContext = useUser();
@@ -91,6 +92,7 @@ const AuthenticatedRoutes = () => {
       <Route path="/student/uploadfiles" element={<StudentUploadFiles />} />
       <Route path="/student/viewallfiles" element={<StudentViewAllFiles />} />
 
+      <Route path="/tutor/fill" element={<TutorFill />} />
       <Route path="/tutor/fillfinal" element={<TutorFillFinal />} />
       <Route
         path="/tutor/fillintermediate"

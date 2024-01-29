@@ -6,6 +6,7 @@ const multer = require('multer');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const User = require('../models/user');
 
 
 const storage = multer.diskStorage({
@@ -285,6 +286,29 @@ router.get('/download/:internshipId/:fileCategory', async (req, res) => {
             res.status(404).send('File not found.');
         }
     });
+});
+
+// GET Internships by tutorID with manual fetching for related student information
+router.get('/tutor/:tutorID', async (req, res) => {
+    try {
+        const internships = await Internship.findAll({
+            where: { tutorID: req.params.tutorID }
+        });
+
+        // Manually fetch each related student's information
+        // for (let i = 0; i < internships.length; i++) {
+        //     const studentID = internships[i].studentID;
+        //     const student = await User.findByPk(studentID, {
+        //         attributes: ['id', 'firstName', 'lastName', 'email', 'promotion']
+        //     });
+        //     internships[i].dataValues.student = student; // Manually add student info to the internship object
+        // }
+
+        res.json(internships);
+    } catch (error) {
+        console.error('Error fetching Internships by tutorID with students:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });
 
 
