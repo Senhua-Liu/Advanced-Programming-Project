@@ -2,7 +2,7 @@
 
 import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
 import React, { useState, useEffect, useContext }  from 'react';
-import { Heading,InputGroup,InputRightElement,Box,Container,Flex,Input, IconButton, Thead,Tr,Td,Th,Text,Table,Tbody,Button, Badge, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader } from "@chakra-ui/react";
+import { Heading,InputGroup,InputRightElement,Box,Container,Flex,Input, IconButton, Thead,Tr,Td,Th,Text,Table,Tbody,Button, Badge, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalHeader, ModalFooter } from "@chakra-ui/react";
 import { FaRegClipboard, FaPrint } from 'react-icons/fa';
 
 
@@ -56,8 +56,6 @@ interface Internship {
 };
 
 
-
-
 const StudentViewAllFilesC = () => {
     const [user, setUser] = useState<User | null>(null);
     const [linkPage, setLinkPage] = useState('');
@@ -105,22 +103,17 @@ const StudentViewAllFilesC = () => {
         setSelectedFileContent(contentAsString);
         setIsModalOpen(true);
     };
+
     
     const handleCopyContent = async () => {
-        if (navigator.clipboard) { // Modern async clipboard API
+        if (navigator.clipboard) { 
             await navigator.clipboard.writeText(selectedFileContent);
             alert("Content copied to clipboard!");
         } else { 
             console.log("TEST handleCopyContent failed.");
         }
     };
-    
 
-    const handlePrintContent = () => {
-        window.print();
-    };
-
-    
     const filteredInternships = internships.filter(internship =>
         internship.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
         internship.files.some(file =>
@@ -128,7 +121,6 @@ const StudentViewAllFilesC = () => {
             file.category >= 1 && file.category <= 6
         )
     );   
-
 
 
     return (
@@ -144,8 +136,8 @@ const StudentViewAllFilesC = () => {
                                   
                     <Flex justify="center" align="center" flexDir="column" m={5}>
                         <Text fontSize="xl" mb={2}>From this page, you will find all files about your internships. Normal level means that the document can be downloaded, copied (copy-paste), and printed. Sensitive level means that read-only online but prohibited to print, copy and download.</Text>
-                        <Text color="red" >* Normal level: All other files except final report and CdC.</Text>
-                        <Text color="red">* Sensitive level: final report and CdC.</Text>
+                        <Text color="red" >* Normal level: final report and CdC.</Text>
+                        <Text color="red">* Sensitive level: All other files except final report and CdC.</Text>
                     </Flex>
                     
                     <Table variant="simple">
@@ -170,14 +162,33 @@ const StudentViewAllFilesC = () => {
                                         </Td>
                                         <Td>
                                             {file.confidential === 1 && (
-                                                <Button size="sm" mr={2} leftIcon={<ViewIcon />}>View</Button>
+                                                <>
+                                                    <a 
+                                                        href={`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <Button size="sm" mr={2} leftIcon={<ViewIcon />}>
+                                                            View
+                                                        </Button>
+                                                    </a>
+                                                    {/* <Button size="sm" mr={10} mb={2} leftIcon={<ViewIcon />} onClick={() => window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank')} >View</Button> */}
+                                                    {/* <Button size="sm" mr={2} leftIcon={<FaRegClipboard />} onClick={handleCopyContent}  >Copy-paste</Button> */}
+                                                    <Button size="sm" mr={2} leftIcon={<FaPrint />} 
+                                                        onClick={() => { 
+                                                            const printWindow = window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank');
+                                                            printWindow!.addEventListener('load', () => {
+                                                                printWindow!.print();
+                                                            }, { once: true });
+                                                        }} >
+                                                        Print
+                                                    </Button>
+                                                    <Button size="sm" mr={2} leftIcon={<DownloadIcon />} onClick={() => window.location.href = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} >Download</Button>
+                                                </>
                                             )}
                                             {file.confidential === 0 && (
                                                 <>
-                                                    <Button size="sm" mr={10} mb={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} >View</Button>
-                                                    <Button size="sm" mr={10} mb={2} leftIcon={<FaRegClipboard />} onClick={handleCopyContent}  >Copy-paste</Button>
-                                                    <Button size="sm" mr={10} leftIcon={<FaPrint />} onClick={handlePrintContent} >Print</Button>
-                                                    <Button size="sm" leftIcon={<DownloadIcon />} onClick={() => window.location.href = `${process.env.REACT_APP_BACKEND_URL}/uploads/${internship.id}/${file.type}`} >Download</Button>
+                                                    <Button size="sm" mr={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} >View</Button>
                                                 </>
                                             )}
                                         </Td>
@@ -188,18 +199,65 @@ const StudentViewAllFilesC = () => {
                     </Table>
                 </Flex>
 
-                {isModalOpen && (
-                    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                        <ModalOverlay />
-                        <ModalContent>
-                            <ModalHeader>File Content</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody>
-                                {selectedFileContent}
-                            </ModalBody>
-                        </ModalContent>
-                    </Modal>
-                )}                             
+
+                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>File Content</ModalHeader>
+                        <ModalCloseButton />
+                        {/* <ModalBody>
+                            {
+                                (() => {
+                                    try {
+                                        const parsedContent = JSON.parse(selectedFileContent);
+                                        if (Array.isArray(parsedContent)) {
+                                            return parsedContent.map((item, index) => (
+                                                <Box key={index} p={4} borderBottom="1px solid gray">
+                                                    <Text fontWeight="bold">{item.text}</Text>
+                                                    <Text mt={2}>{item.answer}</Text>
+                                                </Box>
+                                            ));
+                                        } else {
+                                            return <Text>{JSON.stringify(parsedContent, null, 2)}</Text>;
+                                        }
+                                    } catch (e) {
+                                        return <Text>{selectedFileContent}</Text>;
+                                    }
+                                })()
+                            }
+                        </ModalBody> */}
+
+
+                        <ModalBody onCopy={(e) => e.preventDefault()}>
+                            {(() => {
+                                try {
+                                const parsedContent = JSON.parse(selectedFileContent);
+                                if (Array.isArray(parsedContent)) {
+                                    return parsedContent.map((item, index) => (
+                                    <Box key={index} p={4} borderBottom="1px solid gray">
+                                        <Text fontWeight="bold">{item.text}</Text>
+                                        <Text mt={2}>{item.answer}</Text>
+                                    </Box>
+                                    ));
+                                } else {
+                                    return <Text>{JSON.stringify(parsedContent, null, 2)}</Text>;
+                                }
+                                } catch (e) {
+                                return <Text>{selectedFileContent}</Text>;
+                                }
+                            })()}
+                        </ModalBody> 
+
+                        
+
+                        <ModalFooter>
+                            <Button colorScheme="blue" mr={3} onClick={() => setIsModalOpen(false)}>
+                                Close
+                            </Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+
 
             </Box>
         </Container>

@@ -4,6 +4,7 @@ const express = require('express');
 const Internship = require('../models/internship');
 const multer = require('multer');
 const router = express.Router();
+const fs = require('fs');
 const path = require('path');
 
 
@@ -247,20 +248,43 @@ router.put('/updateMeetingList/:internshipId', async (req, res) => {
 
 
 // Assuming files are stored in './uploads' directory
-router.get('/download/:internshipId/:fileType', async (req, res) => {
-    const { internshipId, fileType } = req.params;
-    try {
-        const internship = await Internship.findByPk(internshipId);
-        if (!internship) {
-            return res.status(404).send('Internship not found.');
-        }
+// router.get('/download/:internshipId/:fileType', async (req, res) => {
+//     const { internshipId, fileType } = req.params;
+//     try {
+//         const internship = await Internship.findByPk(internshipId);
+//         if (!internship) {
+//             return res.status(404).send('Internship not found.');
+//         }
         
-        const filePath = `./uploads/${internshipId}-${fileType}-filenameHere.pdf`; 
-        res.download(filePath); 
-    } catch (error) {
-        console.error('Error serving file:', error);
-        res.status(500).send('Error serving file.');
-    }
+//         const filePath = `./uploads/${internshipId}-${fileType}-filenameHere.pdf`; 
+//         res.download(filePath); 
+//     } catch (error) {
+//         console.error('Error serving file:', error);
+//         res.status(500).send('Error serving file.');
+//     }
+// });
+
+
+router.get('/download/:internshipId/:fileCategory', async (req, res) => {
+    const { internshipId, fileCategory } = req.params;
+
+    const filePattern = new RegExp(`^${internshipId}-${fileCategory}-.*`);
+    const directoryPath = path.join(__dirname, '../uploads');
+
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            console.error('Error reading directory:', err);
+            return res.status(500).send('Error reading files.');
+        }
+
+        const fileToDownload = files.find(file => filePattern.test(file));
+        if (fileToDownload) {
+            const filePath = path.join(directoryPath, fileToDownload);
+            res.download(filePath);
+        } else {
+            res.status(404).send('File not found.');
+        }
+    });
 });
 
 
