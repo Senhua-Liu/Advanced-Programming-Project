@@ -26,8 +26,30 @@ User.init({
     allowNull: true
   },
   type: { 
-    type: DataTypes.STRING 
-  }
+    type: DataTypes.STRING,
+    allowNull: true 
+  },
+  // new columns:
+  telephone: { 
+    type: DataTypes.STRING,
+    allowNull: true 
+  },
+  oldPassword: { 
+    type: DataTypes.STRING,
+    allowNull: true 
+  },
+  promotion: { 
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
+  // year: { 
+  //   type: DataTypes.STRING,
+  //   allowNull: true
+  // },
+  company: { 
+    type: DataTypes.JSON,
+    allowNull: true
+  },
 }, {
   sequelize,
   modelName: 'user',

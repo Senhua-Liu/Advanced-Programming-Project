@@ -3,13 +3,14 @@ import Header from '../../components/Header';
 import { Button, Flex, VStack, HStack } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 import StudentFillC from '../../components/StudentFillC';
+import { useUser } from '../../context/UserContext';
 
 const StudentFill: React.FC = () => {
     const [linkPage, setLinkPage] = useState('');
     const [activeForm, setActiveForm] = useState('first');
     const [formTitle, setFormTitle] = useState('');
     const [formDeadline, setFormDeadline] = useState('');
-
+    const user = useUser();
 
     const handleFormButtonClick = (formName: React.SetStateAction<string>) => {
       setActiveForm(formName); 
@@ -20,7 +21,7 @@ const StudentFill: React.FC = () => {
         direction="column"
         minHeight="100vh"
       >
-        <Header userName="student" userEmail="student@efrei.net" message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+        <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email}  message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
 
         <HStack spacing={4} my={10} justify="center" direction="row">
           <Button onClick={() => handleFormButtonClick('first')} width="150px" color="white" bgColor="blue.500">

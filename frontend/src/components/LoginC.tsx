@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Box,Button,Input,VStack,useToast,Flex,Center } from "@chakra-ui/react";
+import { Box,Button,Input,VStack,useToast,Flex,Center,InputGroup,InputRightElement,IconButton } from "@chakra-ui/react";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
+import { FaSignInAlt, FaUserPlus, FaEye, FaEyeSlash  } from "react-icons/fa";
 import { useUser } from "../context/UserContext";
 import RegisterC from "./RegisterC";
 
@@ -100,15 +100,40 @@ const LoginC = () => {
           _hover={{ borderColor: "#0C2340" }} 
           _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} 
         />
+{/* 
         <Input
           placeholder="Password"
-          type="password"
+          // type="password"
+          type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           borderColor="#cccccc"
           _hover={{ borderColor: "#0C2340" }}
           _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
         />
+        <Button onClick={() => setShowPassword(!showPassword)}>
+          {showPassword ? "Hide" : "Show"}
+        </Button> */}
+        <InputGroup>
+          <Input
+            placeholder="Password"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            borderColor="#cccccc"
+            _hover={{ borderColor: "#0C2340" }}
+            _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
+          />
+          <InputRightElement>
+            <IconButton
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              icon={showPassword ? <FaEyeSlash /> : <FaEye />}
+              size="sm"
+              onClick={() => setShowPassword(!showPassword)}
+              variant="ghost"
+            />
+          </InputRightElement>
+        </InputGroup>
 
         <Button
           colorScheme="blue"

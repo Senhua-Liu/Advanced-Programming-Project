@@ -2,15 +2,21 @@ import React from "react";
 import { Box,Flex,Link,Text,Image,Button,Stack,Center,Icon } from "@chakra-ui/react";
 import {Link as RouterLink, BrowserRouter as Router, Routes, Route, } from "react-router-dom";
 import { FaQuestionCircle, FaBook, FaCog, FaUser, FaChartBar, FaRegLightbulb, FaUserPlus, FaSignInAlt, FaFileUpload, FaHandshake, FaClipboardList, FaCheckCircle } from "react-icons/fa";
+import { useUser } from "../context/UserContext";
 
 interface HeaderProps {
-  userName: string;
-  userEmail: string;
+  userFirstName: string | undefined;
+  userLastName: string | undefined;
+  userEmail: string | undefined;
   message: string;
 }
 
 
-const Header: React.FC<HeaderProps> = ({userName, userEmail, message}) => {
+
+const Header: React.FC<HeaderProps> = ({userFirstName, userLastName, userEmail, message}) => {
+  // const user = useUser();
+
+
 
   return (
     <Flex justify="space-between"  flexDir="column" width="100%" height="300px">
@@ -62,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({userName, userEmail, message}) => {
               height="50px" 
               padding="30px"
             >
-              <Text fontSize="xl" fontWeight="bold">{userName}</Text>
+              <Text fontSize="md" fontWeight="bold">{userFirstName} {userLastName}</Text>
             </Box>
             <Text fontSize="xl" fontWeight="bold" mb={-15} color="green" p={2} >{message}</Text>
           </Flex>

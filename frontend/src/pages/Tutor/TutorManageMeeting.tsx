@@ -3,11 +3,12 @@ import Header from '../../components/Header';
 import { Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 import TutorManageMeetingC from '../../components/TutorManageMeetingC';
-
+import { useUser } from '../../context/UserContext';
 
 
 const TutorManageMeeting: React.FC = () => {
   const [linkPage, setLinkPage] = useState('');
+  const user = useUser();
 
   return (
 
@@ -15,7 +16,7 @@ const TutorManageMeeting: React.FC = () => {
       direction="column"
       minHeight="100vh"
     >
-      <Header userName="tutor" userEmail="tutor@efrei.com" message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
+      <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email} message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
 
       <Flex
         direction="column"

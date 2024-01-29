@@ -7,7 +7,7 @@ let sequelize;
 // REACT_APP_BACKENDNODE_URL=http://localhost:3001
 // DB_URL=mysql://root:@localhost:3306/internship_system
 const dbUrl = process.env.DB_URL;
-console.log('DB URL:', dbUrl);
+// console.log('DB URL:', dbUrl);
 
 
 if (dbUrl) {

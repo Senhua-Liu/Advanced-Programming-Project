@@ -4,9 +4,10 @@ import Header from '../../components/Header';
 import AdminChatC from '../../components/AdminChatC';
 import ReturnFooter from '../../components/ReturnFooter';
 import { Flex } from "@chakra-ui/react";
-
+import { useUser } from '../../context/UserContext';
 
 const AdminChat: React.FC = () => {
+    const user = useUser();
     const [linkPage, setLinkPage] = useState('');
     const [messages, setMessages] = useState([
         { sender: 'Student1', text: 'I have some questions about internship’s contract.' },
@@ -26,7 +27,7 @@ const AdminChat: React.FC = () => {
         direction="column"
         minHeight="100vh" 
     >
-        <Header userName="admin" userEmail="admin@efrei.fr" message="" />
+        <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email} message="" />
 
         <Flex
         direction="column"

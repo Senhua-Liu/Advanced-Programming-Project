@@ -9,14 +9,14 @@ Internship.init({
     primaryKey: true,
     allowNull: false,
   },
-  companyID: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    references: {
-      model: 'company', 
-      key: 'id',
-    },
-  },
+//   companyID: {
+//     type: DataTypes.INTEGER,
+//     allowNull: true,
+//     references: {
+//       model: 'company', 
+//       key: 'id',
+//     },
+//   },
   duration: {
     type: DataTypes.INTEGER,
     allowNull: true,
@@ -48,19 +48,27 @@ Internship.init({
   studentID: {
     type: DataTypes.INTEGER,
     allowNull: true, 
-    references: {
-      model: 'student',
-      key: 'id',
-    },
   },
   tutorID: {
     type: DataTypes.INTEGER,
     allowNull: true, 
-    references: {
-      model: 'tutor', 
-      key: 'id',
-    },
+  },
+  meetingList: {
+    type: DataTypes.JSON,
+    allowNull: true, 
+  },
+  files: {
+    type: DataTypes.JSON,
+    allowNull: true, 
+  },
+  status: {
+    type: DataTypes.ENUM('Pending', 'Validated', 'Invalidated'),
+    allowNull: true, 
   }
+//   fileListID: {
+//     type: DataTypes.INTEGER,
+//     allowNull: true, 
+//   },
 }, {
   sequelize,
   modelName: 'internship',

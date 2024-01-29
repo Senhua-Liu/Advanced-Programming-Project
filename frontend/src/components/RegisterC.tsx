@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate, Link, useLocation  } from 'react-router-dom';
-import { Button, Input, VStack, useToast } from '@chakra-ui/react';
-import { FaUserPlus } from "react-icons/fa";
+import { Button, Input, VStack, useToast, InputGroup,InputRightElement,IconButton } from '@chakra-ui/react';
+import { FaUserPlus, FaEye, FaEyeSlash  } from "react-icons/fa";
 
 
 const RegisterC = () => {
-    const [name, setName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();
     // const { tempId, setTempId } = useTempId();
@@ -18,7 +20,7 @@ const RegisterC = () => {
 
 
     const sendUser = () => {
-        if (!name.trim() || !email.trim() || !password.trim()) {
+        if (!lastName.trim() || !firstName.trim() || !email.trim() || !password.trim()) {
             toast({
                 title: 'Erreur',
                 description: 'Veuillez remplir tous les champs.',
@@ -35,7 +37,7 @@ const RegisterC = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, email, password }),
+            body: JSON.stringify({ firstName, lastName, email, password }),
         })
         .then(response => {
             console.log("TEST response: ", response);
@@ -52,7 +54,8 @@ const RegisterC = () => {
                 duration: 1000,
                 isClosable: true,
             });
-            setName('');
+            setFirstName('');
+            setLastName('');
             setEmail('');
             setPassword('');
             setTimeout(() => {
@@ -91,9 +94,17 @@ const RegisterC = () => {
             p={6} // Adjusted padding for better spacing
         >
             <Input 
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                placeholder="First Name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                borderColor="#cccccc" // Softened border color
+                _hover={{ borderColor: "#0C2340" }} // Change border color on hover
+                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} // Focus effect
+            />
+            <Input 
+                placeholder="LastName"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 borderColor="#cccccc" // Softened border color
                 _hover={{ borderColor: "#0C2340" }} // Change border color on hover
                 _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} // Focus effect
@@ -106,7 +117,9 @@ const RegisterC = () => {
                 _hover={{ borderColor: "#0C2340" }}
                 _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
             />
-            <Input 
+
+
+            {/* <Input 
                 placeholder="Password"
                 type="password"
                 value={password}
@@ -114,7 +127,29 @@ const RegisterC = () => {
                 borderColor="#cccccc"
                 _hover={{ borderColor: "#0C2340" }}
                 _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
-            />
+            /> */}
+            <InputGroup>
+                <Input
+                    placeholder="Password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    borderColor="#cccccc"
+                    _hover={{ borderColor: "#0C2340" }}
+                    _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
+                />
+                <InputRightElement>
+                    <IconButton
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    icon={showPassword ? <FaEyeSlash /> : <FaEye />}
+                    size="sm"
+                    onClick={() => setShowPassword(!showPassword)}
+                    variant="ghost"
+                    />
+                </InputRightElement>
+            </InputGroup>
+
+
             <Button
                 colorScheme="blue"
                 type="submit"

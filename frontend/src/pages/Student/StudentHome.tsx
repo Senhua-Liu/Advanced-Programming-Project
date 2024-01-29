@@ -3,17 +3,19 @@ import Header from '../../components/Header';
 import { Flex,Text,Button,VStack,useMediaQuery } from "@chakra-ui/react";
 import {Link as RouterLink, BrowserRouter as Router } from "react-router-dom";
 import Footer from '../../components/Footer';
+import { useUser } from '../../context/UserContext';
 
 
 const StudentHome: React.FC = () => {
   const [isSmallerThan768] = useMediaQuery('(max-width: 768px)');
+  const user = useUser();
 
   return (
     <Flex
       direction="column"
       minHeight="100vh"
     >
-      <Header userName="student" userEmail="student@efrei.net" message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+      <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email} message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
 
       <VStack
         spacing={8}

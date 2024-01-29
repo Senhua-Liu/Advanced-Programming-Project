@@ -12,7 +12,13 @@ Meeting.init({
   type: {
     type: DataTypes.ENUM('visit', 'defense'),
     allowNull: false,
-  }
+  },
+//   studentID: { type: DataTypes.INTEGER},
+//   tutorEmail: { type: DataTypes.STRING},
+  propositionList: { type: DataTypes.JSON}
+//   propositionsIDList: {
+//     type: DataTypes.JSON,  
+//   }
 }, {
   sequelize,
   modelName: 'meeting',

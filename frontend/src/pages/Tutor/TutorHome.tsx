@@ -3,16 +3,18 @@ import Header from '../../components/Header';
 import { Flex,Link,Text,Button } from "@chakra-ui/react";
 import {Link as RouterLink, BrowserRouter as Router, } from "react-router-dom";
 import Footer from '../../components/Footer';
+import { useUser } from '../../context/UserContext';
 
 const TutorHome: React.FC = () => {
   const [chatLinkPage, setChatLinkPage] = useState('');
+  const user = useUser();
 
   return (
     <Flex
       direction="column"
       minHeight="100vh"
     >
-      <Header userName="tutor" userEmail="tutor@efrei.com" message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
+      <Header userFirstName={user?.user?.firstName} userLastName={user?.user?.lastName} userEmail={user?.user?.email} message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
 
       <Flex
         direction="column"
