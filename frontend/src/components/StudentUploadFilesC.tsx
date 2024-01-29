@@ -208,11 +208,11 @@ const StudentUploadFilesC = () => {
 
                     <Button colorScheme="blue" onClick={handleUpload}>Upload</Button>
                 </HStack>
-                <HStack w="full" justifyContent="space-between">
+                {/* <HStack w="full" justifyContent="space-between">
                     <Button variant="solid" colorScheme="red">Cancel</Button>
                     <Button variant="solid" colorScheme="blue">Save in Draft</Button>
                     <Button variant="solid" colorScheme="green">Save</Button>
-                </HStack>
+                </HStack> */}
                 </VStack>
             </Box>
         </Center>

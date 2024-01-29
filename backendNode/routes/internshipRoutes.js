@@ -246,4 +246,24 @@ router.put('/updateMeetingList/:internshipId', async (req, res) => {
 });
 
 
+// Assuming files are stored in './uploads' directory
+router.get('/download/:internshipId/:fileType', async (req, res) => {
+    const { internshipId, fileType } = req.params;
+    try {
+        const internship = await Internship.findByPk(internshipId);
+        if (!internship) {
+            return res.status(404).send('Internship not found.');
+        }
+        
+        const filePath = `./uploads/${internshipId}-${fileType}-filenameHere.pdf`; 
+        res.download(filePath); 
+    } catch (error) {
+        console.error('Error serving file:', error);
+        res.status(500).send('Error serving file.');
+    }
+});
+
+
+
 module.exports = router;
+
