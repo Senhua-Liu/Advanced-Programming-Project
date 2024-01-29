@@ -177,6 +177,49 @@ router.get('/student/:studentID/latest', async (req, res) => {
 
 
 
+// Example PUT route in internshipRoutes.js
+router.put('/updateFileContent/:internshipId/:fileCategory', async (req, res) => {
+    const { internshipId, fileCategory } = req.params;
+    const { content } = req.body;
+    console.log("TEST internshipId, fileCategory, content : ", internshipId, fileCategory, content);
+
+    try {
+        const internship = await Internship.findByPk(internshipId);
+        console.log("TEST internship: ", internship);
+        if (!internship) return res.status(404).send('Internship not found');
+        let files = typeof internship.files === 'string' ? JSON.parse(internship.files) : internship.files;
+        
+        const fileIndex = internship.files.findIndex(file => file.category === parseInt(fileCategory));
+        console.log("TEST fileIndex: ", fileIndex);
+        if (fileIndex === -1) return res.status(404).send('File category not found');
+        internship.files[fileIndex].content = content;
+        internship.files[fileIndex].finished = true;
+        console.log("TEST internship.files[fileIndex].content: ", internship.files[fileIndex].content);
+
+        await Internship.update({ files }, { where: { id: internshipId } });
+        res.send('Internship file content updated successfully');
+
+        // let filesUpdated = false;
+        // internship.files.forEach(file => {
+        //     if (file.category === parseInt(fileCategory)) {
+        //         file.content = content; 
+        //         filesUpdated = true;
+        //         // file.category.finished = true;
+        //     }
+        //     console.log("TEST internship.files.forEach...");
+        // });
+        // if (!filesUpdated) return res.status(404).send('File category not found');
+        // internship.setDataValue('files', internship.files);
+        // console.log("TEST : ", );
+        // await internship.save(); 
+        // console.log("TEST : ", );
+        // res.json({ message: 'Internship file content updated successfully' });
+
+    } catch (error) {
+        console.error('Error updating internship file content:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
 

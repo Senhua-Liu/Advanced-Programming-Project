@@ -1,37 +1,295 @@
 import React, { useState, useEffect, useContext }  from 'react';
 import { Flex,Text,Box,VStack,HStack,Input,Textarea,Button,Heading,FormLabel,FormControl,Select,Radio,RadioGroup,Stack,Divider,useToast } from '@chakra-ui/react';
+import { useUser } from '../context/UserContext';
 
+
+interface Question {
+    id: number;
+    text: string;
+    type: 'text' | 'range' | 'binary';
+}
+
+type DirectValueChange = {
+    name: string;
+    value: string;
+};
 
 interface StudentFillProps {
     formTitle: string;
     formDeadline: string;
+    questions: { [key: string]: Question };
+    fileCategory: number;
 }
 
+interface User {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+};
 
-const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline }) => {
+interface Tutor {
+    id?: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    type: string;
+    telephone: string;
+    oldPassword: string;
+    promotion: number;
+    year: string;
+    company: {
+        name: string;
+        address: string;
+        city: string;
+        zipCode: string;
+    };
+};
+
+
+interface Internship {
+    id?: number;
+    duration: number;
+    type: string;
+    jobTitle: string;
+    mission: string;
+    salary: number;
+    startDate: Date | string;
+    endDate: Date | string;
+    studentID?: number;
+    tutorID: number;
+    meetingList: {
+        type: string;
+        date: string;
+        location: string;
+        finished: boolean;
+    }[];
+    files: [
+        {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
+        {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
+        {category: 3, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 4, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 5, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 6, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 7, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 8, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+    ];
+    status: string;
+};
+
+
+const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, questions, fileCategory }) => {
     const [value, setValue] = useState('1');
+    const userContext = useUser();
+    const [user, setUser] = useState<User | null>(null);
+    const [latestInternship, setLatestInternship] = useState<Internship | null>(null);
+    const [tutor, setTutor] = useState<Tutor | null>(null);
     const [evaluation, setEvaluation] = useState({
         studentName: '',
         studentSignature: '',
         tutorName: '',
         tutorSignature: '',
     });
-
     const toast = useToast();
+    const [answers, setAnswers] = useState<{ [key: string]: string }>({});
 
-    const handleChange = ( e: { target: { name: any; value: any; }; }) => {
-        setEvaluation({ ...evaluation, [e.target.name]: e.target.value });
+    useEffect(() => {
+        console.log("Latest Internship updated: ", latestInternship);
+    }, [latestInternship]);
+
+    useEffect(() => {
+        console.log("Latest Tutor updated: ", tutor);
+        console.log("TEST display tutor's information: ", tutor?.firstName);
+    }, [tutor]);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+            console.log("TEST user.promotion: ", `${user?.promotion}`);
+            console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+        };
+    }, []);
+
+    useEffect(() => {
+        const fetchLatestInternship = async () => {
+            if (user?.id) {
+                try {
+                    const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/student/${user?.id}/latest`);
+                    if (!response.ok) throw new Error('Failed to fetch latest internship');
+                    const data = await response.json();
+                    setLatestInternship(data);
+                    console.log("TEST user.id from localStorage: ", user?.id);
+                    console.log("TEST setLatestInternship(data): ", latestInternship);
+                } catch (error) {
+                    console.error('Error fetching latest internship ID:', error);
+                }
+            }
+        };
+    fetchLatestInternship();
+    }, [user?.id]);
+
+    useEffect(() => {
+        const fetchTutor = async () => {
+                try {
+                    const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/${latestInternship?.tutorID}`);
+                    if (!response.ok) throw new Error('Failed to fetch tutor');
+                    const data = await response.json();
+                    setTutor(data[0]);
+                } catch (error) {
+                    console.error('Error fetching latest internship ID:', error);
+                }
+        };
+        if (latestInternship?.tutorID) { fetchTutor(); }
+    }, [latestInternship?.tutorID]);
+
+
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>, questionKey?: string) => {
+    //     let name: string, value: string;
+    //     if (questionKey) {
+    //         name = questionKey;
+    //         value = (event as React.ChangeEvent<HTMLInputElement>).target.value;
+    //     } else {
+    //         name = event.target.name;
+    //         value = event.target.value;
+    //     }
+    //     setAnswers(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }));
+    // };
+
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | DirectValueChange) => {
+    //     let name: string, value: string;
+    
+    //     if ('target' in event) {
+    //         // Handle as ChangeEvent
+    //         name = event.target.name;
+    //         value = event.target.value;
+    //     } else {
+    //         // Handle as DirectValueChange
+    //         name = event.name;
+    //         value = event.value;
+    //     }
+    
+    //     setAnswers(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }));
+    // };
+    
+
+    const handleChange = (key: string, value: string) => {
+        setAnswers((prevAnswers) => ({
+          ...prevAnswers,
+          [key]: value,
+        }));
     };
 
-    const handleSubmit = () => {
-        toast({
-            title: 'Evaluation submitted.',
-            description: "Your evaluation has been submitted successfully.",
-            status: 'success',
-            duration: 5000,
-            isClosable: true,
-        });
+    
+    const renderQuestionInput = (key: string, question: Question) => {
+        switch (question.type) {
+          case 'text':
+            return (
+              <Textarea
+                value={answers[key] || ''}
+                onChange={(e) => handleChange(key, e.target.value)}
+              />
+            );
+          case 'range':
+            return (
+              <RadioGroup
+                value={answers[key] || ''}
+                onChange={(value) => handleChange(key, value)}
+              >
+                <Stack direction="row">
+                  {['1', '2', '3', '4', '5'].map((option) => (
+                    <Radio key={option} value={option}>
+                      {option}
+                    </Radio>
+                  ))}
+                </Stack>
+              </RadioGroup>
+            );
+          case 'binary':
+            return (
+              <RadioGroup
+                value={answers[key] || ''}
+                onChange={(value) => handleChange(key, value)}
+              >
+                <Stack direction="row">
+                  <Radio value="Yes">Yes</Radio>
+                  <Radio value="No">No</Radio>
+                </Stack>
+              </RadioGroup>
+            );
+          default:
+            return null;
+        }
     };
+
+
+
+
+    const handleSubmit = async () => {
+        console.log("TEST answers: ", answers);
+        console.log("TEST fileCategory: ", fileCategory);
+
+        const content = Object.entries(questions).map(([key, question]) => ({
+            question: question,
+            answer: answers[key] || "No answer provided"
+        }));
+        console.log("TEST handleSubmit's content: ", content);
+
+        const contentToSend = Object.entries(questions).map(([key, question]) => ({
+            ...question, // Spread the question details
+            answer: answers[key]
+        }));
+        console.log("TEST handleSubmit's contentToSend: ", contentToSend);
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/updateFileContent/${latestInternship?.id}/${fileCategory}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ content: contentToSend }),
+            });
+            if (!response.ok) throw new Error('Failed to update internship file content');
+            toast({
+                title: 'Form Submitted',
+                description: "Your form has been submitted successfully.",
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+            });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            toast({
+                title: 'Submission Error',
+                description: "There was an error submitting your form. Please try again.",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
+        }        
+    };
+
+
+
+
 
     return (
         <Box p={5} borderWidth="1px" borderRadius="lg" width="80%">
@@ -43,134 +301,47 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline }) 
                 <Flex justify="center" flexDir="row" gap={10} m={5}>
                     <FormControl id="student">
                         <FormLabel>Student's Info</FormLabel>
-                        <Input name="studentLastName" placeholder="Student Last Name"  onChange={handleChange} />
-                        <Input name="studentFirstName" placeholder="Student Fist Name"  onChange={handleChange} />
-                        <Input name="studentFormation" placeholder="Student Formation"  onChange={handleChange} />
-                        <Input name="studentTitleInternship" placeholder="Internship title"  onChange={handleChange} />
-                        <Input name="studentDurationInternship" placeholder="Internship duration"  onChange={handleChange} />
-                        <Input name="studentTypeInternship" placeholder="Internship type"  onChange={handleChange} />
+                        <Input placeholder={user?.lastName.toUpperCase()} readOnly />
+                        <Input placeholder={user?.firstName}  readOnly />
+                        <Input placeholder={latestInternship?.duration.toLocaleString() + " weeks"} readOnly />
+                        <Input placeholder={latestInternship?.jobTitle} />
+                        <Input placeholder={latestInternship?.startDate.toLocaleString().slice(0,10)}  readOnly />
+                        <Input placeholder={latestInternship?.endDate.toLocaleString().slice(0,10)}   readOnly />
+                        <Input placeholder={latestInternship?.type.toLocaleString()} readOnly />
                     </FormControl>
 
-
-                    <FormControl id="tutor of school">
-                        <FormLabel>School Tutor's Info</FormLabel>
-                        <Input name="schoolTutorLastName" placeholder="School Tutor Last Name" onChange={handleChange} />
-                        <Input name="schoolTutorFirstName" placeholder="School Tutor First Name" onChange={handleChange} />
-                        <Input name="schoolTutorTelephone"placeholder="School Tutor Telephone"  onChange={handleChange} />
+                    <FormControl id="company">
+                        <FormLabel>Company's Info</FormLabel>
+                        <Input placeholder={tutor?.company.name} readOnly /> 
+                        <Input placeholder={tutor?.company.address} readOnly />
+                        <Input placeholder={tutor?.company.zipCode} readOnly />
+                        <Input placeholder={tutor?.company.city} readOnly />
                     </FormControl>
                 
-                    <FormControl id="tutor of company">
+                    <FormControl id="tutor">
                         <FormLabel>Company Tutor's Info</FormLabel>
-                        <Input name="companyName" placeholder="Company Name" onChange={handleChange} />
-                        <Input name="companyAddress" placeholder="Company Address" onChange={handleChange} />
-                        <Input name="companyTutorLastName" placeholder="Company Tutor Last Name" onChange={handleChange} />
-                        <Input name="companyTutorFirstName" placeholder="Company Tutor First Name" onChange={handleChange} />
-                        <Input name="companyTutorTitle"placeholder="Company Tutor Title"  onChange={handleChange} />
-                        <Input name="companyTutorTelephone"placeholder="Company Tutor Telephone"  onChange={handleChange} />
+                        <Input placeholder={tutor?.lastName.toUpperCase()} readOnly />
+                        <Input placeholder={tutor?.firstName}  readOnly />
+                        <Input placeholder={tutor?.email}   readOnly />
+                        <Input placeholder={tutor?.telephone}  readOnly />
                     </FormControl>
                 </Flex>
 
-                <FormControl>
-                    <FormLabel>Où est-ce qui vous plaît et vous motive dans votre stage ?</FormLabel>
-                    <Textarea />
-                    <FormLabel>Décrivez une situation de travail marquante que vous avez vécu pendant votre stage.</FormLabel>
-                    <Textarea />
-                    <FormLabel>Avez-vous rencontré, depuis le début de votre stage, une situation difficile ou problématique ? Si oui, comment avez-vous réagi ?</FormLabel>
-                    <Textarea />
-                    <FormLabel>Que retirez-vous comme apprentissage depuis le début de votre stage (culture d'entreprise, particularité du secteur, du métier...) ?</FormLabel>
-                    <Textarea />
-                    <FormLabel>Comment gérez-vous les délais dans votre travail ?</FormLabel>
-                    <Textarea />
-                    <FormLabel>De quelle(s) matière(s) utilisez-vous vos capacités/talents dans votre stage ? Donnez des exemples concrets.</FormLabel>
-                    <Textarea />
-                </FormControl>
 
-                <FormControl>
-                    <FormLabel>A combien évaluez-vous votre capacité à (1 plus mauvaise note - 5 meilleure note)</FormLabel>
-                    <FormLabel>Travailler en équipe ?</FormLabel>
-                    <RadioGroup /* onChange={handleChange}  */value={value}>
-                        <Stack direction="row">
-                        <Radio value="1">1</Radio>
-                        <Radio value="2">2</Radio>
-                        <Radio value="3">3</Radio>
-                        <Radio value="4">4</Radio>
-                        <Radio value="5">5</Radio>
-                        </Stack>
-                    </RadioGroup>
-                    <FormLabel>Pourquoi vous êtes-vous attribué cette note ? Donnez un exemple concret :</FormLabel>
-                    <Textarea />
-                    <FormLabel>Etes autonome ?</FormLabel>
-                    <RadioGroup /* onChange={handleChange}  */value={value}>
-                        <Stack direction="row">
-                        <Radio value="1">1</Radio>
-                        <Radio value="2">2</Radio>
-                        <Radio value="3">3</Radio>
-                        <Radio value="4">4</Radio>
-                        <Radio value="5">5</Radio>
-                        </Stack>
-                    </RadioGroup>
-                    <FormLabel>Pourquoi vous êtes-vous attribué cette note ? Donnez un exemple concret :</FormLabel>
-                    <Textarea />
-                    <FormLabel>Etre adaptale ?</FormLabel>
-                    <RadioGroup /* onChange={handleChange}  */value={value}>
-                        <Stack direction="row">
-                        <Radio value="1">1</Radio>
-                        <Radio value="2">2</Radio>
-                        <Radio value="3">3</Radio>
-                        <Radio value="4">4</Radio>
-                        <Radio value="5">5</Radio>
-                        </Stack>
-                    </RadioGroup>
-                    <FormLabel>Pourquoi vous êtes-vous attribué cette note ? Donnez un exemple concret :</FormLabel>
-                    <Textarea />
-                    <FormLabel>Respecter les délais fixés ?</FormLabel>
-                    <RadioGroup /* onChange={handleChange}  */value={value}>
-                        <Stack direction="row">
-                        <Radio value="1">1</Radio>
-                        <Radio value="2">2</Radio>
-                        <Radio value="3">3</Radio>
-                        <Radio value="4">4</Radio>
-                        <Radio value="5">5</Radio>
-                        </Stack>
-                    </RadioGroup>
-                    <FormLabel>Pourquoi vous êtes-vous attribué cette note ? Donnez un exemple concret :</FormLabel>
-                    <Textarea />
-                    <FormLabel>Prendre des initiatives ?</FormLabel>
-                    <RadioGroup /* onChange={handleChange}  */value={value}>
-                        <Stack direction="row">
-                        <Radio value="1">1</Radio>
-                        <Radio value="2">2</Radio>
-                        <Radio value="3">3</Radio>
-                        <Radio value="4">4</Radio>
-                        <Radio value="5">5</Radio>
-                        </Stack>
-                    </RadioGroup>
-                    <FormLabel>Pourquoi vous êtes-vous attribué cette note ? Donnez un exemple concret :</FormLabel>
-                    <Textarea />
-                    <FormLabel>Réaliser un travail de quanlité (rigueur professionnelle, être appliqué...) ?</FormLabel>
-                    <RadioGroup /* onChange={handleChange}  */value={value}>
-                        <Stack direction="row">
-                        <Radio value="1">1</Radio>
-                        <Radio value="2">2</Radio>
-                        <Radio value="3">3</Radio>
-                        <Radio value="4">4</Radio>
-                        <Radio value="5">5</Radio>
-                        </Stack>
-                    </RadioGroup>
-                    <FormLabel>Pourquoi vous êtes-vous attribué cette note ? Donnez un exemple concret :</FormLabel>
-                    <Textarea />
-                </FormControl>
+                <Box p={5} borderWidth="1px" borderRadius="lg" width="100%">
+                <VStack spacing={5} gap={10}>
+                    <FormLabel fontSize="2xl" fontWeight="bold" mt={10}>{formTitle}</FormLabel>
+                    <FormLabel color="red">Deadline: {formDeadline} {/* (* All the fields are need to be completed.) */}</FormLabel>
+                    {Object.entries(questions).map(([key, question]) => (
+                    <FormControl key={key}>
+                        <FormLabel>{question.text}</FormLabel>
+                        {renderQuestionInput(key, question)}
+                    </FormControl>
+                    ))}
+                    <Button colorScheme="blue" onClick={handleSubmit}>Save</Button>
+                </VStack>
+                </Box>
 
-                <FormControl>
-                    <FormLabel>Souhaitez-vous me contacter pour échanger sur le déroulement de votre stage ? Si oui, par quel moyen (par téléphone, mail) ?</FormLabel>
-                    <Textarea />
-                </FormControl>
-
-                <Text fontSize="sm" textAlign="center" color="red">* All the fields are not completed.</Text>
-                <HStack spacing={10}>
-                    <Button colorScheme="blue" onClick={handleSubmit}>Save Draft</Button>
-                    <Button colorScheme="teal" onClick={handleSubmit}>Save Definitively</Button>
-                </HStack>
             </VStack>
         </Box>
     );
