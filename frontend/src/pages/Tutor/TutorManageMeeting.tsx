@@ -55,7 +55,7 @@ const TutorManageMeeting: React.FC = () => {
         overflowY="auto" 
         paddingBottom="250px"
       >
-        <TutorManageMeetingC />
+        {/* <TutorManageMeetingC /> */}
       </Flex>
 
       <ReturnFooter linkPage="/tutor/home" />

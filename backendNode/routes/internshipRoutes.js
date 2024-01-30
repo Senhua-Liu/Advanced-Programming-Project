@@ -312,6 +312,36 @@ router.get('/tutor/:tutorID', async (req, res) => {
 });
 
 
+// PUT route to update the meeting list of a specific internship
+router.put('/updateMeetingStatus/:internshipId', async (req, res) => {
+    const { internshipId } = req.params;
+    const { meetingType } = req.body; 
+    console.log("TEST internshipId, meetingType: ", internshipId, meetingType);
+
+    try {
+
+        const internship = await Internship.findByPk(internshipId);
+        if (!internship) {
+            return res.status(404).send('Internship not found');
+        }
+        let meetingList = [...internship.meetingList];
+        meetingList = meetingList.map(meeting => {
+            if (meeting.type === meetingType) {
+                return { finished: true }; 
+            }
+            return meeting;
+        });
+
+        await internship.update({ meetingList });
+        res.json({ message: 'Meeting status updated successfully' });
+    } catch (error) {
+        console.error('Error updating meeting list:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
 
 module.exports = router;
 

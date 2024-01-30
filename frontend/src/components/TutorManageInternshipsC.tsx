@@ -175,6 +175,9 @@ const TutorManageInternshipsC = () => {
     const [selectedInternshipFileCategory, setSelectedInternshipFileCategory] = useState(0);
     const [selectedInternshipFileType, setSelectedInternshipFileType] = useState('');
     const [selectedInternshipFileDeadline, setSelectedInternshipFileDeadline] = useState('');
+    const [selectedInternshipMeetingType, setSelectedInternshipMeetingType] = useState('');
+    const [formButtonClick, setFormButtonClick] = useState(false);
+    const [meetingButtonClick, setMeetingButtonClick] = useState(false);
     const toast = useToast();
 
 
@@ -273,15 +276,28 @@ const TutorManageInternshipsC = () => {
         setSelectedInternshipFileCategory(fileCategory);
         setSelectedInternshipFileType(fileType);
         setSelectedInternshipFileDeadline(fileDeadline);
+        setFormButtonClick(true);
     };
       
+
+    const handleMeetingButtonClick = ( internship: Internship, meetingType: string, meetingDate: string, meetingLocation: string  ) => {
+        setSelectedInternship(internship);
+        setSelectedInternshipMeetingType(meetingType);
+        setMeetingButtonClick(true);
+    };
+
+
 
     const handleFormSubmissionSuccess = useCallback(() => {
         fetchAllData();
         setSelectedInternship(null);
     }, [fetchAllData]);
 
-
+    
+    const handleMeetingSubmissionSuccess = useCallback( () => {
+        fetchAllData();
+        setSelectedInternship(null);
+    }, [fetchAllData]);
 
 
     if (!user || !internshipData) {
@@ -334,7 +350,13 @@ const TutorManageInternshipsC = () => {
                             p={2}
                             borderRadius="lg"
                             >
-                            {meeting.type}: {meeting.finished ? "Finished" : "Not Finished"}
+                            {/* {meeting.type}: {meeting.finished ? "Finished" : "Not Finished"} */}
+                                <Button
+                                    colorScheme="blue"
+                                    onClick={() => handleMeetingButtonClick( internship, meeting.type, meeting.date, meeting.location )}
+                                >
+                                   {meeting.type}: {meeting.finished ? "Finished" : "Not Finished"}
+                                </Button>
                             </Badge>
                         ))}
                         </Td>
@@ -368,7 +390,25 @@ const TutorManageInternshipsC = () => {
                 </Flex>
             </Box>
 
-            <TutorManageMeetingC />
+            <Flex
+                mt={10}
+                direction="column"
+                flex="1"
+                overflowY="auto" 
+                paddingBottom="250px"
+                gap={10}
+                justify="center"
+                align="center"
+                >
+                {selectedInternship && meetingButtonClick &&
+                <TutorManageMeetingC  
+                    selectedInternship={selectedInternship} 
+                    meetingType={selectedInternshipMeetingType}  
+                    onSubmissionSuccess={handleMeetingSubmissionSuccess}
+                />}
+            </Flex>
+
+
 
             <Flex
                 mt={10}
@@ -380,14 +420,13 @@ const TutorManageInternshipsC = () => {
                 justify="center"
                 align="center"
                 >
-                {selectedInternship &&  
-                <TutorFillC  
+                {selectedInternship && formButtonClick &&
+                <TutorFillC 
                     formTitle={selectedInternshipFileType} 
                     formDeadline={selectedInternshipFileDeadline} 
                     questions={selectedInternshipFileCategory === 7 ? questionForm1 : questionForm2}
                     fileCategory={selectedInternshipFileCategory}  
                     selectedInternship={selectedInternship}  
-                    // onSubmissionSuccess={fetchAllData}
                     onSubmissionSuccess={handleFormSubmissionSuccess}
                 />}
             </Flex>
