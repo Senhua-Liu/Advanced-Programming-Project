@@ -20,6 +20,7 @@ interface TutorFillProps {
     questions: { [key: string]: Question };
     fileCategory: number;
     selectedInternship: Internship;
+    onSubmissionSuccess: () => void;
 }
 
 interface User {
@@ -91,19 +92,19 @@ interface Internship {
 };
 
 
-const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questions, fileCategory, selectedInternship }) => {
+const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questions, fileCategory, selectedInternship, onSubmissionSuccess }) => {
     const [value, setValue] = useState('1');
     const [user, setUser] = useState<User | null>(null);
     const toast = useToast();
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
-
+    
     useEffect(() => {
         console.log("selectedInternship: ", selectedInternship);
     }, [selectedInternship]);
 
     useEffect(() => {
         console.log("Latest Tutor updated: ", user);
-        console.log("TEST display tutor's information: ", user?.company);
+        // console.log("TEST display tutor's information: ", user?.company);
     }, [user]);
 
     useEffect(() => {
@@ -111,7 +112,6 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
         if (storedUser) {
             setUser(JSON.parse(storedUser));
             console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
-            console.log("TEST user.id: ", user?.id);
         };
     }, []);
 
@@ -191,6 +191,7 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
                 body: JSON.stringify({ content: contentToSend }),
             });
             if (!response.ok) throw new Error('Failed to update internship file content');
+            
             toast({
                 title: 'Form Submitted',
                 description: "Your form has been submitted successfully.",
@@ -198,6 +199,8 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
                 duration: 5000,
                 isClosable: true,
             });
+            onSubmissionSuccess();
+
         } catch (error) {
             console.error('Error submitting form:', error);
             toast({
@@ -232,8 +235,8 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
                     </FormControl>
 
                     <FormControl id="company">
-                        <FormLabel>Company's Info</FormLabel>
-                        <Input placeholder={user?.company?.name} readOnly /> 
+                        {/* <FormLabel>Company's Info</FormLabel>
+                        <Input placeholder={user?.company?.name} readOnly />  */}
                         {/* <Input placeholder={user?.company.name} readOnly /> 
                         <Input placeholder={user?.company.address} readOnly />
                         <Input placeholder={user?.company.zipCode} readOnly />

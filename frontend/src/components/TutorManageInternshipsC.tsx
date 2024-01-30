@@ -1,6 +1,6 @@
 // TutorManageInternshipsC
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Text,Badge,Container, HStack, useToast } from "@chakra-ui/react";
 import TutorManageMeetingC from './TutorManageMeetingC';
 import TutorFillC from './TutorFillC';
@@ -38,16 +38,16 @@ q17: { id: 17, text: "Commentaire", type: 'text' },
 
 // final evaluation form : 1-5 (5 is the best)
 const questionForm2 : Questions = {
-q1: { id: 1, text: "dentifier les différents rôles au sein d’une équipe dont on ne connaît pas les membres et interagir pour favoriser le travail d’équipe, la motivation, et la fixation d’objectifs. Mobiliser pour cela de manière efficace les outils de communication interpersonnelle", type: 'range'},
-q2: { id: 2,text: "Comprendre une stratégie de fonctionnement efficace de l’équipe (organisation, fonctionnement, réunion, gestion de conflit ...)", type: 'range'},
+q1: { id: 1, text: "Identifier les différents rôles au sein d’une équipe dont on ne connaît pas les membres et interagir pour favoriser le travail d’équipe, la motivation, et la fixation d’objectifs. Mobiliser pour cela de manière efficace les outils de communication interpersonnelle", type: 'range'},
+q2: { id: 2, text: "Comprendre une stratégie de fonctionnement efficace de l’équipe (organisation, fonctionnement, réunion, gestion de conflit ...)", type: 'range'},
 q3: { id: 3, text: "Identifier le type de management en se basant sur des éléments caractérisant la culture d’entreprise principalement les valeurs (explicites et implicites) et la structure de pouvoir", type: 'range'},
 q4: { id: 4, text: "Intégrer les enjeux sociaux du RSE en les appliquant dans les pratiques professionnelles (ex : parité, inclusion, éthique, SST - Santé, Sécurité au Travail, etc.)", type: 'range'},
-q5: { id: 5,text: "Intégrer les enjeux environnementaux du RSE en les appliquant dans les pratiques professionnelles (ex : bilan carbone, circuit court, impact de l'IT et du numérique, etc.)", type: 'range'},
+q5: { id: 5, text: "Intégrer les enjeux environnementaux du RSE en les appliquant dans les pratiques professionnelles (ex : bilan carbone, circuit court, impact de l'IT et du numérique, etc.)", type: 'range'},
 q6: { id: 6, text: "Identifier les clients et les sous-traitants en repectant les aspects d'économie responsable et éthique", type: 'range'},
-q7: { id: 7,text: "Intégrer la dimension internationale dans son environnement de travail (ex : collègues ou partenaires non-français, clients ou fournisseurs à l'international, etc.)", type: 'range' },
-q8: { id: 8,text: "Respecter ou mettre en œuvre une méthodologie de gestion de projet", type: 'range'},
-q9: { id: 9,text: "Produire des rapports écrits, de présentations et/ou de reporting de qualité professionnelle", type: 'range' },
-q10: { id: 10,text: "Participer activement aux rituels récurrents communs à toute l'équipe : réunions, activités de suivi…", type: 'range'},
+q7: { id: 7, text: "Intégrer la dimension internationale dans son environnement de travail (ex : collègues ou partenaires non-français, clients ou fournisseurs à l'international, etc.)", type: 'range' },
+q8: { id: 8, text: "Respecter ou mettre en œuvre une méthodologie de gestion de projet", type: 'range'},
+q9: { id: 9, text: "Produire des rapports écrits, de présentations et/ou de reporting de qualité professionnelle", type: 'range' },
+q10: { id: 10, text: "Participer activement aux rituels récurrents communs à toute l'équipe : réunions, activités de suivi…", type: 'range'},
 q11: { id: 11, text: "Adapter sa communication en fonction de ou des interlocuteurs", type: 'range' },
 q12: { id: 12, text: "Superviser ou participer activement à la supervision de l'utilisation de la solution", type: 'range'},
 q13: { id: 13, text: "Gérer les ressources matérielles ou logicielles", type: 'range' },
@@ -219,7 +219,9 @@ const TutorManageInternshipsC = () => {
     };
     
 
-    const fetchAllData = async () => {
+
+
+    const fetchAllData = useCallback( async () => {
         console.log("TEST fetchAllData...");
         try {
 
@@ -258,7 +260,10 @@ const TutorManageInternshipsC = () => {
             });
             console.error('Error fetching data:', error);
           }
-    };
+    }, [user?.id, toast]);
+
+
+
   
     const handleButtonClick = (internship: Internship, fileCategory: number, fileType: string, fileDeadline: string) => {
         setSelectedInternship(internship);
@@ -369,6 +374,7 @@ const TutorManageInternshipsC = () => {
                     questions={selectedInternshipFileCategory === 7 ? questionForm1 : questionForm2}
                     fileCategory={selectedInternshipFileCategory}  
                     selectedInternship={selectedInternship}  
+                    onSubmissionSuccess={fetchAllData}
                 />}
             </Flex>
         </Container>
