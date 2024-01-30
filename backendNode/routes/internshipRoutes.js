@@ -36,7 +36,14 @@ const upload = multer({ storage: storage });
 // GET all Internship
 router.get('/', async (req, res) => {
     try {
-        const internship = await Internship.findAll();
+        const internship = await Internship.findAll(
+            {
+                include: [
+                    { model: User, as: 'student' },
+                    { model: User, as: 'tutor' }
+                ]
+            }
+        );
         res.json(internship);
     } catch (error) {
         console.error('Error fetching Internship:', error);
@@ -209,7 +216,6 @@ router.put('/updateFileContent/:internshipId/:fileCategory', async (req, res) =>
 
 
 
-
 // Example route to update meeting list for an internship
 router.put('/updateMeetingList/:internshipId', async (req, res) => {
     const { internshipId } = req.params;
@@ -292,7 +298,17 @@ router.get('/download/:internshipId/:fileCategory', async (req, res) => {
 router.get('/tutor/:tutorID', async (req, res) => {
     try {
         const internships = await Internship.findAll({
-            where: { tutorID: req.params.tutorID }
+            where: { tutorID: req.params.tutorID },
+            include: [
+                {
+                    model: User,
+                    as: 'student'
+                },
+                {
+                    model: User,
+                    as: 'tutor'
+                }
+            ]
         });
 
         // Manually fetch each related student's information
@@ -312,7 +328,7 @@ router.get('/tutor/:tutorID', async (req, res) => {
 });
 
 
-// PUT route to update the meeting list of a specific internship
+// PUT route to update the specific meeting status of a specific internship
 router.put('/updateMeetingStatus/:internshipId', async (req, res) => {
     const { internshipId } = req.params;
     const { meetingType } = req.body; 
@@ -327,7 +343,7 @@ router.put('/updateMeetingStatus/:internshipId', async (req, res) => {
         let meetingList = [...internship.meetingList];
         meetingList = meetingList.map(meeting => {
             if (meeting.type === meetingType) {
-                return { finished: true }; 
+                return { ...meeting, finished: true }; 
             }
             return meeting;
         });
@@ -339,7 +355,6 @@ router.put('/updateMeetingStatus/:internshipId', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 
 
 

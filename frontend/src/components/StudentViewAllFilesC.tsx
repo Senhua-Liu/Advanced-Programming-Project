@@ -202,7 +202,7 @@ const StudentViewAllFilesC = () => {
 
                 <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                     <ModalOverlay />
-                    <ModalContent>
+                    <ModalContent maxW="90vw" >
                         <ModalHeader>File Content</ModalHeader>
                         <ModalCloseButton />
                         {/* <ModalBody>
@@ -248,7 +248,7 @@ const StudentViewAllFilesC = () => {
                             })()}
                         </ModalBody> 
 
-                        
+
 
                         <ModalFooter>
                             <Button colorScheme="blue" mr={3} onClick={() => setIsModalOpen(false)}>

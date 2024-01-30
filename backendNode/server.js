@@ -33,6 +33,25 @@ const internshipRoutes = require('./routes/internshipRoutes');
 // const viewerRoutes = require('./routes/viewerRoutes');
 
 
+
+
+
+
+
+const User = require('./models/user');
+const Internship = require('./models/internship');
+// Define associations
+User.hasMany(Internship, { foreignKey: 'studentID' });
+Internship.belongsTo(User, { foreignKey: 'studentID', as: 'student' });
+User.hasMany(Internship, { foreignKey: 'tutorID' });
+Internship.belongsTo(User, { foreignKey: 'tutorID', as: 'tutor' });
+
+
+
+
+
+
+
 app.use('/api/user', userRoutes); 
 // app.use('/api/admin', adminRoutes); 
 // app.use('/api/authentication', authenticationRoutes); 
@@ -52,6 +71,7 @@ app.use('/api/internship', internshipRoutes);
 // app.use('/api/student', studentRoutes); 
 // app.use('/api/tutor', tutorRoutes); 
 // app.use('/api/viewer', viewerRoutes); 
+
 
 
 // app.get('/', (req, res) => {
