@@ -41,25 +41,6 @@ interface User {
     };
 };
 
-interface Tutor {
-    id?: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    type: string;
-    telephone: string;
-    oldPassword: string;
-    promotion: number;
-    year: string;
-    company: {
-        name: string;
-        address: string;
-        city: string;
-        zipCode: string;
-    };
-};
-
 
 interface Internship {
     id?: number;
@@ -89,15 +70,30 @@ interface Internship {
         {category: 8, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
     ];
     status: string;
+    student: {
+        id?: number;
+        firstName: string;
+        lastName: string;
+        email: string;
+        password: string;
+        type: string;
+        telephone: string;
+        oldPassword: string;
+        promotion: number;
+        year: string;
+        company: {
+            name: string;
+            address: string;
+            city: string;
+            zipCode: string;
+        };
+    }[];
 };
 
 
 const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questions, fileCategory, selectedInternship }) => {
     const [value, setValue] = useState('1');
-    const userContext = useUser();
     const [user, setUser] = useState<User | null>(null);
-    const [latestInternship, setLatestInternship] = useState<Internship | null>(null);
-    const [tutor, setTutor] = useState<Tutor | null>(null);
     const toast = useToast();
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
 
@@ -106,50 +102,18 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
     }, [selectedInternship]);
 
     useEffect(() => {
-        console.log("Latest Tutor updated: ", tutor);
-        console.log("TEST display tutor's information: ", tutor?.firstName);
-    }, [tutor]);
+        console.log("Latest Tutor updated: ", user);
+        console.log("TEST display tutor's information: ", user?.company);
+    }, [user]);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
             console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
+            console.log("TEST user.id: ", user?.id);
         };
     }, []);
-
-    // useEffect(() => {
-    //     const fetchLatestInternship = async () => {
-    //         if (user?.id) {
-    //             try {
-    //                 const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/Tutor/${user?.id}/latest`);
-    //                 if (!response.ok) throw new Error('Failed to fetch latest internship');
-    //                 const data = await response.json();
-    //                 setLatestInternship(data);
-    //                 console.log("TEST user.id from localStorage: ", user?.id);
-    //                 console.log("TEST setLatestInternship(data): ", latestInternship);
-    //             } catch (error) {
-    //                 console.error('Error fetching latest internship ID:', error);
-    //             }
-    //         }
-    //     };
-    // fetchLatestInternship();
-    // }, [user?.id]);
-
-    useEffect(() => {
-        const fetchTutor = async () => {
-                try {
-                    const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/${latestInternship?.tutorID}`);
-                    if (!response.ok) throw new Error('Failed to fetch tutor');
-                    const data = await response.json();
-                    setTutor(data[0]);
-                } catch (error) {
-                    console.error('Error fetching latest internship ID:', error);
-                }
-        };
-        if (latestInternship?.tutorID) { fetchTutor(); }
-    }, [latestInternship?.tutorID]);
-
 
     const handleChange = (key: string, value: string) => {
         setAnswers((prevAnswers) => ({
@@ -203,6 +167,7 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
 
 
     const handleSubmit = async () => {
+        
         console.log("TEST answers: ", answers);
         console.log("TEST fileCategory: ", fileCategory);
 
@@ -213,12 +178,12 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
         console.log("TEST handleSubmit's content: ", content);
 
         const contentToSend = Object.entries(questions).map(([key, question]) => ({
-            ...question, // Spread the question details
+            ...question, 
             answer: answers[key]
         }));
         console.log("TEST handleSubmit's contentToSend: ", contentToSend);
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/updateFileContent/${latestInternship?.id}/${fileCategory}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/updateFileContent/${selectedInternship?.id}/${fileCategory}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -258,30 +223,29 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
                 
                 <Flex justify="center" flexDir="row" gap={10} m={5}>
                     <FormControl id="Tutor">
-                        <FormLabel>Tutor's Info</FormLabel>
-                        <Input placeholder={user?.lastName.toUpperCase()} readOnly />
-                        <Input placeholder={user?.firstName}  readOnly />
-                        <Input placeholder={latestInternship?.duration.toLocaleString() + " weeks"} readOnly />
-                        <Input placeholder={latestInternship?.jobTitle} />
-                        <Input placeholder={latestInternship?.startDate.toLocaleString().slice(0,10)}  readOnly />
-                        <Input placeholder={latestInternship?.endDate.toLocaleString().slice(0,10)}   readOnly />
-                        <Input placeholder={latestInternship?.type.toLocaleString()} readOnly />
+                        <FormLabel>Student's Info</FormLabel>
+                        <Input placeholder={selectedInternship.student[0].lastName.toUpperCase()} readOnly />
+                        <Input placeholder={selectedInternship.student[0].firstName} readOnly />
+                        <Input placeholder={selectedInternship.student[0].email} readOnly />
+                        <Input placeholder={selectedInternship.student[0].telephone} readOnly />
+                        <Input placeholder={selectedInternship.student[0].promotion.toLocaleString()} readOnly />
                     </FormControl>
 
                     <FormControl id="company">
                         <FormLabel>Company's Info</FormLabel>
-                        <Input placeholder={tutor?.company.name} readOnly /> 
-                        <Input placeholder={tutor?.company.address} readOnly />
-                        <Input placeholder={tutor?.company.zipCode} readOnly />
-                        <Input placeholder={tutor?.company.city} readOnly />
+                        <Input placeholder={user?.company?.name} readOnly /> 
+                        {/* <Input placeholder={user?.company.name} readOnly /> 
+                        <Input placeholder={user?.company.address} readOnly />
+                        <Input placeholder={user?.company.zipCode} readOnly />
+                        <Input placeholder={user?.company.city} readOnly /> */}
                     </FormControl>
                 
                     <FormControl id="tutor">
                         <FormLabel>Company Tutor's Info</FormLabel>
-                        <Input placeholder={tutor?.lastName.toUpperCase()} readOnly />
-                        <Input placeholder={tutor?.firstName}  readOnly />
-                        <Input placeholder={tutor?.email}   readOnly />
-                        <Input placeholder={tutor?.telephone}  readOnly />
+                        <Input placeholder={user?.lastName.toUpperCase()} readOnly />
+                        <Input placeholder={user?.firstName}  readOnly />
+                        <Input placeholder={user?.email}   readOnly />
+                        <Input placeholder={user?.telephone}  readOnly />
                     </FormControl>
                 </Flex>
 
