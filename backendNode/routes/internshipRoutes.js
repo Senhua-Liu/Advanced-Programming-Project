@@ -11,12 +11,9 @@ const User = require('../models/user');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-    //   cb(null, path.join(__dirname, '../uploads')); 
       cb(null, './uploads'); 
     },
     filename: function(req, file, cb) {
-    //   const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    //   cb(null, file.originalname + '-' + uniqueSuffix + path.extname(file.originalname));
         const internshipId = req.params.internshipId;
         const fileType = req.params.fileType;
 
@@ -123,9 +120,6 @@ router.delete('/:id', async (req, res) => {
 // POST route for file upload
 router.post('/upload/:internshipId/:fileType', upload.single('file'), async (req, res) => {
     const { internshipId, fileType } = req.params;
-    // const studentID = req.body.studentID;
-    // console.log("File:", req.file, "FileType:", fileType, "StudentID:", studentID);
-  
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
@@ -135,12 +129,6 @@ router.post('/upload/:internshipId/:fileType', upload.single('file'), async (req
         if (!internship) {
             return res.status(404).send('Internship not found.');
         }
-        // let files;
-        // if (typeof internship.files === 'string') {
-        //     files = JSON.parse(internship.files);
-        // } else {
-        //     files = internship.files || [];
-        // }
         let files = typeof internship.files === 'string' ? JSON.parse(internship.files) : internship.files;
         const fileIndex = files.findIndex(file => file.type === fileType);
         console.log("TEST fileIndex: ", fileIndex);
@@ -228,12 +216,6 @@ router.put('/updateMeetingList/:internshipId', async (req, res) => {
             return res.status(404).send('Internship not found');
         }
         const meetingList = typeof internship.meetingList === 'string' ? JSON.parse(internship.meetingList) : internship.meetingList || [];
-        // meetingList.push({
-        //     type: meetingType,
-        //     date: date,
-        //     location: location,
-        //     finished: false 
-        // });
         let updated = false;
         for (let i = 0; i < meetingList.length; i++) {
             if (meetingList[i].type === meetingType) {
@@ -252,24 +234,6 @@ router.put('/updateMeetingList/:internshipId', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
-
-// Assuming files are stored in './uploads' directory
-// router.get('/download/:internshipId/:fileType', async (req, res) => {
-//     const { internshipId, fileType } = req.params;
-//     try {
-//         const internship = await Internship.findByPk(internshipId);
-//         if (!internship) {
-//             return res.status(404).send('Internship not found.');
-//         }
-        
-//         const filePath = `./uploads/${internshipId}-${fileType}-filenameHere.pdf`; 
-//         res.download(filePath); 
-//     } catch (error) {
-//         console.error('Error serving file:', error);
-//         res.status(500).send('Error serving file.');
-//     }
-// });
 
 
 router.get('/download/:internshipId/:fileCategory', async (req, res) => {
@@ -294,6 +258,7 @@ router.get('/download/:internshipId/:fileCategory', async (req, res) => {
     });
 });
 
+
 // GET Internships by tutorID with manual fetching for related student information
 router.get('/tutor/:tutorID', async (req, res) => {
     try {
@@ -310,22 +275,13 @@ router.get('/tutor/:tutorID', async (req, res) => {
                 }
             ]
         });
-
-        // Manually fetch each related student's information
-        // for (let i = 0; i < internships.length; i++) {
-        //     const studentID = internships[i].studentID;
-        //     const student = await User.findByPk(studentID, {
-        //         attributes: ['id', 'firstName', 'lastName', 'email', 'promotion']
-        //     });
-        //     internships[i].dataValues.student = student; // Manually add student info to the internship object
-        // }
-
         res.json(internships);
     } catch (error) {
         console.error('Error fetching Internships by tutorID with students:', error);
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 
 // PUT route to update the specific meeting status of a specific internship

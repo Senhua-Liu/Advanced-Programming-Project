@@ -6,8 +6,6 @@ import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
 import { FaPrint } from 'react-icons/fa';
 
 
-
-
 interface User {
     id?: number;
     firstName: string;
@@ -60,10 +58,7 @@ interface Internship {
     tutor: User;
 };
 
-
-
   
-
 
 const TutorViewAllFilesC = () => {
     const [user, setUser] = useState<User | null>(null);
@@ -124,110 +119,18 @@ const TutorViewAllFilesC = () => {
     return (
 
         <Container maxW="container.xl" p={5} >
-          {/* <Flex direction="column" overflowX="auto" gap={5}> */}
-{/*             
-            <Flex mb={4}>
-              <Input placeholder="Tape keyword..." />
-              <Button ml={2}><SearchIcon /></Button>
-            </Flex>
-
-            <Text>
-                Here, you can find all files related to internships. Different files have different levels.
-            </Text>
-            <Text>
-                - Normal level (view, download, copy-paste, print) : Final report
-            </Text>
-            <Text>
-                - Sensitive level (view) : Self-evaluation form, Company evaluation form, Intermediate evaluation form, Fiche visit
-            </Text>
-       */}
-
-            {/* <Box p={5} borderWidth="1px" borderRadius="lg" overflow="hidden">
-                <Text fontSize="4xl" fontWeight="bold" mb={4} textAlign="center" >TUTOR SPACE</Text>
-                <Table variant="striped" colorScheme="teal" size="sm" mt={4}>
-                <Thead>
-                    <Tr>
-                    <Th>Years</Th>
-                    <Th>File</Th>
-                    <Th>Student</Th>
-                    <Th>File Type</Th>
-                    <Th>Actions</Th>
-                    </Tr>
-                </Thead>
-
-                <Tbody>
-                    <Tr>
-                    <Td>2022 - 2023</Td>
-                    <Td>Final evaluation form - student1</Td>
-                    <Td>Student1</Td>
-                    <Td>Final evaluation form</Td>
-                    <Td>
-                        <IconButton aria-label="View" icon={<ViewIcon />} />
-                        <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
-                    </Td>
-                    </Tr>
-                    <Tr>
-                    <Td>2022 - 2023</Td>
-                    <Td>Final evaluation form - student1</Td>
-                    <Td>Student1</Td>
-                    <Td>Final evaluation form</Td>
-                    <Td>
-                        <IconButton aria-label="View" icon={<ViewIcon />} />
-                        <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
-                    </Td>
-                    </Tr>
-                    <Tr>
-                    <Td>2022 - 2023</Td>
-                    <Td>Final evaluation form - student1</Td>
-                    <Td>Student1</Td>
-                    <Td>Final evaluation form</Td>
-                    <Td>
-                        <IconButton aria-label="View" icon={<ViewIcon />} />
-                        <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
-                    </Td>
-                    </Tr>
-                    <Tr>
-                    <Td>2022 - 2023</Td>
-                    <Td>Final evaluation form - student1</Td>
-                    <Td>Student1</Td>
-                    <Td>Final evaluation form</Td>
-                    <Td>
-                        <IconButton aria-label="View" icon={<ViewIcon />} />
-                        <IconButton aria-label="Download" icon={<DownloadIcon />} ml={2} />
-                    </Td>
-                    </Tr>
-                </Tbody>
-                </Table>
-            </Box>
-
-
-            
-    
-            <Flex justifyContent="center" my={4}>
-              <Button size="sm" mr={2}>{"<"}</Button>
-    
-              <Text mx={2}>Page 1 of 5</Text>
-              <Button size="sm">{" >"}</Button>
-            </Flex>
-    
-          </Flex> */}
-
-
             <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
                 <Flex direction="column" overflowX="auto" gap={5}>
                     <Heading mb={6} textAlign="center">Tutor Space</Heading>
-                    
                     <InputGroup mb={4}>
                         <Input placeholder="Type keyword..." value={searchTerm} onChange={handleSearchChange} />
                         <InputRightElement children={<IconButton aria-label="Search documents" icon={<SearchIcon />} />} />
-                    </InputGroup>
-                                  
+                    </InputGroup>     
                     <Flex justify="center" align="center" flexDir="column" m={5}>
                         <Text fontSize="xl" mb={2}>Here, you can find all files related to internships. Different files have different levels. Normal level means that the document can be downloaded, copied (copy-paste), and printed. Sensitive level means that read-only online but prohibited to print, copy and download.</Text>
                         <Text color="red" >* Normal level: final report and CdC.</Text>
                         <Text color="red">* Sensitive level: All other files except final report and CdC.</Text>
                     </Flex>
-                    
                     <Table variant="simple">
                         <Thead>
                         <Tr>
@@ -240,56 +143,6 @@ const TutorViewAllFilesC = () => {
                         </Tr>
                         </Thead>
                         <Tbody>
-{/*                             
-                        {filteredInternships.map((internship, internshipIndex) => {
-                            return internship.files.map((file, fileIndex) => (
-                                <Tr key={`${internship.id}-${fileIndex}`}>
-                                    <Td>{internship.student.firstName} {internship.student.lastName.toUpperCase()} </Td>
-                                    <Td>{internship.student.email}</Td>
-                                    <Td>{internship.type}</Td>
-                                    <Td>{file.type}</Td>
-                                    <Td>
-                                        <Badge colorScheme={file.finished ? "green" : "red"}>
-                                            {file.finished ? "Finished" : "Not Finished"}
-                                        </Badge>
-                                    </Td>
-                                    <Td>
-                                        {file.confidential === 1 ? (
-                                            <>
-                                                <a 
-                                                    href={`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} 
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer"
-                                                >
-                                                    <Button size="sm" mr={2} leftIcon={<ViewIcon />} isDisabled={!file.finished} onClick={() => handleViewFile(file.content)} >
-                                                        View
-                                                    </Button>
-                                                </a>
-                                                <Button size="sm" mr={2} leftIcon={<FaPrint />}  isDisabled={!file.finished}
-                                                    onClick={() => { 
-                                                        if (file.finished) {
-                                                        const printWindow = window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank');
-                                                        printWindow!.addEventListener('load', () => {
-                                                            printWindow!.print();
-                                                        }, { once: true });
-                                                    }
-                                                    }} >
-                                                    Print
-                                                </Button>
-                                                <Button size="sm" mr={2} leftIcon={<DownloadIcon />} isDisabled={!file.finished} onClick={() => {
-                                                    if (file.finished) {
-                                                        window.location.href = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`
-                                                    }} >Download</Button>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Button size="sm" mr={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} >View</Button>
-                                            </>
-                                        )}
-                                    </Td>
-                                </Tr>
-                            ));
-                        })} */}
                             {filteredInternships.map((internship, internshipIndex) => {
                                 return internship.files.map((file, fileIndex) => (
                                     <Tr key={`${internship.id}-${fileIndex}`}>
@@ -306,7 +159,6 @@ const TutorViewAllFilesC = () => {
                                             <Button size="sm" mr={2} leftIcon={<ViewIcon />} isDisabled={!file.finished} onClick={() => handleViewFile(file.content)} >View</Button>
                                             {file.confidential === 1 ? (
                                                 <>
-                                                    {/* Conditionally render or disable Print and Download buttons based on the file.finished status */}
                                                     <Button size="sm" mr={2} leftIcon={<FaPrint />} isDisabled={!file.finished}
                                                         onClick={() => {
                                                             if (file.finished) {
