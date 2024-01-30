@@ -219,6 +219,9 @@ const TutorManageInternshipsC = () => {
     };
     
 
+    
+    
+  
 
 
     const fetchAllData = useCallback( async () => {
@@ -273,9 +276,19 @@ const TutorManageInternshipsC = () => {
     };
       
 
+    const handleFormSubmissionSuccess = useCallback(() => {
+        fetchAllData();
+        setSelectedInternship(null);
+    }, [fetchAllData]);
+
+
+
+
     if (!user || !internshipData) {
         return <div>Loading...</div>;
     }
+
+
 
     return (
         <Container maxW="container.2xl" p={5}>
@@ -374,7 +387,8 @@ const TutorManageInternshipsC = () => {
                     questions={selectedInternshipFileCategory === 7 ? questionForm1 : questionForm2}
                     fileCategory={selectedInternshipFileCategory}  
                     selectedInternship={selectedInternship}  
-                    onSubmissionSuccess={fetchAllData}
+                    // onSubmissionSuccess={fetchAllData}
+                    onSubmissionSuccess={handleFormSubmissionSuccess}
                 />}
             </Flex>
         </Container>

@@ -97,6 +97,9 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
     const [user, setUser] = useState<User | null>(null);
     const toast = useToast();
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
+    // const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    
+
     
     useEffect(() => {
         console.log("selectedInternship: ", selectedInternship);
@@ -164,6 +167,12 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
     };
 
 
+    // if (isFormSubmitted) {
+    //     return <Text>Your form has been submitted successfully!</Text>; 
+    // }
+    
+  
+    
 
 
     const handleSubmit = async () => {
@@ -199,6 +208,7 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
                 duration: 5000,
                 isClosable: true,
             });
+            // setIsFormSubmitted(true);
             onSubmissionSuccess();
 
         } catch (error) {
