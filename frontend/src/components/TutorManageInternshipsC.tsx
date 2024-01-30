@@ -15,7 +15,6 @@ interface Questions {
 [key: string]: Question;
 }
 
-
 // intermedaite evaluation form : 1-5 (5 is the best)
 const questionForm1 : Questions = {
 q1: { id: 1, text: "L'étudiant(e) a-t-il (elle) bien compris et débuté sa mission en entreprise (objectifs, contenu de la mission, planning de réalisation) ?", type: 'range'},
@@ -35,11 +34,7 @@ q14: { id: 14,  text: "Aviez-vous déjà une expérience de l'alternance en tant
 q15: { id: 15, text: "Commentaire" , type: 'text' },
 q16: { id: 16, text: "Avez-vous déjà suivi une formation de Tuteur Entreprise ?", type: 'binary'},
 q17: { id: 17, text: "Commentaire", type: 'text' },
-// q18: { id: 18, text: "", type: 'text'},
-// q19: { id: 19, text: "", type: 'binary'},
-// q20: { id: 20, text: "", type: 'text'},
 };
-
 
 // final evaluation form : 1-5 (5 is the best)
 const questionForm2 : Questions = {
@@ -83,9 +78,6 @@ q37: { id: 37,text: "Situer le besoin dans une perspective d'innovation", type: 
 q38: { id: 38,text: "Estimer les impacts d'un projet du domaine du numérique", type: 'range'},
 };
 
-
-
-
 interface User {
     id?: number;
     firstName: string;
@@ -123,8 +115,6 @@ interface Student {
         zipCode: string;
     };
 };
-  
-  
 
 interface Internship {
     
@@ -178,12 +168,8 @@ interface Internship {
 
 
 
-
-
 const TutorManageInternshipsC = () => {
     const [user, setUser] = useState<User | null>(null);
-    const [activeForm, setActiveForm] = useState('first');
-    const [studentData, setStudentData] = useState<Student | null>(null);
     const [internshipData, setInternshipData] = useState<Internship[] | null >(null);
     const [selectedInternship, setSelectedInternship] = useState<Internship | null>(null);
     const [selectedInternshipFileCategory, setSelectedInternshipFileCategory] = useState(0);
@@ -225,10 +211,10 @@ const TutorManageInternshipsC = () => {
             }
             const studentDataJSON = await response.json();
             console.log("Student Data JSON: ", studentDataJSON);
-            return studentDataJSON; // Return the student data
+            return studentDataJSON; 
         } catch (error) {
             console.error('Error fetching student data:', error);
-            return null; // Handle the error gracefully, you can return an empty object or some default data
+            return null; 
         }
     };
     
@@ -242,15 +228,11 @@ const TutorManageInternshipsC = () => {
             if (!internshipResponse.ok) {throw new Error('Failed to fetch internship data');}
             const internshipDataJSON = await internshipResponse.json();
             console.log("TEST internshipDataJSON: ", internshipDataJSON);
-            // setInternshipData(internshipDataJSON);
-            // console.log("TEST internshipData: ", internshipData);
             const internshipsWithStudentData = [];
 
-            // Iterate through the internships and fetch student data for each one
             for (const internship of internshipDataJSON) {
                 const studentID = internship.studentID;
                 const studentData = await fetchStudentInfo(studentID);
-                // Combine the internship data and student data
                 const internshipWithStudent = {
                     ...internship,
                     student: studentData,
@@ -266,18 +248,6 @@ const TutorManageInternshipsC = () => {
                 console.log('File List IDs:', fileListIDs);
             }
 
-            // const userResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/${internshipData.studentID}`, {
-            //     method: 'GET', headers: { 'Content-Type': 'application/json',},});
-            // if (!userResponse.ok) {throw new Error('Failed to fetch user data');}
-            // const userDataJSON = await userResponse.json();
-            // console.log("TEST userDataJSON: ", userDataJSON);
-            // if (userDataJSON.length > 0) {
-            //     setStudentData(userDataJSON[0]); 
-            // } else {
-            //     console.log("No user data found");
-            // }
-            
-
           } catch (error) {
             toast({
               title: 'Error',
@@ -288,11 +258,6 @@ const TutorManageInternshipsC = () => {
             });
             console.error('Error fetching data:', error);
           }
-    };
-
-
-    const handleFormButtonClick = (formName: React.SetStateAction<string>) => {
-        setActiveForm(formName); 
     };
   
     const handleButtonClick = (internship: Internship, fileCategory: number, fileType: string, fileDeadline: string) => {
@@ -384,7 +349,7 @@ const TutorManageInternshipsC = () => {
                 <Button>{">"}</Button>
                 </Flex>
             </Box>
-            
+
             <TutorManageMeetingC />
 
             <Flex

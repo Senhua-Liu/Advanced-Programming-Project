@@ -24,17 +24,14 @@ import StudentManageInternships from "./pages/Student/StudentManageInternships";
 import StudentManageMeeting from "./pages/Student/StudentManageMeeting";
 import StudentUploadFiles from "./pages/Student/StudentUploadFiles";
 import StudentViewAllFiles from "./pages/Student/StudentViewAllFiles";
-import TutorFillFinal from "./pages/Tutor/TutorFillFinal";
 import TutorViewAllFiles from "./pages/Tutor/TutorViewAllFiles";
 import TutorManageMeeting from "./pages/Tutor/TutorManageMeeting";
 import TutorManageInternships from "./pages/Tutor/TutorManageInternships";
 import TutorManageAllReports from "./pages/Tutor/TutorManageAllReports";
 import TutorHome from "./pages/Tutor/TutorHome";
-import TutorFillIntermediate from "./pages/Tutor/TutorFillIntermediate";
 import Profil from "./pages/Common/Profil";
 import Reset from "./pages/Common/Reset";
 import StudentChat from "./pages/Chat/StudentChat";
-import TutorFill from "./pages/Tutor/TutorFill";
 
 const AuthenticatedRoutes = () => {
   const userContext = useUser();
@@ -92,12 +89,6 @@ const AuthenticatedRoutes = () => {
       <Route path="/student/uploadfiles" element={<StudentUploadFiles />} />
       <Route path="/student/viewallfiles" element={<StudentViewAllFiles />} />
 
-      <Route path="/tutor/fill" element={<TutorFill />} />
-      <Route path="/tutor/fillfinal" element={<TutorFillFinal />} />
-      <Route
-        path="/tutor/fillintermediate"
-        element={<TutorFillIntermediate />}
-      />
       <Route path="/tutor/home" element={<TutorHome />} />
       <Route
         path="/tutor/manageallreports"
