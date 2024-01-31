@@ -313,6 +313,64 @@ router.put('/updateMeetingStatus/:internshipId', async (req, res) => {
 });
 
 
+// Endpoint to update a file comment within an internship
+router.post('/:internshipId/updateComment', async (req, res) => {
+    const { internshipId } = req.params;
+    const { fileCategory, comment } = req.body;
+    console.log("TEST internshipId, fileCategory, comment: ", internshipId, fileCategory, comment);
+
+    try {
+        const internship = await Internship.findByPk(internshipId);
+
+        if (!internship) {
+            return res.status(404).send('Internship not found');
+        }
+        const updatedFiles = internship.files.map(file => {
+            if (file.category === fileCategory) {
+                return { ...file, message: comment };
+            }
+            return file;
+        });
+
+        internship.files = updatedFiles;
+        await internship.save();
+
+        res.json({ success: true, message: 'Comment updated successfully' });
+    } catch (error) {
+        console.error('Error updating comment:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+// Assuming you're using Express and have a model or controller for internships
+router.post('/:internshipId/invalidateFile', async (req, res) => {
+    const { internshipId } = req.params;
+    const { fileCategory } = req.body;
+  
+    try {
+      const internship = await Internship.findByPk(internshipId);
+      if (!internship) {
+        return res.status(404).send('Internship not found');
+      }
+      const updatedFiles = internship.files.map(file => {
+        if (file.category === fileCategory) {
+          return { ...file, finished: false }; 
+        }
+        return file;
+      });
+  
+      internship.files = updatedFiles;
+      await internship.save();
+  
+      res.json({ success: true, message: 'File invalidated successfully' });
+    } catch (error) {
+      console.error('Error invalidating file:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+
 
 module.exports = router;
 

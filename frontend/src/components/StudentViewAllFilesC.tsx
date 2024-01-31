@@ -124,7 +124,7 @@ const StudentViewAllFilesC = () => {
 
 
     return (
-        <Container maxW="container.xl" p={5} >
+        <Container maxW="container.2xl" p={5} >
             <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
                 <Flex direction="column" overflowX="auto" gap={5}>
                     <Heading mb={6} textAlign="center">Student Space</Heading>
@@ -147,6 +147,7 @@ const StudentViewAllFilesC = () => {
                             <Th>File Type</Th>
                             <Th>File Status</Th>
                             <Th>Actions</Th>
+                            <Th>Tutor's comments</Th>
                         </Tr>
                         </Thead>
                         <Tbody>
@@ -161,7 +162,7 @@ const StudentViewAllFilesC = () => {
                                             </Badge>
                                         </Td>
                                         <Td>
-                                            {file.confidential === 1 && (
+                                            {/* {file.confidential === 1 && (
                                                 <>
                                                     <a 
                                                         href={`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} 
@@ -171,10 +172,8 @@ const StudentViewAllFilesC = () => {
                                                         <Button size="sm" mr={2} leftIcon={<ViewIcon />}>
                                                             View
                                                         </Button>
-                                                    </a>
-                                                    {/* <Button size="sm" mr={10} mb={2} leftIcon={<ViewIcon />} onClick={() => window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank')} >View</Button> */}
-                                                    {/* <Button size="sm" mr={2} leftIcon={<FaRegClipboard />} onClick={handleCopyContent}  >Copy-paste</Button> */}
-                                                    <Button size="sm" mr={2} leftIcon={<FaPrint />} 
+                                                    </a> 
+                                                   <Button size="sm" mr={2} leftIcon={<FaPrint />} 
                                                         onClick={() => { 
                                                             const printWindow = window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank');
                                                             printWindow!.addEventListener('load', () => {
@@ -188,10 +187,52 @@ const StudentViewAllFilesC = () => {
                                             )}
                                             {file.confidential === 0 && (
                                                 <>
-                                                    <Button size="sm" mr={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} >View</Button>
+                                                    <Button size="sm" mr={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} isDisabled={!file.finished} >View</Button>
+                                                </>
+                                            )} */}
+                                            {file.confidential === 1 && (
+                                                <>
+                                                    <a 
+                                                        href={`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <Button size="sm" mr={2} leftIcon={<ViewIcon />} isDisabled={!file.finished}>
+                                                            View
+                                                        </Button>
+                                                    </a>
+                                                    <Button size="sm" mr={2} leftIcon={<FaPrint />} 
+                                                        onClick={() => { 
+                                                            if(file.finished) {
+                                                                const printWindow = window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank');
+                                                                printWindow!.addEventListener('load', () => {
+                                                                    printWindow!.print();
+                                                                }, { once: true });
+                                                            }
+                                                        }} 
+                                                        isDisabled={!file.finished}>
+                                                        Print
+                                                    </Button>
+                                                    <Button size="sm" mr={2} leftIcon={<DownloadIcon />} 
+                                                        onClick={() => {
+                                                            if(file.finished) {
+                                                                window.location.href = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`
+                                                            }
+                                                        }} 
+                                                        isDisabled={!file.finished}>
+                                                        Download
+                                                    </Button>
+                                                </>
+                                            )}
+                                            {file.confidential === 0 && (
+                                                <>
+                                                    <Button size="sm" mr={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} isDisabled={!file.finished}>
+                                                        View
+                                                    </Button>
                                                 </>
                                             )}
                                         </Td>
+                                        <Td>{file.message}</Td>
                                     </Tr>
                                 ))
                             )}
@@ -228,7 +269,7 @@ const StudentViewAllFilesC = () => {
                         </ModalBody> */}
 
 
-                        <ModalBody onCopy={(e) => e.preventDefault()}>
+                        <ModalBody sx={{ userSelect: "none" }} onCopy={(e) => e.preventDefault()}>
                             {(() => {
                                 try {
                                 const parsedContent = JSON.parse(selectedFileContent);

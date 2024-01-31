@@ -1,7 +1,7 @@
 // TutorViewAllFilesC
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Input,Text,IconButton,Container, Modal, ModalContent, ModalOverlay, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Badge, Heading, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { useDisclosure,Box,Flex,Table,Thead,Tbody,Tr,Th,Td,Button,Input,Text,IconButton,Container, Modal, ModalContent, ModalOverlay, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Badge, Heading, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { SearchIcon, DownloadIcon, ViewIcon } from "@chakra-ui/icons";
 import { FaPrint } from 'react-icons/fa';
 
@@ -58,7 +58,7 @@ interface Internship {
     tutor: User;
 };
 
-  
+
 
 const TutorViewAllFilesC = () => {
     const [user, setUser] = useState<User | null>(null);
@@ -66,6 +66,9 @@ const TutorViewAllFilesC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFileContent, setSelectedFileContent] = useState("");
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [editCommentDetails, setEditCommentDetails] = useState({ internshipId: 0, fileCategory: 0, comment: '' });
+
 
 
     useEffect(() => {
@@ -77,22 +80,42 @@ const TutorViewAllFilesC = () => {
         };
     }, []);
 
+    // useEffect(() => {
+    //     const fetchInternships = async () => {
+    //         try {
+    //             const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/tutor/${user?.id}`);
+    //             if (!response.ok) {
+    //                 throw new Error('Failed to fetch internships');
+    //             }
+    //             const data = await response.json();
+    //             console.log("TEST useEffect() => fetched internships:", data);
+    //             setInternships(data);
+    //         } catch (error) {
+    //             console.error('Error fetching internships:', error);
+    //         }
+    //     };
+    //     fetchInternships();
+    // }, [user?.id]); 
+
     useEffect(() => {
-        const fetchInternships = async () => {
-            try {
-                const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/tutor/${user?.id}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch internships');
-                }
-                const data = await response.json();
-                console.log("TEST useEffect() => fetched internships:", data);
-                setInternships(data);
-            } catch (error) {
-                console.error('Error fetching internships:', error);
+        if (user) {
+            fetchInternships();
+        }
+    }, [user]); 
+
+    const fetchInternships = async () => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/tutor/${user?.id}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch internships');
             }
-        };
-        fetchInternships();
-    }, [user?.id]); 
+            const data = await response.json();
+            setInternships(data);
+        } catch (error) {
+            console.error('Error fetching internships:', error);
+        }
+    };
+
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log("Search term before setState:", e.target.value);
@@ -114,13 +137,87 @@ const TutorViewAllFilesC = () => {
             file.category >= 1 && file.category <= 6
         )
     ); 
+    
+
+    const openEditCommentModal = (internshipId: number, fileCategory: number, currentComment: string) => {
+        setEditCommentDetails({ internshipId, fileCategory, comment: currentComment });
+        onOpen();
+    };
+
+
+    const saveComment = async () => {
+        const { internshipId, fileCategory, comment } = editCommentDetails;
+        console.log("TEST saveComment: ", internshipId, fileCategory, comment);
+    
+        try {
+            // Constructing the API endpoint dynamically with internshipId
+            const url = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/${internshipId}/updateComment`;
+            console.log("TEST url: ", url);
+            // Prepare the request options
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ fileCategory: fileCategory, comment: comment })
+            };
+    
+            // Execute the fetch request to your backend
+            const response = await fetch(
+                url, requestOptions
+                );
+            console.log("TEST saveComment's response: ", response);
+
+            if (response.ok) {
+               
+                await fetchInternships();
+                alert("Comment saved successfully!");
+                console.log("TEST ok saveComment.");
+                onClose(); // Close the modal
+            } else {
+                const errorMsg = await response.text();
+                console.error("Error saving the comment: ", errorMsg);
+                alert(`Failed to save the comment. Server responded with: ${errorMsg}`);
+            }
+        } catch (error) {
+            // Catch and handle any errors that occur during the fetch
+            console.error("Failed to save the comment", error);
+            alert("An error occurred while saving the comment. Please try again.");
+        }
+    };
+    
+
+    const handleInvalidateFile = async (internshipId: number | undefined, fileCategory: number) => {
+        try {
+          const url = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/${internshipId}/invalidateFile`;
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fileCategory })
+          });
+      
+          if (response.ok) {
+            fetchInternships(); // Refresh the internships list
+            alert("File invalidated successfully.");
+          } else {
+            alert("Failed to invalidate the file.");
+          }
+        } catch (error) {
+          console.error("Error invalidating the file:", error);
+          alert("Error invalidating the file.");
+        }
+      };
+      
 
 
     return (
 
-        <Container maxW="container.xl" p={5} >
+        <Container maxW="container.2xl" p={5} >
             <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
                 <Flex direction="column" overflowX="auto" gap={5}>
+                    <Flex justifyContent="flex-end" mb={4} gap={5}>
+                        <Button colorScheme="red">Start</Button>
+                        {/* <Button colorScheme="yellow">Ongoing</Button> */}
+                        <Button colorScheme="green">Finish</Button>
+                    </Flex>
                     <Heading mb={6} textAlign="center">Tutor Space</Heading>
                     <InputGroup mb={4}>
                         <Input placeholder="Type keyword..." value={searchTerm} onChange={handleSearchChange} />
@@ -130,6 +227,7 @@ const TutorViewAllFilesC = () => {
                         <Text fontSize="xl" mb={2}>Here, you can find all files related to internships. Different files have different levels. Normal level means that the document can be downloaded, copied (copy-paste), and printed. Sensitive level means that read-only online but prohibited to print, copy and download.</Text>
                         <Text color="red" >* Normal level: final report and CdC.</Text>
                         <Text color="red">* Sensitive level: All other files except final report and CdC.</Text>
+                        <Text color="red">* If you decide to invalidate a student's file, please write a comment by clicking on the "EDIT COMMENT". Thanks.</Text>
                     </Flex>
                     <Table variant="simple">
                         <Thead>
@@ -140,6 +238,7 @@ const TutorViewAllFilesC = () => {
                             <Th>File Type</Th>
                             <Th>File Status</Th>
                             <Th>Actions</Th>
+                            <Th>Tutor's comments</Th>
                         </Tr>
                         </Thead>
                         <Tbody>
@@ -154,6 +253,16 @@ const TutorViewAllFilesC = () => {
                                             <Badge colorScheme={file.finished ? "green" : "red"}>
                                                 {file.finished ? "Finished" : "Not Finished"}
                                             </Badge>
+                                            {file.category <= 6 && file.finished && 
+                                                <Button
+                                                    size="sm"
+                                                    colorScheme="red"
+                                                    onClick={() => handleInvalidateFile(internship.id, file.category)}
+                                                    isDisabled={!file.finished}
+                                                    >
+                                                    Invalidate
+                                                </Button>
+                                            }
                                         </Td>
                                         <Td>
                                             <Button size="sm" mr={2} leftIcon={<ViewIcon />} isDisabled={!file.finished} onClick={() => handleViewFile(file.content)} >View</Button>
@@ -176,6 +285,10 @@ const TutorViewAllFilesC = () => {
                                                     }} >Download</Button>
                                                 </>
                                             ) : null}
+                                        </Td>
+                                        <Td> 
+                                            <Button onClick={() => openEditCommentModal(internship.id!, file.category, file.message)}>Edit Comment</Button>
+                                            {file.message}
                                         </Td>
                                     </Tr>
                                 ));
@@ -216,6 +329,52 @@ const TutorViewAllFilesC = () => {
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
+
+{/* 
+                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Edit Comment</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <Input
+                                value={editCommentDetails.comment}
+                                onChange={(e) => setEditCommentDetails({ ...editCommentDetails, comment: e.target.value })}
+                                placeholder="Enter your comment here"
+                            />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button colorScheme="blue" mr={3} onClick={saveComment}>
+                                Save
+                            </Button>
+                            <Button variant="ghost" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal> */}
+
+
+                {/* Edit Comment Modal */}
+                <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Edit Comment</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <Input
+                                value={editCommentDetails.comment}
+                                onChange={(e) => setEditCommentDetails({ ...editCommentDetails, comment: e.target.value })}
+                                placeholder="Enter your comment here"
+                            />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button colorScheme="blue" mr={3} onClick={saveComment}>
+                                Save
+                            </Button>
+                            <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+
             </Box>
         </Container>
     );
