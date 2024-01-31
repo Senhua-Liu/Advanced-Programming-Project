@@ -58,21 +58,14 @@ interface Internship {
     tutor: User;
 };
 
+type InternshipType = 'L1' | 'L2' | 'M1' | 'M2';
+
+
 
 const AdminManageDeadlinesC = () => {
     const [user, setUser] = useState<User | null>(null);
     const [internships, setInternships] = useState<Internship[]>([]);
-    const [currentPage, setCurrentPage] = useState(0);
     const toast = useToast();
-    type InternshipType = 'L1' | 'L2' | 'M1' | 'M2';
-    const typeToPage: Record<InternshipType, number> = { 'L1': 0, 'L2': 1, 'M1': 2, 'M2': 3,};
-    const typeToBgColor: Record<InternshipType, string> = {
-        L1: 'green.100', 
-        L2: 'blue.100', 
-        M1: 'green.100', 
-        M2: 'blue.100',
-      };
-      
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -83,15 +76,6 @@ const AdminManageDeadlinesC = () => {
         };
         fetchInternships();
     }, []);
-
-
-    useEffect(() => {
-        fetchInternships(); 
-        const interval = setInterval(fetchInternships, 1000); 
-      
-        return () => clearInterval(interval); 
-    }, []);
-
 
     const fetchInternships = async () => {
         try {
@@ -112,6 +96,7 @@ const AdminManageDeadlinesC = () => {
             }));
             console.log("Processed internships:", processedInternships); 
             setInternships(processedInternships);
+
         } catch (error) {
             toast({
                 title: 'Error fetching internships',
@@ -121,6 +106,22 @@ const AdminManageDeadlinesC = () => {
             });
         }
     };
+
+    useEffect(() => {
+        fetchInternships(); 
+        const interval = setInterval(fetchInternships, 1000); 
+        return () => clearInterval(interval); 
+    }, []);
+
+
+
+    const types = ['M1', 'M2', 'L1', 'L2'];
+
+    const firstInternshipsByType = types.map(type => ({
+        type,
+        internship: internships.find(internship => internship.type === type),
+    }));
+
 
 
     return (
@@ -182,34 +183,36 @@ const AdminManageDeadlinesC = () => {
             <AdminEditDeadlinesC />
 
 
-            <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
-                <VStack spacing={4}>
-                    <Table variant="simple">
-                        <Thead bg="blue.300">
+            <VStack spacing={6}>
+                {firstInternshipsByType.map(({ type, internship }) => (
+                    <Box key={type} w="full" p={4} borderWidth="1px" borderRadius="lg" overflow="hidden">
+                    <Text fontSize="xl" fontWeight="bold" p={3} bg="blue.200" borderRadius="md" textAlign="center">
+                        Internship Type: {type}
+                    </Text>
+                    {internship ? (
+                        <Table variant="simple" mt={4}>
+                        <Thead>
                             <Tr>
-                                <Th>Internship Type</Th>
-                                <Th>File Type</Th>
-                                <Th>Deadline</Th>
+                            <Th>File Type</Th>
+                            <Th>Deadline</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {internships.map((internship) => (
-                                Array.isArray(internship.files) ? (
-                                    internship.files.map((file) => (
-                                        <Tr key={`${internship.id}-${file.type}`}
-                                            bg={typeToBgColor[internship.type as InternshipType] || 'white'}
-                                        >
-                                            <Td>{internship.type}</Td>
-                                            <Td>{file.type}</Td>
-                                            <Td>{file.deadline || "No deadline set"}</Td>
-                                        </Tr>
-                                    ))
-                                ) : null
+                            {internship.files.map((file, index) => (
+                            <Tr key={index}>
+                                <Td>{file.type}</Td>
+                                <Td>{file.deadline || "No deadline set"}</Td>
+                            </Tr>
                             ))}
                         </Tbody>
-                    </Table>
-                </VStack>
-            </Flex>
+                        </Table>
+                    ) : (
+                        <Text mt={2} textAlign="center">No internship found or no files associated for type {type}.</Text>
+                    )}
+                    </Box>
+                ))}
+            </VStack>
+
         </Flex>
     );
 }; 

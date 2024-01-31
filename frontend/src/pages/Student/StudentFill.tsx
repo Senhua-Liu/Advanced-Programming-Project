@@ -170,14 +170,14 @@ const StudentFill: React.FC = () => {
 
 
         <HStack spacing={4} my={10} justify="center" direction="row">
-          <Button onClick={() => handleFormButtonClick('first')} width="150px" color="white" bgColor="blue.500">
-            First form
+          <Button onClick={() => handleFormButtonClick('first')} width="280px" color="white" bgColor="blue.500">
+            first self-evaluation form
           </Button>
-          <Button onClick={() => handleFormButtonClick('second')} width="150px" color="white" bgColor="blue.500">
-            Second form
+          <Button onClick={() => handleFormButtonClick('second')} width="280px" color="white" bgColor="blue.500">
+            second self-evaluation form
           </Button>
-          <Button onClick={() => handleFormButtonClick('third')} width="150px" color="white" bgColor="blue.500">
-            Third form
+          <Button onClick={() => handleFormButtonClick('third')} width="280px" color="white" bgColor="blue.500">
+            third self-evaluation form
           </Button>
           <Button onClick={() => handleFormButtonClick('forth')} width="150px" color="white" bgColor="blue.500">
             Fiche visit
@@ -193,10 +193,10 @@ const StudentFill: React.FC = () => {
           justify="center"
           align="center"
         >
-          {activeForm === 'first' && <StudentFillC  formTitle="BILAN PÉRIODIQUE (DÉBUT DE STAGE: 1 MOIS)" formDeadline="01/20/2023 00:00:00"  questions={questionForm1} fileCategory={4} />}
-          {activeForm === 'second' && <StudentFillC formTitle="BILAN PÉRIODIQUE (MILIEU DE STAGE: 3 MOIS)" formDeadline="04/20/2023 00:00:00" questions={questionForm2} fileCategory={5}  />}
-          {activeForm === 'third' && <StudentFillC  formTitle="BILAN PÉRIODIQUE (FIN DE STAGE: 5/6 MOIS)" formDeadline="06/20/2023 00:00:00" questions={questionForm3} fileCategory={6} />}
-          {activeForm === 'forth' && <StudentFillC  formTitle="FICHE VISIT " formDeadline="05/20/2023 00:00:00" questions={questionForm4}  fileCategory={3} />}
+          {activeForm === 'first' && <StudentFillC  formTitle="BILAN PÉRIODIQUE (DÉBUT DE STAGE: 1 MOIS)" formDeadline=""  questions={questionForm1} fileCategory={4} />}
+          {activeForm === 'second' && <StudentFillC formTitle="BILAN PÉRIODIQUE (MILIEU DE STAGE: 3 MOIS)" formDeadline="" questions={questionForm2} fileCategory={5}  />}
+          {activeForm === 'third' && <StudentFillC  formTitle="BILAN PÉRIODIQUE (FIN DE STAGE: 5/6 MOIS)" formDeadline="" questions={questionForm3} fileCategory={6} />}
+          {activeForm === 'forth' && <StudentFillC  formTitle="FICHE VISIT " formDeadline="" questions={questionForm4}  fileCategory={3} />}
         </Flex>
 
         <ReturnFooter  linkPage="/student/home" />

@@ -99,9 +99,23 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
     const [tutor, setTutor] = useState<Tutor | null>(null);
     const toast = useToast();
     const [answers, setAnswers] = useState<{ [key: string]: string }>({});
+    const [fileDeadline, setFileDeadline] = useState('');
 
     useEffect(() => {
         console.log("Latest Internship updated: ", latestInternship);
+        if (fileCategory === 3 && latestInternship) {
+            setFileDeadline(latestInternship?.files[2].deadline);
+            console.log("TEST fileDeadline: ", fileDeadline);
+        } else if (fileCategory === 4 && latestInternship) {
+            setFileDeadline(latestInternship?.files[3].deadline);
+            console.log("TEST fileDeadline: ", fileDeadline);
+        } else if (fileCategory === 5 && latestInternship) {
+            setFileDeadline(latestInternship?.files[4].deadline);
+            console.log("TEST fileDeadline: ", fileDeadline);
+        } else if (fileCategory === 6 && latestInternship) {
+            setFileDeadline(latestInternship?.files[5].deadline);
+            console.log("TEST fileDeadline: ", fileDeadline);
+        };
     }, [latestInternship]);
 
     useEffect(() => {
@@ -288,13 +302,13 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
     return (
         <Box p={5} borderWidth="1px" borderRadius="lg" width="80%">
             <VStack spacing={5} gap={10}>
-                <Text fontSize="sm" textAlign="center" color="red">DEADLINE OF THIS FILE: {formDeadline}</Text>
+                <Text fontSize="sm" textAlign="center" color="red">DEADLINE OF THIS FILE: {fileDeadline}</Text>
                 <Heading size="lg" textAlign="center">{formTitle}</Heading>
                 <Divider />
                 
                 <Flex justify="center" flexDir="row" gap={10} m={5}>
                     <FormControl id="student">
-                        <FormLabel>Student's Info</FormLabel>
+                        <FormLabel>Student's Info {latestInternship?.files[0].deadline}</FormLabel>
                         <Input placeholder={user?.lastName.toUpperCase()} readOnly />
                         <Input placeholder={user?.firstName}  readOnly />
                         <Input placeholder={latestInternship?.duration.toLocaleString() + " weeks"} readOnly />
@@ -324,8 +338,8 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
 
                 <Box p={5} borderWidth="1px" borderRadius="lg" width="100%">
                 <VStack spacing={5} gap={10}>
-                    <FormLabel fontSize="2xl" fontWeight="bold" mt={10}>{formTitle}</FormLabel>
-                    <FormLabel color="red">Deadline: {formDeadline} {/* (* All the fields are need to be completed.) */}</FormLabel>
+                    {/* <FormLabel fontSize="2xl" fontWeight="bold" mt={10}>{formTitle}</FormLabel>
+                    <FormLabel color="red">Deadline: {fileDeadline} </FormLabel> */}
                     {Object.entries(questions).map(([key, question]) => (
                     <FormControl key={key}>
                         <FormLabel>{question.text}</FormLabel>

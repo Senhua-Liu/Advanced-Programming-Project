@@ -116,8 +116,8 @@ interface Student {
     };
 };
 
+
 interface Internship {
-    
     id?: number;
     duration: number;
     type: string;
