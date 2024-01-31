@@ -62,7 +62,8 @@ const AdminHome: React.FC = () => {
         align="center"
         >
             <Flex>
-                <Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text>
+                {/* admin invaliate / validate / remove an internship && admin edit and send notification to all */}
+                <Text color="#0C2340" fontSize="6xl" fontWeight="bold" >ADMIN SPACE</Text> 
             </Flex>
             <Flex gap={10}>
                 <Link as={RouterLink} to="/reset"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>

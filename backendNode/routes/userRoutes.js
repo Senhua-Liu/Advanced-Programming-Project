@@ -81,6 +81,39 @@ router.post('/login', async (req, res) => {
 });
 
 
+router.post('/resetPassword', async (req, res) => {
+    const { userId, currentPassword, newPassword } = req.body;
+    console.log("TEST userId, currentPassword, newPassword : ", userId, currentPassword, newPassword );
+
+    try {
+        const user = await User.findByPk(userId);
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+        console.log("TEST user.password: ", user.password);
+        console.log("TEST user.oldPassword: ", user.oldPassword);
+        const tempPassword = await bcrypt.hash(currentPassword, saltRounds);
+        console.log("TEST tempPassword: ", tempPassword);
+        const isMatch = await bcrypt.compare(currentPassword, user.password);
+        console.log(`Password match: ${isMatch}`);
+        if (!isMatch) {
+            return res.status(401).json({error: 'Current password is incorrect'});
+        }
+
+        const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
+        console.log("TEST hashedNewPassword: ", hashedNewPassword);
+        user.oldPassword = user.password;
+        user.password = hashedNewPassword;
+        await user.save();
+        
+        res.json({ message: 'Password reset successfully' });
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 
 
 
