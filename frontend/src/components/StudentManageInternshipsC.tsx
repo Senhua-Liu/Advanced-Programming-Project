@@ -212,6 +212,7 @@ const StudentManageInternshipsC = () => {
                     <Th border="1px" borderColor="gray.200">End Date</Th>
                     <Th border="1px" borderColor="gray.200">Meetings</Th>
                     <Th border="1px" borderColor="gray.200">Files</Th>
+                    {/* <Th border="1px" borderColor="gray.200">Tutor's comments</Th> */}
                     </Tr>
                 </Thead>
                 <Tbody>
@@ -250,10 +251,13 @@ const StudentManageInternshipsC = () => {
                             p={2}
                             borderRadius="lg"
                             >
-                            {file.type}: {file.finished ? "Finished" : "Not Finished"}
+                            {file.type}: {file.finished ? "Finished" : "Not Finished"} 
+                    
                             </Badge>
+                            
                         ))}
                         </Td>
+                        
                     </Tr>
                     ))}
                 </Tbody>
