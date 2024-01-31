@@ -1,7 +1,9 @@
 // AdminManageDeadlinesC
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Box,Flex,Text,Button,Table,Thead,Tbody,Tr,Th,Td,VStack,HStack } from "@chakra-ui/react";
+import { Box,Flex,Text,Button,Table,Thead,Tbody,Tr,Th,Td,VStack,HStack, Input  } from "@chakra-ui/react";
+import axios from 'axios'; 
+
 // AdminEditDeadlinesC
 
 import AdminEditDeadlinesC from './AdminEditDeadlinesC';
@@ -26,9 +28,50 @@ interface User {
   };
 
 
+
+
+
+  interface Internship {
+    id?: number;
+    duration: number;
+    type: string;
+    jobTitle: string;
+    mission: string;
+    salary: number;
+    startDate: Date | string;
+    endDate: Date | string;
+    TutorID?: number;
+    tutorID: number;
+    meetingList: {
+        type: string;
+        date: string;
+        location: string;
+        finished: boolean;
+    }[];
+    files: [
+        {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
+        {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
+        {category: 3, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 4, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 5, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 6, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 7, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        {category: 8, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+    ];
+    status: string;
+    student: User;
+    tutor: User;
+};
+
+
+
 const AdminManageDeadlinesC = () => {
     const [showViewEdit, setShowViewEdit] = useState(false);
     const [user, setUser] = useState<User | null>(null);
+    const [internshipId, setInternshipId] = useState<number | null>(null);
+    const [filesDeadline, setFilesDeadline] = useState<{ final_report: string }>({ final_report: "" });
+
+
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -40,6 +83,15 @@ const AdminManageDeadlinesC = () => {
     }, []);
 
 
+    const updateFileDeadlines = async () => {
+        try {
+            if (internshipId) {
+                await axios.put(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internships/updateFileDeadlines/${internshipId}`, { filesDeadline });
+            }
+        } catch (error) {
+            console.error('Error updating file deadlines:', error);
+        }
+    };
 
     const handleAddClick = () => {
         setShowViewEdit(true);
@@ -108,9 +160,29 @@ const AdminManageDeadlinesC = () => {
             {showViewEdit && <AdminEditDeadlinesC />} */}
 
 
-            {/* <Box w="full" p={5} borderWidth="1px" borderRadius="lg"> */}
-                <AdminEditDeadlinesC />
-            {/* </Box> */}
+           
+            <AdminEditDeadlinesC />
+            
+            
+            <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
+            <Text fontSize="2xl" fontWeight="bold" mb={4}>Set File Deadlines</Text>
+            <Input
+                type="number"
+                placeholder="Internship ID"
+                value={internshipId || ''}
+                onChange={(e) => setInternshipId(parseInt(e.target.value))}
+            />
+            <Input
+                type="text"
+                placeholder="File Type (e.g., final report)"
+                value={filesDeadline['final_report'] || ''}
+                onChange={(e) => setFilesDeadline({ ...filesDeadline, final_report: e.target.value })}
+
+            />
+            <Button colorScheme="blue" onClick={updateFileDeadlines}>Update Deadlines</Button>
+        </Flex>
+
+
 
 
         </Flex>
