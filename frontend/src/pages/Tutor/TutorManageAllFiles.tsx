@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext }  from 'react';
 import Header from '../../components/Header';
 import { Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
-import TutorManageAllReportsC from '../../components/TutorManageAllReportsC';
+import TutorManageAllFilesC from '../../components/TutorManageAllFilesC';
 import { useUser } from '../../context/UserContext';
-
-
 
 
 interface User {
@@ -28,7 +26,7 @@ interface User {
 };
 
 
-const TutorManageAllReports: React.FC = () => {
+const TutorManageAllFiles: React.FC = () => {
   const [linkPage, setLinkPage] = useState('');
   const [user, setUser] = useState<User | null>(null);
 
@@ -40,28 +38,29 @@ const TutorManageAllReports: React.FC = () => {
         console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
     };
   }, []);
-  
 
-  
+
+
+
+
   return (
     <Flex
       direction="column"
       minHeight="100vh"
     >
-      <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email}  message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
-
+      <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email} message="!!! The intermediate evaluation form should be filled before 12/31/2023 00:00:00." />
       <Flex
         direction="column"
         flex="1"
         overflowY="auto" 
         paddingBottom="250px"
       >
-        <TutorManageAllReportsC />
+        <TutorManageAllFilesC />
       </Flex>
-
-      <ReturnFooter linkPage="/tutor/home" />
+      
+      <ReturnFooter linkPage="/tutor/home"  />
     </Flex>
   );
 };
 
-export default TutorManageAllReports;
+export default TutorManageAllFiles;

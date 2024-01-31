@@ -4,6 +4,7 @@ import { Flex } from "@chakra-ui/react";
 import ReturnFooter from '../../components/ReturnFooter';
 import TutorManageMeetingC from '../../components/TutorManageMeetingC';
 import { useUser } from '../../context/UserContext';
+import TutorViewAllFilesC from '../../components/TutorManageAllFilesC';
 
 
 
@@ -56,6 +57,8 @@ const TutorManageMeeting: React.FC = () => {
         paddingBottom="250px"
       >
         {/* <TutorManageMeetingC /> */}
+        <TutorViewAllFilesC />
+
       </Flex>
 
       <ReturnFooter linkPage="/tutor/home" />

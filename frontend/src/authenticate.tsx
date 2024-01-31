@@ -24,10 +24,10 @@ import StudentManageInternships from "./pages/Student/StudentManageInternships";
 import StudentManageMeeting from "./pages/Student/StudentManageMeeting";
 import StudentUploadFiles from "./pages/Student/StudentUploadFiles";
 import StudentViewAllFiles from "./pages/Student/StudentViewAllFiles";
-import TutorViewAllFiles from "./pages/Tutor/TutorViewAllFiles";
+import TutorManageAllFiles from "./pages/Tutor/TutorManageAllFiles";
 import TutorManageMeeting from "./pages/Tutor/TutorManageMeeting";
 import TutorManageInternships from "./pages/Tutor/TutorManageInternships";
-import TutorManageAllReports from "./pages/Tutor/TutorManageAllReports";
+// import TutorManageAllReports from "./pages/Tutor/TutorManageAllReports";
 import TutorHome from "./pages/Tutor/TutorHome";
 import Profil from "./pages/Common/Profil";
 import Reset from "./pages/Common/Reset";
@@ -91,15 +91,11 @@ const AuthenticatedRoutes = () => {
 
       <Route path="/tutor/home" element={<TutorHome />} />
       <Route
-        path="/tutor/manageallreports"
-        element={<TutorManageAllReports />}
-      />
-      <Route
         path="/tutor/manageinternships"
         element={<TutorManageInternships />}
       />
       <Route path="/tutor/managemeeting" element={<TutorManageMeeting />} />
-      <Route path="/tutor/viewallfiles" element={<TutorViewAllFiles />} />
+      <Route path="/tutor/manageallfiles" element={<TutorManageAllFiles />} />
     </Routes>
   );
 };

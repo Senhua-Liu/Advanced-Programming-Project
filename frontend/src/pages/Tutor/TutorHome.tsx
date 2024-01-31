@@ -69,7 +69,7 @@ const TutorHome: React.FC = () => {
 
           <Flex gap={10} justify="space-even" flexDir="row" >
               <Link as={RouterLink} to="/reset"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">RESET PASSWORD</Text></Button></Link>
-              <Link as={RouterLink} to="/tutor/viewallfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL FILES</Text></Button></Link>
+              {/* <Link as={RouterLink} to="/tutor/viewallfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">VIEW ALL FILES</Text></Button></Link> */}
           </Flex>
 
           <Flex>
@@ -77,7 +77,7 @@ const TutorHome: React.FC = () => {
           </Flex>
           
           <Flex gap={10}>
-              <Link as={RouterLink} to="/tutor/manageallreports"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE ALL REPORTS (VALIDATE / INVALIDATE)</Text></Button></Link>
+              <Link as={RouterLink} to="/tutor/manageallfiles"><Button p={8} bgColor="#0C2340" color="white" ><Text fontSize="3xl" fontWeight="bold">MANAGE ALL FILES (VALIDATE / INVALIDATE)</Text></Button></Link>
           </Flex>
       </Flex>
 

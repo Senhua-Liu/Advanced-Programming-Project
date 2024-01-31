@@ -60,7 +60,7 @@ interface Internship {
 
 
 
-const TutorViewAllFilesC = () => {
+const TutorManageAllFilesC = () => {
     const [user, setUser] = useState<User | null>(null);
     const [internships, setInternships] = useState<Internship[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -381,5 +381,5 @@ const TutorViewAllFilesC = () => {
 }; 
 
 
-export default TutorViewAllFilesC;
+export default TutorManageAllFilesC;
 
