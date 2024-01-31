@@ -1,12 +1,10 @@
 // AdminManageDeadlinesC
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Box,Flex,Text,Button,Table,Thead,Tbody,Tr,Th,Td,VStack,HStack, Input  } from "@chakra-ui/react";
+import { Box,Flex,Text,Button,Table,Thead,Tbody,Tr,Th,Td,VStack,HStack, Input, useToast  } from "@chakra-ui/react";
 import axios from 'axios'; 
-
-// AdminEditDeadlinesC
-
 import AdminEditDeadlinesC from './AdminEditDeadlinesC';
+
 
 interface User {
     id?: number;
@@ -25,13 +23,10 @@ interface User {
         city: string;
         zipCode: string;
     };
-  };
+};
 
 
-
-
-
-  interface Internship {
+interface Internship {
     id?: number;
     duration: number;
     type: string;
@@ -64,9 +59,20 @@ interface User {
 };
 
 
-
 const AdminManageDeadlinesC = () => {
     const [user, setUser] = useState<User | null>(null);
+    const [internships, setInternships] = useState<Internship[]>([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const toast = useToast();
+    type InternshipType = 'L1' | 'L2' | 'M1' | 'M2';
+    const typeToPage: Record<InternshipType, number> = { 'L1': 0, 'L2': 1, 'M1': 2, 'M2': 3,};
+    const typeToBgColor: Record<InternshipType, string> = {
+        L1: 'green.100', 
+        L2: 'blue.100', 
+        M1: 'green.100', 
+        M2: 'blue.100',
+      };
+      
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -75,8 +81,46 @@ const AdminManageDeadlinesC = () => {
             console.log("TEST user.promotion: ", `${user?.promotion}`);
             console.log("User ID from localStorage:", JSON.parse(storedUser)?.id);
         };
+        fetchInternships();
     }, []);
 
+
+    useEffect(() => {
+        fetchInternships(); 
+        const interval = setInterval(fetchInternships, 1000); 
+      
+        return () => clearInterval(interval); 
+    }, []);
+
+
+    const fetchInternships = async () => {
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch internship data');
+            }
+            const internshipData = await response.json();
+            console.log("Fetched internships:", internshipData);
+            const processedInternships = internshipData.map((internship: { files: any; }) => ({
+                ...internship,
+                files: internship.files || [],
+            }));
+            console.log("Processed internships:", processedInternships); 
+            setInternships(processedInternships);
+        } catch (error) {
+            toast({
+                title: 'Error fetching internships',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
+        }
+    };
 
 
     return (
@@ -136,10 +180,40 @@ const AdminManageDeadlinesC = () => {
             </Box> */}
            
             <AdminEditDeadlinesC />
-            
+
+
+            <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
+                <VStack spacing={4}>
+                    <Table variant="simple">
+                        <Thead bg="blue.300">
+                            <Tr>
+                                <Th>Internship Type</Th>
+                                <Th>File Type</Th>
+                                <Th>Deadline</Th>
+                            </Tr>
+                        </Thead>
+                        <Tbody>
+                            {internships.map((internship) => (
+                                Array.isArray(internship.files) ? (
+                                    internship.files.map((file) => (
+                                        <Tr key={`${internship.id}-${file.type}`}
+                                            bg={typeToBgColor[internship.type as InternshipType] || 'white'}
+                                        >
+                                            <Td>{internship.type}</Td>
+                                            <Td>{file.type}</Td>
+                                            <Td>{file.deadline || "No deadline set"}</Td>
+                                        </Tr>
+                                    ))
+                                ) : null
+                            ))}
+                        </Tbody>
+                    </Table>
+                </VStack>
+            </Flex>
         </Flex>
     );
 }; 
+
 
 
 export default AdminManageDeadlinesC;
