@@ -66,12 +66,7 @@ interface User {
 
 
 const AdminManageDeadlinesC = () => {
-    const [showViewEdit, setShowViewEdit] = useState(false);
     const [user, setUser] = useState<User | null>(null);
-    const [internshipId, setInternshipId] = useState<number | null>(null);
-    const [filesDeadline, setFilesDeadline] = useState<{ final_report: string }>({ final_report: "" });
-
-
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -83,19 +78,6 @@ const AdminManageDeadlinesC = () => {
     }, []);
 
 
-    const updateFileDeadlines = async () => {
-        try {
-            if (internshipId) {
-                await axios.put(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internships/updateFileDeadlines/${internshipId}`, { filesDeadline });
-            }
-        } catch (error) {
-            console.error('Error updating file deadlines:', error);
-        }
-    };
-
-    const handleAddClick = () => {
-        setShowViewEdit(true);
-    };
 
     return (
         <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
@@ -152,39 +134,9 @@ const AdminManageDeadlinesC = () => {
                     </Tbody>
                 </Table>
             </Box> */}
-
-            {/* <VStack mt={4} spacing={4}>
-                <Button colorScheme="blue"  onClick={handleAddClick} >Add</Button>
-            </VStack>
-
-            {showViewEdit && <AdminEditDeadlinesC />} */}
-
-
            
             <AdminEditDeadlinesC />
             
-            
-            <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
-            <Text fontSize="2xl" fontWeight="bold" mb={4}>Set File Deadlines</Text>
-            <Input
-                type="number"
-                placeholder="Internship ID"
-                value={internshipId || ''}
-                onChange={(e) => setInternshipId(parseInt(e.target.value))}
-            />
-            <Input
-                type="text"
-                placeholder="File Type (e.g., final report)"
-                value={filesDeadline['final_report'] || ''}
-                onChange={(e) => setFilesDeadline({ ...filesDeadline, final_report: e.target.value })}
-
-            />
-            <Button colorScheme="blue" onClick={updateFileDeadlines}>Update Deadlines</Button>
-        </Flex>
-
-
-
-
         </Flex>
     );
 }; 

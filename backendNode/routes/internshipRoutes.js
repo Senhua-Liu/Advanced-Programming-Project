@@ -343,7 +343,7 @@ router.post('/:internshipId/updateComment', async (req, res) => {
 });
 
 
-// Assuming you're using Express and have a model or controller for internships
+
 router.post('/:internshipId/invalidateFile', async (req, res) => {
     const { internshipId } = req.params;
     const { fileCategory } = req.body;
@@ -368,8 +368,32 @@ router.post('/:internshipId/invalidateFile', async (req, res) => {
       console.error('Error invalidating file:', error);
       res.status(500).send('Internal Server Error');
     }
-  });
+});
   
+
+// POST endpoint to update file deadlines by internship type
+router.post('/updateDeadline', async (req, res) => {
+    const { internshipType, fileType, deadline } = req.body;
+    console.log("TEST internshipType, fileType, deadline: ", internshipType, fileType, deadline);
+
+    try {
+      const internships = await Internship.findAll({
+        where: { type: internshipType }
+      });
+      for (const internship of internships) {
+        let files = typeof internship.files === 'string' ? JSON.parse(internship.files) : internship.files;
+        const fileIndex = files.findIndex(file => file.type === fileType);
+        if (fileIndex !== -1) {
+          files[fileIndex].deadline = deadline;
+          await Internship.update({ files: files }, { where: { id: internship.id } });
+        }
+      }
+      res.json({ message: 'Deadlines updated successfully' });
+    } catch (error) {
+      console.error('Error updating deadlines:', error);
+      res.status(500).send('Internal Server Error');
+    }
+});
 
 
 module.exports = router;
