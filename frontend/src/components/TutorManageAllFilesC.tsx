@@ -356,7 +356,7 @@ const TutorManageAllFilesC = () => {
                 {/* Edit Comment Modal */}
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
-                    <ModalContent>
+                    <ModalContent maxW="50vw">
                         <ModalHeader>Edit Comment</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
