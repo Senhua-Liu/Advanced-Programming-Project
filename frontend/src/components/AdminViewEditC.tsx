@@ -56,7 +56,6 @@ const AdminViewEditC = () => {
           <FormControl id="internship-subject">
             <FormLabel>INTERNSHIP SUBJECT:</FormLabel>
             <Select>
-    
               <option value="option1">Option 1</option>
             </Select>
           </FormControl>
@@ -65,7 +64,6 @@ const AdminViewEditC = () => {
             <FormLabel>PROMOTION:</FormLabel>
             <Select placeholder="Select promotion">
               <option value="2028">2028</option>
-      
             </Select>
           </FormControl>
 
@@ -73,7 +71,6 @@ const AdminViewEditC = () => {
             <FormLabel>CLASS # (All):</FormLabel>
             <Select placeholder="Select class">
               <option value="1">1</option>
-        
             </Select>
           </FormControl>
 

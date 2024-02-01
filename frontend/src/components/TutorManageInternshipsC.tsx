@@ -324,9 +324,9 @@ const TutorManageInternshipsC = () => {
         <Container maxW="container.2xl" p={5}>
             <Box overflowX="auto" p={5} borderWidth="1px" borderRadius="lg"  overflow="hidden">
                 <Flex justifyContent="flex-end" mb={4} gap={5}>
-                <Button colorScheme="red">Start</Button>
+                <Button colorScheme="red">Not Finished</Button>
                 {/* <Button colorScheme="yellow">Ongoing</Button> */}
-                <Button colorScheme="green">Finish</Button>
+                <Button colorScheme="green">Finished</Button>
                 </Flex>
                 <Text fontSize="3xl" fontWeight="bold" mb={4} mt={4} textAlign="center">TUTOR SPACE</Text>
                 <Table variant="simple">

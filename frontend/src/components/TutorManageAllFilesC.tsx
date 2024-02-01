@@ -211,9 +211,8 @@ const TutorManageAllFilesC = () => {
             <Box w="full" p={5} borderWidth="1px" borderRadius="lg">
                 <Flex direction="column" overflowX="auto" gap={5}>
                     <Flex justifyContent="flex-end" mb={4} gap={5}>
-                        <Button colorScheme="red">Start</Button>
-                     
-                        <Button colorScheme="green">Finish</Button>
+                        <Button colorScheme="red">Not Finished</Button>
+                        <Button colorScheme="green">Finished</Button>
                     </Flex>
                     <Heading mb={6} textAlign="center">Tutor Space</Heading>
                     <InputGroup mb={4}>
