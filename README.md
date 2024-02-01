@@ -195,7 +195,19 @@ An old version of MySQL database (cf. the uploaded UML document) was abandoned, 
         tutor: User;
     };
 
+Here are the predefined database users' information, which are useful to login the web application without need to register a new user(student):
 
+    email, password
+    admin@efrei.fr, admin
+    student1@efrei.net, student1
+    student2@efrei.net, student2
+    student3@efrei.net, student3
+    student4@efrei.net, student4
+    student5@efrei.net, student5
+    student6@efrei.net, student6
+    student7@efrei.net, student7
+ 
+For your information, this web application use .com for all tutor's email, .fr for admin's email, .net for student's email.
 
 
 # 5. References: 
