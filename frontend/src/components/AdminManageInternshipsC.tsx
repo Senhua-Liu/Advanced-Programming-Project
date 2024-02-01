@@ -73,12 +73,15 @@ interface Internship {
 
 const AdminManageInternshipsC = () => {
     const [showViewEdit, setShowViewEdit] = useState(false);
-    const currentPage = 1;
-    const totalPages = 200; 
+    // const currentPage = 1;
+    // const totalPages = 200; 
     const [internships, setInternships] = useState<Internship[]>([]);
     const [user, setUser] = useState<User | null>(null);
     const [isViewModalOpen, setIsViewModalOpen] = useState(false);
     const [selectedInternship, setSelectedInternship] = useState<Internship | null>(null);
+    const [searchQuery, setSearchQuery] = useState('');
+
+
 
 
     useEffect(() => {
@@ -108,6 +111,8 @@ const AdminManageInternshipsC = () => {
             console.error('Error fetching internships:', error);
         }
     };
+
+
 
     const validateInternship = async (internshipId: any) => {
         try {
@@ -165,13 +170,15 @@ const AdminManageInternshipsC = () => {
         <Flex flexDir="column" gap={10} justify="center" align="center">
             <Flex width="80%" gap={10} justify="flex-end" align="center">
               <FaSearch size={24} color="grey"  />
-              <Input 
-                placeholder="Tape keyword..."
-              />
+              <Input
+                    placeholder="Type keyword..."
+                    // value={searchQuery}
+                    // onChange={(e) => setSearchQuery(e.target.value)}
+                />
             </Flex>
 
             <Flex width="80%" mb={-8} >
-                <Text bgColor="blue.500" color="white" textAlign="center" p={3} width="100%" fontSize="2xl" fontWeight="bold">INTERNSHIPS</Text>
+                <Text bgColor="blue.500" color="white" textAlign="center" p={3} width="100%" fontSize="2xl" fontWeight="bold">MANAGE INTERNSHIPS</Text>
             </Flex>
 
             <Flex flexDir="row" gap={20} width="80%">
@@ -216,20 +223,20 @@ const AdminManageInternshipsC = () => {
             </Flex>
 
             
-            <Flex justifyContent="center" alignItems="center" mt={4}>
+            {/* <Flex justifyContent="center" alignItems="center" mt={4}>
                 <Button disabled={currentPage <= 1}>{"<"}</Button>
                 <Text mx={2}>
                     Page {currentPage} of {totalPages}
                 </Text>
                 <Button disabled={currentPage >= totalPages}>{">"}</Button>
-            </Flex>
+            </Flex> */}
 
-            
+{/*             
             <Flex justifyContent="center" alignItems="center" mt={4}>
                 <Button bgColor="#0C2340"  color="white" onClick={handleAddClick} >
                     <Text fontSize="xl" fontWeight="bold">Add</Text>
                 </Button>
-            </Flex>
+            </Flex> */}
 
 
        

@@ -397,11 +397,11 @@ const TutorManageInternshipsC = () => {
                     ))}
                 </Tbody>
                 </Table>
-                <Flex justifyContent="center" my={4}>
+                {/* <Flex justifyContent="center" my={4}>
                 <Button>{"<"}</Button>
                 <Text mx={2}>Page 1 of 5</Text>
                 <Button>{">"}</Button>
-                </Flex>
+                </Flex> */}
             </Box>
 
             <Flex

@@ -32,6 +32,8 @@ const upload = multer({ storage: storage });
 
 // GET all Internship
 router.get('/', async (req, res) => {
+
+
     try {
         const internship = await Internship.findAll(
             {

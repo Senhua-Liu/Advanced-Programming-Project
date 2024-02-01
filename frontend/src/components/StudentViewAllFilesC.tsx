@@ -115,13 +115,25 @@ const StudentViewAllFilesC = () => {
         }
     };
 
-    const filteredInternships = internships.filter(internship =>
-        internship.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        internship.files.some(file =>
-            file.type.toLowerCase().includes(searchTerm.toLowerCase()) &&
-            file.category >= 1 && file.category <= 6
+    // const filteredInternships = internships.filter(internship =>
+    //     internship.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    //     internship.files.some(file =>
+    //         file.type.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    //         file.category >= 1 && file.category <= 6
+    //     )
+    // );   
+
+    const filteredInternships = internships
+    .filter((internship) =>
+        internship.status === "Validated" && 
+            (internship.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            internship.files.some(file =>
+                file.type.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                file.category >= 1 && file.category <= 6 
+            )
         )
-    );   
+    );
+
 
 
     return (
