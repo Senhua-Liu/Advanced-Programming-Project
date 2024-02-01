@@ -96,6 +96,7 @@ can do:
 - stay on the root of backendNode folder, tape another command to initialize database's internship table: node ./scripts/insertInternship.js
 - stay on the root of backendNode folder, and tape command to install necessary package: npm i
 - stay on the root of backendNode folder, and tape command to run backend server: npm run dev
+- create a new terminal on the code editor (need to at least 2 terminal opened)
 - return and go to the root of frontend folder, and tape command to install necessary package: npm i
 - stay on the root of frontend folder, and tape command to run the frontend server: npm start
 - wait the new automatically opened browser or open a new browser and then input this url to use the application : http://localhost:3000
