@@ -9,7 +9,7 @@ Allow for efficient development and has the potential to incorporate advanced fe
 # 1. Description:
 ## 1.1 Technical choices
 
-    Frontend: React, Chakra UI, Tailwind CSS, TypeScript
+    Frontend: React, Chakra UI, TypeScript
     Backend: Node.js, Express
     Database: MySQL(Sequelize)
 
@@ -17,7 +17,6 @@ Allow for efficient development and has the potential to incorporate advanced fe
 ## 1.1.1 Frontend: 
 - React: A JavaScript library for building user interfaces. It's an excellent choice for building complex, interactive web applications. React's component-based architecture makes it easy to manage the state and lifecycle of various UI elements, which is ideal for project's requirement of a user-friendly and intuitive interface.
 - Chakra UI: This is a simple, modular, and accessible component library that gives us the building blocks to build React applications. Chakra UI will speed up the development process and ensure that the application is accessible and visually appealing.
-- Tailwind CSS: A utility-first CSS framework for rapidly building custom designs. Tailwind CSS will allow us to design a clean, responsive UI efficiently. It can be combined effectively with Chakra UI for more control over the layout and design.
 - TypeScript: A superset of JavaScript that adds static types. Using TypeScript is a wise choice for enhancing code quality, making it easier to maintain, understand, and catch errors early.
 
 ## 1.1.2 Backend:
@@ -50,6 +49,17 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 
 ## 1.6 Future enhancements
 
+must do:
+- Provide notifications from admin to students and tutors, about the deadline of files/meetings, and about the some public or private messages that admin wants to talk to the students and tutors.
+- Implement the chat part so that admin can talk to students and tutors
+- Implement the keyword keyword search for each internship and each file, so that all users (admin, student, tutor) can easily search those internships or files on their account
+- Prevent users (students/tutors) upload files or fill forms after pass the deadlines predefined by the admin
+- Add another user role called teacher so that the tutor of school can validate the student's files too, and the fiche visit should be filled also by this role (teacher/tutor of school) 
+- Add responsive design for all
+- For those questions of different forms and files, all should be stocked on the backend database, rather than hardcoding on the frontend side. Another model called question and another router called questionRoutes.js should be created. Each time, the questionnaire of the forms should be fetched directly from the backend database. Also, the admin should be able to add/modify questions of all forms.
+
+
+can do:
 - Real-time notifications: using WebSockets for real-time updates to tutors and students.
 - Analytics Dashboard: For insights into internship trends and student performance.
 - Mobile Responsiveness: Ensuring the application is fully responsive and accessible on mobile devices.
@@ -62,11 +72,11 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 
 # 4. Steps:
 
-## 4.0 BackEnd Node
+## 4.0 BackEnd Node (used technology)
     node server.js
 
 
-## 4.1 Backend Flask
+## 4.1 Backend Flask (abandoned technology)
 ### 4.1.1 activate virtual environment
     cd backend
     python3 -m venv venv
@@ -80,10 +90,66 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
     python main.py
 
 
-## 4.2 Frontend
+## 4.2 Frontend (used technology)
 
 
 ## 4.3 MySQL Database
+An old version of MySQL database (cf. the uploaded UML document) was abandoned, because we found that it was difficult to handle so many associations (foreign keys) on the real development of web application. Right now, the new database only contains 2 tables (user and internship). Internship has 2 foreign keys (studentID and tutorID). Here below are the structure of database, and the database's details can be checked from the backendNode folder.
+
+
+    interface User {
+        id?: number;
+        firstName: string;
+        lastName: string;
+        email: string;
+        password: string;
+        type: string;
+        telephone: string;
+        oldPassword: string;
+        promotion: number;
+        year: string;
+        company: {
+            name: string;
+            address: string;
+            city: string;
+            zipCode: string;
+        };
+    };
+
+
+    interface Internship {
+        id?: number;
+        duration: number;
+        type: string;
+        jobTitle: string;
+        mission: string;
+        salary: number;
+        startDate: Date | string;
+        endDate: Date | string;
+        studentID?: number;
+        tutorID: number;
+        meetingList: {
+            type: string;
+            date: string;
+            location: string;
+            finished: boolean;
+            deadline: "";
+        }[];
+        files: [
+            {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
+            {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
+            {category: 3, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+            {category: 4, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+            {category: 5, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+            {category: 6, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+            {category: 7, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+            {category: 8, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+        ];
+        status: string;
+        student: User;
+        tutor: User;
+    };
+
 
 
 
@@ -91,4 +157,3 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 ## 5.1. Figma 
 https://www.figma.com/file/dL9itDvLdbiaw4j4IbSLdV/Bridge_Project_-_Form-(Copy)?type=design&node-id=0%3A1&mode=design&t=BifjF3Fi9aKz1euO-1  
 
-## 5.2. UML
