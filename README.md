@@ -5,7 +5,7 @@
 Build a secure, maintainable, and user-friendly web application for EFREI Paris's internship management needs. 
 Allow for efficient development and has the potential to incorporate advanced features in future iterations.
 
-## Contributors:
+## Contributors (EFREI Paris M2 SE1):
 
     Camille FOUR
     Huiting FENG
