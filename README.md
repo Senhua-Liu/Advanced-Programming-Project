@@ -10,7 +10,7 @@ Allow for efficient development and has the potential to incorporate advanced fe
     Camille FOUR
     Huiting FENG
     Senhua LIU
-    A
+    Van Alenn PHAM
 
 
 # 1. Description:
@@ -73,18 +73,35 @@ can do:
 
 
 
-# 2. Pre-requisites:
+# 2. Used tools:
 - Visual studio code
 - Git
 - Postman
 - MySQL
 - Node
+- Figma
+- StarUML
 
-# 3. Manual:
+
+# 3. Manual (run codes on your computer):
+- git clone this project on the computer
+- entre into this folder/project
+- create a database called internship_system on the computer using MySQL Workbench
+- 
+
+
 
 # 4. Steps of development:
-- study the subject and list main functionnalities 
+- study the subject and list functionalities and make order by their importance & difficulties
 - finish the figma design
+- finish the UML (but abandoned later)
+- finish the frontend (general design)
+- finish the backendNode and develop by checking on the frontend part
+- check generally the whole web application
+- remove unused or unimplemented part from codes
+- write documentation and do other part except the coding part
+
+
 
 ## 4.0 BackEnd Node (used technology)
     node server.js
@@ -96,8 +113,12 @@ can do:
     python3 -m venv venv
     source venv/bin/activate 
     or venv\Scripts\activate (for windows)
+
+
 ### 4.1.2 install dependencies
     pip install -r backend/requirements.txt
+
+
 ### 4.1.3 run app
     python3 backend/main.py
     or 
