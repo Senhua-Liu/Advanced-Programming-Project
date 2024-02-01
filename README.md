@@ -83,11 +83,21 @@ can do:
 - StarUML
 
 
-# 3. Manual (run codes on your computer):
+# 3. Manual (run application on your computer):
 - git clone this project on the computer
-- entre into this folder/project
+- enter into this folder/project and open it with Visual Studio Code
 - create a database called internship_system on the computer using MySQL Workbench
-- 
+- go to the root of frontend folder, and add a new file called .env
+- paste this line into the .env file (don't leave a space): REACT_APP_BACKENDNODE_URL=http://localhost:3001
+- go to the root of backendNode folder, and add a new file called .env
+- paste this line into the .env file and change key information according to your local database's credential information: DB_URL=mysql://root:@localhost:3306/internship_system
+- stay on the root of backendNode folder, tape command to initialize database's user table: node ./scripts/insertUser.js
+- stay on the root of backendNode folder, tape another command to initialize database's internship table: node ./scripts/insertInternship.js
+- stay on the root of backendNode folder, and tape command to install necessary package: npm i
+- stay on the root of backendNode folder, and tape command to run backend server: npm run dev
+- return and go to the root of frontend folder, and tape command to install necessary package: npm i
+- stay on the root of frontend folder, and tape command to run the frontend server: npm start
+- wait the new automatically opened browser or open a new browser and then input this url to use the application : http://localhost:3000
 
 
 
@@ -104,7 +114,7 @@ can do:
 
 
 ## 4.0 BackEnd Node (used technology)
-    node server.js
+
 
 
 ## 4.1 Backend Flask (abandoned technology)
