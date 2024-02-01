@@ -87,6 +87,7 @@ can do:
 - git clone this project on the computer
 - enter into this folder/project and open it with Visual Studio Code
 - create a database called internship_system on the computer using MySQL Workbench
+- start/run the MySQL server on the computer
 - go to the root of frontend folder, and add a new file called .env
 - paste this line into the .env file (don't leave a space): REACT_APP_BACKENDNODE_URL=http://localhost:3001
 - go to the root of backendNode folder, and add a new file called .env
