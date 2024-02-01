@@ -5,6 +5,13 @@
 Build a secure, maintainable, and user-friendly web application for EFREI Paris's internship management needs. 
 Allow for efficient development and has the potential to incorporate advanced features in future iterations.
 
+## Contributors:
+
+    Camille FOUR
+    Huiting FENG
+    Senhua LIU
+    A
+
 
 # 1. Description:
 ## 1.1 Technical choices
@@ -57,7 +64,7 @@ must do:
 - Add another user role called teacher so that the tutor of school can validate the student's files too, and the fiche visit should be filled also by this role (teacher/tutor of school) 
 - Add responsive design for all
 - For those questions of different forms and files, all should be stocked on the backend database, rather than hardcoding on the frontend side. Another model called question and another router called questionRoutes.js should be created. Each time, the questionnaire of the forms should be fetched directly from the backend database. Also, the admin should be able to add/modify questions of all forms.
-
+- Those components on the frontend should be divided into smaller one (atoms, molecules, organisms, templates, pages).
 
 can do:
 - Real-time notifications: using WebSockets for real-time updates to tutors and students.
@@ -67,10 +74,17 @@ can do:
 
 
 # 2. Pre-requisites:
+- Visual studio code
+- Git
+- Postman
+- MySQL
+- Node
 
 # 3. Manual:
 
-# 4. Steps:
+# 4. Steps of development:
+- study the subject and list main functionnalities 
+- finish the figma design
 
 ## 4.0 BackEnd Node (used technology)
     node server.js
@@ -94,11 +108,11 @@ can do:
 
 
 ## 4.3 MySQL Database
-An old version of MySQL database (cf. the uploaded UML document) was abandoned, because we found that it was difficult to handle so many associations (foreign keys) on the real development of web application. Right now, the new database only contains 2 tables (user and internship). Internship has 2 foreign keys (studentID and tutorID). Here below are the structure of database, and the database's details can be checked from the backendNode folder.
+An old version of MySQL database (cf. the uploaded UML document) was abandoned, because we found that it was difficult to handle so many associations (foreign keys) on the real development of web application. Right now, the new database only contains 2 tables (user and internship). Internship has 2 foreign keys (studentID and tutorID). Here below are the structure of database, and the database's details can be checked from the backendNode folder. The preset database is in the ./backendNode/data/mockData.js file.
 
 
     interface User {
-        id?: number;
+        id: number;
         firstName: string;
         lastName: string;
         email: string;
@@ -118,7 +132,7 @@ An old version of MySQL database (cf. the uploaded UML document) was abandoned, 
 
 
     interface Internship {
-        id?: number;
+        id: number;
         duration: number;
         type: string;
         jobTitle: string;
@@ -126,7 +140,7 @@ An old version of MySQL database (cf. the uploaded UML document) was abandoned, 
         salary: number;
         startDate: Date | string;
         endDate: Date | string;
-        studentID?: number;
+        studentID: number;
         tutorID: number;
         meetingList: {
             type: string;
