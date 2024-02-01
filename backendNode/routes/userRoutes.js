@@ -121,6 +121,29 @@ router.post('/resetPassword', async (req, res) => {
 
 
 
+router.post('/checkTutor', async (req, res) => {
+    const { email } = req.body;
+    console.log("TEST email: ", email);
+
+    try {
+        const tutor = await User.findOne({
+            where: {
+                email: email,
+                type: 'tutor' 
+            }
+        });
+        console.log("TEST tutor: ", tutor);
+        if (tutor) {
+            res.json({ exists: true, tutorId: tutor.id });
+        } else {
+            res.json({ exists: false });
+        }
+    } catch (error) {
+        console.error('Error checking for tutor:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 
 module.exports = router;

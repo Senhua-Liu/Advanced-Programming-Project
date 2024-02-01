@@ -51,7 +51,7 @@ const StudentUploadFiles: React.FC = () => {
     direction="column"
     minHeight="100vh"
   >
-      <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email} message="!!! Deadline of CDC 12/10/2023 00:00 - Deadline of Final Report 12/31/2023 00:00" />
+      <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email} message="" /* message="!!! Deadline of CDC 12/10/2023 00:00 - Deadline of Final Report 12/31/2023 00:00"  *//>
       
       
       <Flex

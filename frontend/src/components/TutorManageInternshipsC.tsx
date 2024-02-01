@@ -239,14 +239,27 @@ const TutorManageInternshipsC = () => {
             console.log("TEST internshipDataJSON: ", internshipDataJSON);
             const internshipsWithStudentData = [];
 
+
+            // filter those pending or invalidated internships
             for (const internship of internshipDataJSON) {
-                const studentID = internship.studentID;
-                const studentData = await fetchStudentInfo(studentID);
-                const internshipWithStudent = {
-                    ...internship,
-                    student: studentData,
-                };
-                internshipsWithStudentData.push(internshipWithStudent);
+                // const studentID = internship.studentID;
+                // const studentData = await fetchStudentInfo(studentID);
+                // const internshipWithStudent = {
+                //     ...internship,
+                //     student: studentData,
+                // };
+                // internshipsWithStudentData.push(internshipWithStudent);
+
+                // Check if the internship's status is "Validated"
+                if (internship.status === "Validated") {
+                    const studentID = internship.studentID;
+                    const studentData = await fetchStudentInfo(studentID);
+                    const internshipWithStudent = {
+                        ...internship,
+                        student: studentData,
+                    };
+                    internshipsWithStudentData.push(internshipWithStudent);
+                }
             }
             console.log("Internships with Student Data: ", internshipsWithStudentData);
             setInternshipData(internshipsWithStudentData);
@@ -320,7 +333,7 @@ const TutorManageInternshipsC = () => {
                 <Thead>
                     <Tr border="1px" borderColor="gray.200">
                         <Th border="1px" borderColor="gray.200">Student</Th>
-                        <Th border="1px" borderColor="gray.200">Student Email</Th>
+                        <Th border="1px" borderColor="gray.200">Internship Status</Th>
                         <Th border="1px" borderColor="gray.200">Internship Type</Th>
                         <Th border="1px" borderColor="gray.200">Job Title</Th>
                         <Th border="1px" borderColor="gray.200">Mission</Th>
@@ -334,8 +347,8 @@ const TutorManageInternshipsC = () => {
                  {internshipData.map((internship, index) => (
                     <Tr key={index}>
                         
-                        <Td border="1px" borderColor="gray.200">{internship.student ? `${internship.student[0].firstName} ${internship.student[0].lastName.toUpperCase()}` : 'Loading student data...'}</Td>
-                        <Td border="1px" borderColor="gray.200">{internship.student[0].email}</Td>
+                        <Td border="1px" borderColor="gray.200">{internship.student[0].email}, {internship.student ? `${internship.student[0].firstName} ${internship.student[0].lastName.toUpperCase()}` : 'Loading student data...'}</Td>
+                        <Td border="1px" borderColor="gray.200">{internship.status}</Td>
                         <Td border="1px" borderColor="gray.200">{internship.type}</Td>
                         <Td border="1px" borderColor="gray.200">{internship.jobTitle}</Td>
                         <Td border="1px" borderColor="gray.200">{internship.mission}</Td>

@@ -203,37 +203,79 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
 
 
     const handleSubmit = async () => {
+        console.log("TEST handleSubmit formData.tutor.email: ", formData.tutor.email);
+
         try {   
-            const userData = formData.tutor;
-            userData.password = formData.tutor.lastName; // the first time, directly use tutor's lastName as password, later can be modified if this declaration of internship is validated by school.
+            // const userData = formData.tutor;
+            // userData.password = formData.tutor.lastName; // the first time, directly use tutor's lastName as password, later can be modified if this declaration of internship is validated by school.
         
-            const internshipData = formData.internship;
-            console.log("TEST userData: ", userData);
-            
-            console.log("TEST internshipData: ", internshipData);
+            // const internshipData = formData.internship;
+            // console.log("TEST userData: ", userData);
+            // console.log("TEST internshipData: ", internshipData);
             
 
-            const userResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/register`, {
-                method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(userData),});
-            if (!userResponse.ok) {throw new Error('Failed to register user');}
-            const userDataJSON = await userResponse.json();
-            console.log("TEST userDataJSON : ", userDataJSON);
-            internshipData.tutorID = userDataJSON.id;
-            console.log("TEST internshipData.tutorID : ", internshipData.tutorID);
+            // const userResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/register`, {
+            //     method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(userData),});
+            // if (!userResponse.ok) {throw new Error('Failed to register user');}
+            // const userDataJSON = await userResponse.json();
+            // console.log("TEST userDataJSON : ", userDataJSON);
+            // internshipData.tutorID = userDataJSON.id;
+            // console.log("TEST internshipData.tutorID : ", internshipData.tutorID);
 
-            // const fileResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/file`, {
-            //     method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(fileData),});
-            // if (!fileResponse.ok) {throw new Error('Failed to create file');}
-            // const fileDataJSON = await fileResponse.json();
-            // console.log("TEST fileDataJSON : ", fileDataJSON);
-            // internshipData.fileListID = fileDataJSON.id;
-            // console.log("TEST internshipData.fileListID : ", internshipData.fileListID);
+
+
+            // const internshipResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship`, {
+            //     method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(internshipData),});
+            // if (!internshipResponse.ok) {throw new Error('Failed to create internship');}
+            // const internshipDataJSON = await internshipResponse.json();
+            // console.log("TEST internshipDataJSON : ", internshipDataJSON);
+
+
+
+            // Step 1: Check if tutor exists
+            const checkTutorResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/checkTutor`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: formData.tutor.email,
+                }),
+            });
+
+            let tutorId;
+
+            if (checkTutorResponse.ok) {
+                const checkTutorData = await checkTutorResponse.json();
+                if (checkTutorData.exists && checkTutorData.tutorId) {
+                    tutorId = checkTutorData.tutorId; // Tutor exists, use the returned ID
+                } else {
+                    // Tutor does not exist, proceed to register a new tutor
+                    const userData = { ...formData.tutor, password: formData.tutor.lastName }; // Using lastName as password initially
+                    const userResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(userData),
+                    });
+
+                    if (!userResponse.ok) throw new Error('Failed to register user');
+
+                    const userDataJSON = await userResponse.json();
+                    tutorId = userDataJSON.id; // Use new tutor's ID
+                }
+            } else {
+                throw new Error('Failed to check for existing tutor');
+            }
+
+            // Step 2: Create Internship with the tutor ID
+            const internshipData = { ...formData.internship, tutorID: tutorId };
 
             const internshipResponse = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship`, {
-                method: 'POST',headers: {'Content-Type': 'application/json',},body: JSON.stringify(internshipData),});
-            if (!internshipResponse.ok) {throw new Error('Failed to create internship');}
-            const internshipDataJSON = await internshipResponse.json();
-            console.log("TEST internshipDataJSON : ", internshipDataJSON);
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(internshipData),
+            });
+
+            if (!internshipResponse.ok) throw new Error('Failed to create internship');
+
 
             toast({
                 title: 'Success',
@@ -242,7 +284,8 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
                 duration: 3000,
                 isClosable: true,
             });
-            if (internshipDataJSON){setFormData(initialFormData);}
+
+            setFormData(initialFormData);
             setShowViewEdit(false); 
             onCompletion();
         } catch (error) {
@@ -366,8 +409,8 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
                 </VStack>
 
                 <HStack mt={4} justify="center">
-                    <Button colorScheme="red">DELETE</Button>
-                    <Button colorScheme="teal">SAVE IN DRAFT</Button>
+                    {/* <Button colorScheme="red">DELETE</Button>
+                    <Button colorScheme="teal">SAVE IN DRAFT</Button> */}
                     <Button colorScheme="blue" onClick={handleSubmit} >SAVE</Button>
                 </HStack>
 

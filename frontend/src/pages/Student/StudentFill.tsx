@@ -166,7 +166,7 @@ const StudentFill: React.FC = () => {
         direction="column"
         minHeight="100vh"
       >
-        <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email}  message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." />
+        <Header userFirstName={user?.firstName} userLastName={user?.lastName} userEmail={user?.email} message="" /* message="!!! The second self-evaluation form should be filled before 12/31/2023 00:00:00." */ />
 
 
         <HStack spacing={4} my={10} justify="center" direction="row">

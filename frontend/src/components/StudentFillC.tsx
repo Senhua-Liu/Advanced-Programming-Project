@@ -274,7 +274,7 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
                 
                 <Flex justify="center" flexDir="row" gap={10} m={5}>
                     <FormControl id="student">
-                        <FormLabel>Student's Info {latestInternship?.files[0].deadline}</FormLabel>
+                        <FormLabel>Student's Info</FormLabel>
                         <Input placeholder={user?.lastName.toUpperCase()} readOnly />
                         <Input placeholder={user?.firstName}  readOnly />
                         <Input placeholder={latestInternship?.duration.toLocaleString() + " weeks"} readOnly />

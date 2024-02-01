@@ -128,13 +128,15 @@ const AdminManageInternshipsC = () => {
     };
     
     const invalidateInternship = async (internshipId: any) => {
+        console.log("TEST invalidateInternship...");
+
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/${internshipId}/invalidateFile`, {
-                method: 'POST',
+            const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/${internshipId}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({}), 
+                body: JSON.stringify({status: 'Invalidated' }), 
             });
             if (!response.ok) {
                 throw new Error('Failed to invalidate internship');
@@ -209,11 +211,8 @@ const AdminManageInternshipsC = () => {
                             ))}
                         </Tbody>
                     </Table>
-
                     </Box>
                 </Flex>
-
-
             </Flex>
 
             
@@ -271,13 +270,13 @@ const AdminManageInternshipsC = () => {
                         <Text mb={2}><strong>Tutor Email: </strong> {selectedInternship.tutor.email}</Text>
                         <Text mb={2}><strong>Meetings:</strong></Text>
                         {selectedInternship.meetingList.map((meeting, index) => (
-                            <Text key={index}>
+                            <Text key={index}  mb={2}>
                                 <strong>Type:</strong> {meeting.type} - <strong>Date:</strong> {meeting.date} - <strong>Location:</strong> {meeting.location} - <strong>Finished:</strong> {meeting.finished ? 'true' : 'false'}
                             </Text>
                         ))}
                         <Text mb={2}><strong>Files:</strong></Text>
                         {selectedInternship.files.map((file, index) => (
-                            <Text key={index}>
+                            <Text key={index}  mb={2}>
                                 <strong>File Type:</strong> {file.type}   -   <strong>Finished:</strong> {file.finished ? 'true' : 'false'}
                             </Text>
                         ))}

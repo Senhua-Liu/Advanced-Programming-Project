@@ -95,12 +95,59 @@ const AdminEditDeadlinesC = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const data = { 
-      internshipType, 
-      updateType,
-      fileType: updateType === 'file' ? fileType : undefined, 
-      meetingType: updateType === 'meeting' ? meetingType : undefined, 
-      deadline };
+
+
+    // const data = { 
+    //   internshipType, 
+    //   updateType,
+    //   fileType: updateType === 'file' ? fileType : undefined, 
+    //   meetingType: updateType === 'meeting' ? meetingType : undefined, 
+    //   deadline };
+
+
+    let data;
+    if (updateType === 'file') {
+      // Ensure fileType is selected for 'file' updateType
+      if (!fileType || !internshipType || !deadline) {
+        toast({
+          title: 'Missing information',
+          description: "Please select an internship type, file type, and set a deadline.",
+          status: 'warning',
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
+      }
+      data = { internshipType, updateType, fileType, deadline };
+    } else if (updateType === 'meeting') {
+      // Ensure meetingType is selected for 'meeting' updateType
+      if (!meetingType || !internshipType || !deadline) {
+        toast({
+          title: 'Missing information',
+          description: "Please select an internship type, meeting type, and set a deadline.",
+          status: 'warning',
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
+      }
+      data = { internshipType, updateType, meetingType, deadline };
+    } else {
+      // Handle case where updateType itself is not selected
+      toast({
+        title: 'Missing information',
+        description: "Please select an update type.",
+        status: 'warning',
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    console.log("Prepared data for submission: ", data);
+
+
+
     console.log("TEST handleSubmit data: ", data);
 
     try {
@@ -148,6 +195,9 @@ const AdminEditDeadlinesC = () => {
   return (
     <Flex direction="column" p={5} w="full" maxW="960px" mx="auto">
       <Box as="form" onSubmit={handleSubmit} w="full" p={5} borderWidth="1px" borderRadius="lg">
+        <Text fontSize="4xl" fontWeight="bold" align="center" mb={4}>ADMIN SPACE</Text>
+        <Text fontSize="2xl" fontWeight="bold" align="center" mb={4}>DEADLINES (FILES & MEETINGS)</Text>
+        <Text fontSize="sm" align="center" color="red" mb={4}>* All fields are need to be chosen.</Text>
         <VStack spacing={4}>
 
           <FormControl id="internship-type">

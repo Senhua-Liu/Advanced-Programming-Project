@@ -1,6 +1,6 @@
 import { Button, Flex, useToast, FormControl, FormLabel, HStack, Heading, Input, Text, VStack, Textarea,Select,Box, Container, Table, Thead, Tr, Th, Tbody, Badge, Td } from  "@chakra-ui/react";
 import React, { useState, useEffect, useContext, ReactNode }  from 'react';
-import StudentAddNewInternshipC from "./StudentAddNewInternshipC";
+// import StudentAddNewInternshipC from "./StudentAddNewInternshipC";
 import StudentAddNewInternshipC2 from "./StudentAddNewInternshipC2";
 import { useUser } from '../context/UserContext';
 import userEvent from "@testing-library/user-event";
