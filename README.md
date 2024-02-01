@@ -207,7 +207,7 @@ Here are the predefined database users' information, which are useful to login t
     student6@efrei.net, student6
     student7@efrei.net, student7
  
-For your information, this web application use .com for all tutor's email, .fr for admin's email, .net for student's email.
+For your information, this web application use .com for all tutor's email, .fr for admin's email, .net for student's email. Also, all users passwords are irreversible (package of bcryptjs).
 
 
 # 5. References: 
