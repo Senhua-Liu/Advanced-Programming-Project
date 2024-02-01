@@ -373,22 +373,33 @@ router.post('/:internshipId/invalidateFile', async (req, res) => {
 
 // POST endpoint to update file deadlines by internship type
 router.post('/updateDeadline', async (req, res) => {
-    const { internshipType, fileType, deadline } = req.body;
-    console.log("TEST internshipType, fileType, deadline: ", internshipType, fileType, deadline);
+    const { internshipType, updateType, fileType, meetingType, deadline } = req.body;
+    console.log("TEST internship type: ", internshipType);
+    console.log("Received update for", updateType, "of type", fileType || meetingType, "with deadline:", deadline);
 
     try {
-      const internships = await Internship.findAll({
-        where: { type: internshipType }
-      });
-      for (const internship of internships) {
-        let files = typeof internship.files === 'string' ? JSON.parse(internship.files) : internship.files;
-        const fileIndex = files.findIndex(file => file.type === fileType);
-        if (fileIndex !== -1) {
-          files[fileIndex].deadline = deadline;
-          await Internship.update({ files: files }, { where: { id: internship.id } });
-        }
-      }
-      res.json({ message: 'Deadlines updated successfully' });
+        const internships = await Internship.findAll({ where: { type: internshipType } });
+        console.log("TEST internships: ", internships);
+        internships.forEach(async (internship) => {
+            if (updateType === 'file') {
+                const files = typeof internship.files === 'string' ? JSON.parse(internship.files) : internship.files || [];
+                const fileIndex = files.findIndex(file => file.type === fileType);
+                if (fileIndex !== -1) {
+                    files[fileIndex].deadline = deadline;
+                    console.log("TEST files: ", files);
+                    await Internship.update({files: files}, {where: { id: internship.id }});
+                }
+            } else if (updateType === 'meeting') {
+                const meetings = typeof internship.meetingList === 'string' ? JSON.parse(internship.meetingList) : internship.meetingList || [];
+                const meetingIndex = meetings.findIndex(meeting => meeting.type === meetingType);
+                if (meetingIndex !== -1) {
+                    meetings[meetingIndex].deadline = deadline;
+                    console.log("TEST meetings: ", meetings);
+                    await Internship.update({meetingList: meetings}, {where: { id: internship.id }});
+                }
+            }
+        });
+        res.json({ message: 'Deadlines updated successfully' });
     } catch (error) {
       console.error('Error updating deadlines:', error);
       res.status(500).send('Internal Server Error');

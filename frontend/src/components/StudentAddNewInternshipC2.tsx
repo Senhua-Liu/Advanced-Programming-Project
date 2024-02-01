@@ -58,6 +58,7 @@ interface Internship {
         date: string;
         location: string;
         finished: boolean;
+        deadline: "";
     }[];
     files: [
         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
@@ -148,8 +149,8 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
             studentID: user?.id ?? undefined,
             tutorID: 0,
             meetingList: [
-                {type: "visit", date: "", location: "", finished: false}, 
-                {type: "defense", date: "", location: "", finished: false}
+                {type: "visit", date: "", location: "", finished: false, deadline: ""}, 
+                {type: "defense", date: "", location: "", finished: false, deadline: ""}
             ],
             files:[
                 {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 

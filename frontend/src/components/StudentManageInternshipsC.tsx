@@ -41,6 +41,7 @@ interface Internship {
         date: string;
         location: string;
         finished: boolean;
+        deadline: "";
     }[];
     files: {
         category?: number;

@@ -20,7 +20,7 @@ const userList = [
 // duration : number of weeks
 // type: L1, L2, M1, M2
 const internshipList = [
-    {id: 1, duration: 26, type: "M2", jobTitle: "dev full stack", mission: "dev backend and frontend", salary: 1500, startDate: "2024-03-01", endDate: "2024-10-01", studentID: 2, tutorID: 3, meetingList: [{type: "visit", date: "2024-05-07", location: "At School", finished: false}, {type: "defense", date: "2024-10-07", location: "At School", finished: false}],  status: "Validated", 
+    {id: 1, duration: 26, type: "M2", jobTitle: "dev full stack", mission: "dev backend and frontend", salary: 1500, startDate: "2024-03-01", endDate: "2024-10-01", studentID: 2, tutorID: 3, meetingList: [{type: "visit", date: "2024-05-07", location: "At School", finished: false, deadline: ""}, {type: "defense", date: "2024-10-07", location: "At School", finished: false, deadline: ""}],  status: "Validated", 
     files: [
         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""},
         {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
@@ -31,7 +31,7 @@ const internshipList = [
         {category: 7, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
         {category: 8, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
     ]},
-    {id: 2, duration: 20, type: "M1", jobTitle: "dev full stack", mission: "dev backend and frontend", salary: 1200, startDate: "2024-03-01", endDate: "2024-09-01", studentID: 6, tutorID: 7, meetingList: [{type: "visit", date: "2024-05-07", location: "Visio", finished: false}, {type: "defense", date: "2024-09-07", location: "At School", finished: false}], status: "Validated", 
+    {id: 2, duration: 20, type: "M1", jobTitle: "dev full stack", mission: "dev backend and frontend", salary: 1200, startDate: "2024-03-01", endDate: "2024-09-01", studentID: 6, tutorID: 7, meetingList: [{type: "visit", date: "2024-05-07", location: "Visio", finished: false, deadline: ""}, {type: "defense", date: "2024-09-07", location: "At School", finished: false, deadline: ""}], status: "Validated", 
     files: [
         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
         {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},

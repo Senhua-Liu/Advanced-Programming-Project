@@ -76,6 +76,7 @@ interface Internship {
         date: string;
         location: string;
         finished: boolean;
+        deadline: "";
     }[];
     files: [
         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 

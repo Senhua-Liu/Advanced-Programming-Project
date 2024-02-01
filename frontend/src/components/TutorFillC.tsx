@@ -59,6 +59,7 @@ interface Internship {
         date: string;
         location: string;
         finished: boolean;
+        deadline: "";
     }[];
     files: [
         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
@@ -107,7 +108,6 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
 
     useEffect(() => {
         console.log("Latest Tutor updated: ", user);
-        // console.log("TEST display tutor's information: ", user?.company);
     }, [user]);
 
     useEffect(() => {

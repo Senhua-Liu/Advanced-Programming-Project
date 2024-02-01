@@ -42,6 +42,7 @@ interface Internship {
         date: string;
         location: string;
         finished: boolean;
+        deadline: "";
     }[];
     files: [
         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
@@ -123,6 +124,13 @@ const AdminManageDeadlinesC = () => {
     }));
 
 
+    const meetingTypes = ["visit", "defense"];
+    const firstInternshipsByMeetingType = meetingTypes.map(type => ({
+        type,
+        internships: internships.find(internship => internship.type === type),
+    }));
+
+
 
     return (
         <Flex direction="column" p={5} w="full" maxW="1200px" mx="auto">
@@ -187,7 +195,7 @@ const AdminManageDeadlinesC = () => {
                 {firstInternshipsByType.map(({ type, internship }) => (
                     <Box key={type} w="full" p={4} borderWidth="1px" borderRadius="lg" overflow="hidden">
                     <Text fontSize="xl" fontWeight="bold" p={3} bg="blue.200" borderRadius="md" textAlign="center">
-                        Internship Type: {type}
+                        Internship Type: {type} - Files
                     </Text>
                     {internship ? (
                         <Table variant="simple" mt={4}>
@@ -212,6 +220,39 @@ const AdminManageDeadlinesC = () => {
                     </Box>
                 ))}
             </VStack>
+
+
+            <VStack spacing={6}>
+                {firstInternshipsByType.map(({ type, internship }) => (
+                    <Box key={type} w="full" p={4} borderWidth="1px" borderRadius="lg" overflow="hidden">
+                        <Text fontSize="xl" fontWeight="bold" p={3} bg="blue.200" borderRadius="md" textAlign="center">
+                            Internship Type: {type} - Meetings
+                        </Text>
+                        {internship && internship.meetingList.length > 0 ? (
+                            <Table variant="simple" mt={4}>
+                                <Thead>
+                                    <Tr>
+                                        <Th>Meeting Type</Th>
+                                        <Th>Deadline</Th>
+                                    </Tr>
+                                </Thead>
+                                <Tbody>
+                                    {internship.meetingList.map((meeting, index) => (
+                                        <Tr key={index}>
+                                            <Td>{meeting.type}</Td>
+                                            <Td>{meeting.deadline || "No deadline set"}</Td>
+                                        </Tr>
+                                    ))}
+                                </Tbody>
+                            </Table>
+                        ) : (
+                            <Text mt={2} textAlign="center">No meetings found for this internship type.</Text>
+                        )}
+                    </Box>
+                ))}
+            </VStack>
+
+
 
         </Flex>
     );

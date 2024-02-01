@@ -41,6 +41,7 @@ interface Internship {
       date: string;
       location: string;
       finished: boolean;
+      deadline: "";
   }[];
   files: [
       {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
@@ -74,6 +75,8 @@ const formatDateForInput = (date: string | number | Date | undefined) => {
 const AdminEditDeadlinesC = () => {
   const [user, setUser] = useState<User | null>(null);
   const [internshipType, setInternshipType] = useState('');
+  const [updateType, setUpdateType] = useState('');
+  const [meetingType, setMeetingType] = useState('');
   const [fileType, setFileType] = useState('');
   const [deadline, setDeadline] = useState('');
   const currentYear = new Date().getFullYear();
@@ -92,8 +95,13 @@ const AdminEditDeadlinesC = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const data = { internshipType, fileType, deadline };
-    console.log(data);
+    const data = { 
+      internshipType, 
+      updateType,
+      fileType: updateType === 'file' ? fileType : undefined, 
+      meetingType: updateType === 'meeting' ? meetingType : undefined, 
+      deadline };
+    console.log("TEST handleSubmit data: ", data);
 
     try {
       const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/updateDeadline`, {
@@ -152,19 +160,42 @@ const AdminEditDeadlinesC = () => {
             </Select>
           </FormControl>
 
-          <FormControl id="deadline-type">
-            <FormLabel>File Type</FormLabel>
-            <Select placeholder="Select file type" onChange={(e) => setFileType(e.target.value)} >
-              <option value="final report">final report</option>
-              <option value="CdC">CdC</option>
-              <option value="fiche visit">fiche visit</option>
-              <option value="first self-evaluation form">first self-evaluation form</option>
-              <option value="second self-evaluation form">second self-evaluation form</option>
-              <option value="third self-evaluation form">third self-evaluation form</option>
-              <option value="intermediate evaluation form">intermediate evaluation form</option>
-              <option value="final evaluation form">final evaluation form</option>
+          <FormControl id="update-type">
+            <FormLabel>Update Type</FormLabel>
+            <Select placeholder="Select update type" onChange={(e) => setUpdateType(e.target.value)}>
+              <option value="file">File</option>
+              <option value="meeting">Meeting</option>
             </Select>
           </FormControl>
+
+
+          {updateType === 'meeting' && (
+            <FormControl id="meeting-type">
+              <FormLabel>Meeting Type</FormLabel>
+              <Select placeholder="Select meeting type" onChange={(e) => setMeetingType(e.target.value)}>
+                <option value="visit">Visit</option>
+                <option value="defense">Defense</option>
+              </Select>
+            </FormControl>
+          )}
+
+
+          {updateType === 'file' && (
+            <FormControl id="file-type">
+              <FormLabel>File Type</FormLabel>
+              <Select placeholder="Select file type" onChange={(e) => setFileType(e.target.value)} >
+                <option value="final report">final report</option>
+                <option value="CdC">CdC</option>
+                <option value="fiche visit">fiche visit</option>
+                <option value="first self-evaluation form">first self-evaluation form</option>
+                <option value="second self-evaluation form">second self-evaluation form</option>
+                <option value="third self-evaluation form">third self-evaluation form</option>
+                <option value="intermediate evaluation form">intermediate evaluation form</option>
+                <option value="final evaluation form">final evaluation form</option>
+              </Select>
+            </FormControl>
+          )}
+
 
           <HStack w="full" justify="space-between">
             <FormControl id="deadline-date" flex="1">
@@ -179,7 +210,15 @@ const AdminEditDeadlinesC = () => {
          
 
           <HStack w="full" justify="center" align="center" spacing={4}>
-            <Button colorScheme="blue" type="submit">Save</Button>
+            <Button colorScheme="blue" type="submit" 
+              disabled={
+                !internshipType || 
+                !updateType || 
+                (updateType === 'file' && !fileType) || 
+                (updateType === 'meeting' && !meetingType) || 
+                !deadline
+              }
+            >Save</Button>
           </HStack>
 
         </VStack>
