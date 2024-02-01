@@ -16,6 +16,7 @@ const RegisterC = () => {
     const toast = useToast();
     const navigate = useNavigate();
     const location = useLocation();
+    const [promotion, setPromotion] = useState('');
 
 
 
@@ -40,7 +41,7 @@ const RegisterC = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ firstName, lastName, email, password }),
+            body: JSON.stringify({ firstName, lastName, email, password, promotion }),
         })
         .then(response => {
             console.log("TEST response: ", response);
@@ -89,28 +90,28 @@ const RegisterC = () => {
             as="form"
             onSubmit={handleSubmit}
             width="50%"
-            bgColor="#f8f8f8" // Changed to a lighter and softer background color
-            border="2px" // Thinner border for a more elegant look
+            bgColor="#f8f8f8"
+            border="2px"
             borderColor="#0C2340"
-            borderRadius="lg" // Added border radius for rounded corners
-            boxShadow="sm" // Subtle shadow for depth
-            p={6} // Adjusted padding for better spacing
+            borderRadius="lg" 
+            boxShadow="sm" 
+            p={6} 
         >
             <Input 
                 placeholder="First Name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                borderColor="#cccccc" // Softened border color
-                _hover={{ borderColor: "#0C2340" }} // Change border color on hover
-                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} // Focus effect
+                borderColor="#cccccc" 
+                _hover={{ borderColor: "#0C2340" }} 
+                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} 
             />
             <Input 
-                placeholder="LastName"
+                placeholder="Last Name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                borderColor="#cccccc" // Softened border color
-                _hover={{ borderColor: "#0C2340" }} // Change border color on hover
-                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} // Focus effect
+                borderColor="#cccccc" 
+                _hover={{ borderColor: "#0C2340" }} 
+                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }} 
             />
             <Input 
                 placeholder="Email"
@@ -120,17 +121,16 @@ const RegisterC = () => {
                 _hover={{ borderColor: "#0C2340" }}
                 _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
             />
-
-
-            {/* <Input 
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+            <Input 
+                placeholder="Promotion (Optional for students)"
+                value={promotion}
+                onChange={(e) => setPromotion(e.target.value)}
                 borderColor="#cccccc"
                 _hover={{ borderColor: "#0C2340" }}
-                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
-            /> */}
+                _focus={{ borderColor: "#0C2340", boxShadow: "outline"}}
+            />
+
+
             <InputGroup>
                 <Input
                     placeholder="Password"
@@ -157,17 +157,17 @@ const RegisterC = () => {
                 colorScheme="blue"
                 type="submit"
                 leftIcon={<FaUserPlus />}
-                bgColor="#0C2340" // Changed button color
-                color="white" // Text color for contrast
-                _hover={{ bgColor: "#003153" }} // Hover effect
+                bgColor="#0C2340" 
+                color="white" 
+                _hover={{ bgColor: "#003153" }} 
             >
                 Register
             </Button>
             <Link to="/login">
                 <Button
-                    bgColor="#f2f2f2" // Lighter color for the secondary button
+                    bgColor="#f2f2f2"
                     color="#0C2340" 
-                    _hover={{ bgColor: "#e2e2e2" }} // Hover effect
+                    _hover={{ bgColor: "#e2e2e2" }} 
                     leftIcon={<FaUserPlus />}
                 >
                     Login

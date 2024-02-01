@@ -57,43 +57,26 @@ const AuthenticatedRoutes = () => {
       <Route path="/chat/tutorChat" element={<TutorChat />} />
 
       <Route path="/admin/editdeadlines" element={<AdminEditDeadlines />} />
-      <Route
-        path="/admin/editnotifications"
-        element={<AdminEditNotifications />}
+      <Route path="/admin/editnotifications" element={<AdminEditNotifications />}
       />
       <Route path="/admin/home" element={<AdminHome />} />
       <Route path="/admin/managedeadlines" element={<AdminManageDeadlines />} />
-      <Route
-        path="/admin/manageinternships"
-        element={<AdminManageInternships />}
-      />
-      <Route
-        path="/admin/managenotifications"
-        element={<AdminManageNotifications />}
-      />
+      <Route path="/admin/manageinternships" element={<AdminManageInternships />}  />
+      <Route path="/admin/managenotifications" element={<AdminManageNotifications />} />
       <Route path="/admin/viewallfiles" element={<AdminViewAllFiles />} />
       <Route path="/admin/viewedit" element={<AdminViewEdit />} />
       <Route path="/admin/viewallstatus" element={<AdminViewAllStatus />} />
 
-      <Route
-        path="/student/addnewinternship"
-        element={<StudentAddNewInternship />}
-      />
+      <Route path="/student/addnewinternship" element={<StudentAddNewInternship />} />
       <Route path="/student/fill" element={<StudentFill />} />
       <Route path="/student/home" element={<StudentHome />} />
-      <Route
-        path="/student/manageinternships"
-        element={<StudentManageInternships />}
-      />
+      <Route path="/student/manageinternships" element={<StudentManageInternships />} />
       <Route path="/student/managemeeting" element={<StudentManageMeeting />} />
       <Route path="/student/uploadfiles" element={<StudentUploadFiles />} />
       <Route path="/student/viewallfiles" element={<StudentViewAllFiles />} />
 
       <Route path="/tutor/home" element={<TutorHome />} />
-      <Route
-        path="/tutor/manageinternships"
-        element={<TutorManageInternships />}
-      />
+      <Route path="/tutor/manageinternships" element={<TutorManageInternships />} />
       <Route path="/tutor/managemeeting" element={<TutorManageMeeting />} />
       <Route path="/tutor/manageallfiles" element={<TutorManageAllFiles />} />
     </Routes>

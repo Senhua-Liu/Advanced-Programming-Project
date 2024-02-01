@@ -5,15 +5,6 @@ interface UserProviderProps {
     children: ReactNode;
 }
 
-// interface User {
-//     id?: number;
-//     firstName: string;
-//     lastName: string;
-//     email: string;
-//     password: string;
-//     type: string;
-// }
-
 
 interface User {
   id?: number;
@@ -49,7 +40,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Immediately attempt to fetch user from localStorage
+ 
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -97,7 +88,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   );
 };
 
-// export const useUser = () => useContext(UserContext);
+
 export const useUser = () => {
   const context = useContext(UserContext);
   if (context === null) {

@@ -167,12 +167,6 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
     };
 
 
-    // if (isFormSubmitted) {
-    //     return <Text>Your form has been submitted successfully!</Text>; 
-    // }
-    
-  
-    
 
 
     const handleSubmit = async () => {
@@ -208,7 +202,7 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
                 duration: 5000,
                 isClosable: true,
             });
-            // setIsFormSubmitted(true);
+            
             onSubmissionSuccess();
 
         } catch (error) {
@@ -265,7 +259,7 @@ const TutorFillC : React.FC<TutorFillProps> = ({ formTitle, formDeadline, questi
 
                 <Box p={5} borderWidth="1px" borderRadius="lg" width="100%">
                 <VStack spacing={5} gap={10}>
-                    {/* <FormLabel color="red">(* All the fields are need to be completed.)</FormLabel> */}
+                  
                     {Object.entries(questions).map(([key, question]) => (
                     <FormControl key={key}>
                         <FormLabel>{question.text}</FormLabel>

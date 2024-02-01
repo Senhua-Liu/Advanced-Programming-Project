@@ -154,17 +154,6 @@ const ResetC = () => {
             />
 
 
-            {/* <Input 
-                placeholder="Old password"
-                type="password"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-                borderColor="#cccccc"
-                _hover={{ borderColor: "#0C2340" }}
-                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
-            /> */}
-ù
-
             <InputGroup>
                 <Input
                     placeholder="Current Password"
@@ -209,33 +198,21 @@ const ResetC = () => {
             </InputGroup>
 
 
-
-            {/* <Input 
-                placeholder="New password"
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                borderColor="#cccccc"
-                _hover={{ borderColor: "#0C2340" }}
-                _focus={{ borderColor: "#0C2340", boxShadow: "outline" }}
-            /> */}
-
-
             <Button
                 colorScheme="blue"
                 type="submit"
                 leftIcon={<FaRedo />}
-                bgColor="#0C2340" // Changed button color
-                color="white" // Text color for contrast
-                _hover={{ bgColor: "#003153" }} // Hover effect
+                bgColor="#0C2340" 
+                color="white" 
+                _hover={{ bgColor: "#003153" }} 
             >
                 Reset
             </Button>
             <Link to="/login">
                 <Button
-                    bgColor="#f2f2f2" // Lighter color for the secondary button
+                    bgColor="#f2f2f2" 
                     color="#0C2340" 
-                    _hover={{ bgColor: "#e2e2e2" }} // Hover effect
+                    _hover={{ bgColor: "#e2e2e2" }} 
                     leftIcon={<FaUserPlus />}
                 >
                     Login

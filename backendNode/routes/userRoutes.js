@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-    const { firstName, lastName, email, password, ...optionalFields } = req.body;
+    let { firstName, lastName, email, password, promotion, ...optionalFields } = req.body;
     let type;
     if (email.endsWith('.fr')) {
         type = 'admin';
@@ -42,10 +42,16 @@ router.post('/register', async (req, res) => {
         type = 'tutor';
     }
 
+    if (promotion === '') {
+        promotion = null;
+    }
+
+
+
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
         console.log("TEST hashedPassword: ", hashedPassword);
-        const newUser = await User.create({ firstName, lastName, email, password: hashedPassword, type, ...optionalFields, });
+        const newUser = await User.create({ firstName, lastName, email, password: hashedPassword, promotion, type, ...optionalFields, });
         // res.status(201).json(newUser);
         // res.status(201).json({ id: newUser.id, firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email, type: newUser.type });
         res.status(201).json(newUser.toJSON());

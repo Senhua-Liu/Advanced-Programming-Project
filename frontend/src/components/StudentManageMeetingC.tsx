@@ -64,7 +64,7 @@ const StudentManageMeetingC = () => {
     const [location, setLocation] = useState('');
     const [latestInternship, setLatestInternship] = useState<Internship | null>(null);
     const toast = useToast();
-    // const [meetingList, setMeetingList] = useState<Internship["meetingList"]>([]);
+   
 
 
     useEffect(() => {
@@ -99,24 +99,6 @@ const StudentManageMeetingC = () => {
     }, [user?.id]);
 
 
-    // useEffect(() => {
-    //     if (latestInternship?.id) {
-    //         fetchMeetingList();
-    //     }
-    // }, [latestInternship?.id]);
-
-    // const fetchMeetingList = async () => {
-    //     try {
-    //         const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/${latestInternship?.id}`);
-    //         if (!response.ok) throw new Error('Failed to fetch meeting list');
-    //         const data = await response.json();
-    //         console.log("TEST data: ", data);
-    //         setMeetingList(data.meetingList);
-    //         console.log("TEST setMeetingList(data.meetingList): ", meetingList);
-    //     } catch (error) {
-    //         console.error('Error fetching meeting list:', error);
-    //     }
-    // };
 
     const handleDateChange = (value: string) => {
         setDate(value); 
@@ -133,7 +115,7 @@ const StudentManageMeetingC = () => {
         console.log("TEST ${latestInternship?.id}: ", latestInternship?.id);
 
         if (!meetingType || !date || !location) {
-            // Use toast to notify user to fill all fields
+           
             toast({
                 title: 'Error',
                 description: "Please fill in all fields before submitting.",
@@ -141,7 +123,7 @@ const StudentManageMeetingC = () => {
                 duration: 5000,
                 isClosable: true,
             });
-            return; // Stop the submission process
+            return; 
         }
         setIsSubmitting(true);
         console.log("Submitting with data:", { meetingType, date, location });
@@ -201,14 +183,7 @@ const StudentManageMeetingC = () => {
                     <Text fontSize="sm" mb={2} textColor="red" >DEADLINE OF VISIT: {latestInternship?.meetingList?.find(m => m.type === "visit")?.deadline || "Not set"}</Text>
                     <Text fontSize="sm" mb={2} textColor="red" >* All fields are need to be chosen.</Text>
                     <Box w="full" maxWidth="1000px">
-                        {/* <FormControl mb={4}>
-                            <FormLabel>Meeting Type:</FormLabel>
-                            <Select placeholder="Select meeting type" onChange={(e) => setMeetingType(e.target.value)}>
-                                <option value="visit">Visit</option>
-                                <option value="defense">Defense</option>
-                            </Select>
-                        </FormControl> */}
-
+                      
                         <FormControl mb={4}>
                             <FormLabel>Meeting Type:</FormLabel>
                             <Select placeholder="Select meeting type" onChange={(e) => setMeetingType(e.target.value)}>

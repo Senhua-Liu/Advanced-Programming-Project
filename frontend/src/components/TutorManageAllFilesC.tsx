@@ -81,23 +81,6 @@ const TutorManageAllFilesC = () => {
         };
     }, []);
 
-    // useEffect(() => {
-    //     const fetchInternships = async () => {
-    //         try {
-    //             const response = await fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/tutor/${user?.id}`);
-    //             if (!response.ok) {
-    //                 throw new Error('Failed to fetch internships');
-    //             }
-    //             const data = await response.json();
-    //             console.log("TEST useEffect() => fetched internships:", data);
-    //             setInternships(data);
-    //         } catch (error) {
-    //             console.error('Error fetching internships:', error);
-    //         }
-    //     };
-    //     fetchInternships();
-    // }, [user?.id]); 
-
     useEffect(() => {
         if (user) {
             fetchInternships();
@@ -151,17 +134,17 @@ const TutorManageAllFilesC = () => {
         console.log("TEST saveComment: ", internshipId, fileCategory, comment);
     
         try {
-            // Constructing the API endpoint dynamically with internshipId
+         
             const url = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/${internshipId}/updateComment`;
             console.log("TEST url: ", url);
-            // Prepare the request options
+       
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fileCategory: fileCategory, comment: comment })
             };
     
-            // Execute the fetch request to your backend
+          
             const response = await fetch(
                 url, requestOptions
                 );
@@ -172,14 +155,14 @@ const TutorManageAllFilesC = () => {
                 await fetchInternships();
                 alert("Comment saved successfully!");
                 console.log("TEST ok saveComment.");
-                onClose(); // Close the modal
+                onClose(); 
             } else {
                 const errorMsg = await response.text();
                 console.error("Error saving the comment: ", errorMsg);
                 alert(`Failed to save the comment. Server responded with: ${errorMsg}`);
             }
         } catch (error) {
-            // Catch and handle any errors that occur during the fetch
+          
             console.error("Failed to save the comment", error);
             alert("An error occurred while saving the comment. Please try again.");
         }
@@ -196,7 +179,7 @@ const TutorManageAllFilesC = () => {
           });
       
           if (response.ok) {
-            fetchInternships(); // Refresh the internships list
+            fetchInternships(); 
             alert("File invalidated successfully.");
           } else {
             alert("Failed to invalidate the file.");
@@ -216,7 +199,7 @@ const TutorManageAllFilesC = () => {
                 <Flex direction="column" overflowX="auto" gap={5}>
                     <Flex justifyContent="flex-end" mb={4} gap={5}>
                         <Button colorScheme="red">Start</Button>
-                        {/* <Button colorScheme="yellow">Ongoing</Button> */}
+                     
                         <Button colorScheme="green">Finish</Button>
                     </Flex>
                     <Heading mb={6} textAlign="center">Tutor Space</Heading>
@@ -331,30 +314,9 @@ const TutorManageAllFilesC = () => {
                     </ModalContent>
                 </Modal>
 
-{/* 
-                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Edit Comment</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>
-                            <Input
-                                value={editCommentDetails.comment}
-                                onChange={(e) => setEditCommentDetails({ ...editCommentDetails, comment: e.target.value })}
-                                placeholder="Enter your comment here"
-                            />
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={saveComment}>
-                                Save
-                            </Button>
-                            <Button variant="ghost" onClick={() => setIsModalOpen(false)}>Cancel</Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal> */}
 
 
-                {/* Edit Comment Modal */}
+      
                 <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent maxW="50vw">

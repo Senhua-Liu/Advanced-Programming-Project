@@ -62,7 +62,7 @@ const StudentManageInternshipsC = () => {
     const [internshipData, setInternshipData] = useState<Internship[] | null >(null);
     const [fileData, setFileData] = useState<File[] | null>(null);
     const toast = useToast();
-    // const { user } = useUser();
+   
 
     const [user, setUser] = useState<User | null>(() => {
         const storedUser = localStorage.getItem('user');
@@ -76,15 +76,6 @@ const StudentManageInternshipsC = () => {
         }
     }, [user, toast]);
 
-    // const fetchAllData = () => {
-    //     fetch(`${process.env.REACT_APP_BACKENDNODE_URL}/api/user/${user?.id}`)
-    //     .then( response => response.json())
-    //     .then( data => {
-    //         setUserData(data);
-    //         console.log("TEST userData: ", userData);
-    //     })
-    //     .catch(error => console.error('Error:', error));
-    // };
 
     useEffect(() => {
         console.log("Updated userData: ", userData);
@@ -160,31 +151,9 @@ const StudentManageInternshipsC = () => {
 
 
 
-    // const renderFilesInfo = (files: InternshipFiles | null) => {
-    //     if (!files) {
-    //         return <span>No files available.</span>;
-    //     }
-    //     const studentFilesInfo = files.studentFiles.map((file, index) => (
-    //         <li key={`student-${index}`}>{`Student: ${file.type}`}</li>
-    //     ));
-    //     const tutorFilesInfo = files.tutorFiles.map((file, index) => (
-    //         <li key={`tutor-${index}`}>{`Tutor: ${file.type}`}</li>
-    //     ));
-    
-    //     if (studentFilesInfo.length === 0 && tutorFilesInfo.length === 0) {
-    //         return <span>No files available....</span>;
-    //     }
-
-    //     return (
-    //         <ul>
-    //             {studentFilesInfo}
-    //             {tutorFilesInfo}
-    //         </ul>
-    //     );
-    // };
-
+ 
     const handleChildCompletion = () => {
-        setShowViewEdit(false); // This will hide the child component
+        setShowViewEdit(false); 
         fetchAllData();
     };
     
@@ -198,7 +167,7 @@ const StudentManageInternshipsC = () => {
             <Box overflowX="auto" p={5} borderWidth="1px" borderRadius="lg"  overflow="hidden">
                 <Flex justifyContent="flex-end" mb={4} gap={5}>
                 <Button colorScheme="red">Start</Button>
-                {/* <Button colorScheme="yellow">Ongoing</Button> */}
+                
                 <Button colorScheme="green">Finish</Button>
                 </Flex>
                 <Text fontSize="3xl" fontWeight="bold" mb={4} mt={4} textAlign="center">STUDENT SPACE</Text>
@@ -213,7 +182,7 @@ const StudentManageInternshipsC = () => {
                     <Th border="1px" borderColor="gray.200">End Date</Th>
                     <Th border="1px" borderColor="gray.200">Meetings</Th>
                     <Th border="1px" borderColor="gray.200">Files</Th>
-                    {/* <Th border="1px" borderColor="gray.200">Tutor's comments</Th> */}
+                
                     </Tr>
                 </Thead>
                 <Tbody>
@@ -226,9 +195,7 @@ const StudentManageInternshipsC = () => {
                         <Td border="1px" borderColor="gray.200">{internship.startDate ? new Date(internship.startDate).toLocaleDateString() : 'N/A'}</Td>
                         <Td border="1px" borderColor="gray.200">{internship.endDate ? new Date(internship.endDate).toLocaleDateString() : 'N/A'}</Td>
                         <Td border="1px" borderColor="gray.200">
-                        {/* <Badge>
-                            <ul>{internship.meetingList?.map((meeting, index) => <li key={index}>{meeting.type} : {meeting.finished  ? "Finished" : "Pending"}</li>)}</ul>
-                        </Badge> */}
+                      
                         {internship.meetingList?.map((meeting, index) => (
                             <Badge 
                             key={index} 
@@ -272,7 +239,7 @@ const StudentManageInternshipsC = () => {
             <VStack mt={4} spacing={4}>
                 <Button colorScheme="blue"  onClick={handleAddClick} >Add</Button>
             </VStack>
-            {/* {showViewEdit && <StudentAddNewInternshipC />} */}
+       
             {showViewEdit && <StudentAddNewInternshipC2 onCompletion={handleChildCompletion} />}
         </Container>
     );

@@ -49,32 +49,32 @@ const internshipList = [
 // file's category: 1,2,3,4,5,6,7,8
 // confidential level : 0 = normal, 1 = sensitive (predefine final report == 1 and CdC == 1)
 
-const fileList = [
-    {
-        id: 1, schoolFiles: [{category: 8, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""}], 
-        studentFiles: [
-        {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
-        {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
-        {category: 3, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
-        {category: 4, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
-        {category: 5, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},], 
-        tutorFiles: [
-        {category: 6, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
-        {category: 7, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},],
-    },
-    {
-        id: 2, schoolFiles: [{category: 8, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""}], 
-        studentFiles: [
-        {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
-        {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
-        {category: 3, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
-        {category: 4, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
-        {category: 5, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},], 
-        tutorFiles: [
-        {category: 6, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
-        {category: 7, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},],
-    },
-]; 
+// const fileList = [
+//     {
+//         id: 1, schoolFiles: [{category: 8, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""}], 
+//         studentFiles: [
+//         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
+//         {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
+//         {category: 3, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+//         {category: 4, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+//         {category: 5, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},], 
+//         tutorFiles: [
+//         {category: 6, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+//         {category: 7, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},],
+//     },
+//     {
+//         id: 2, schoolFiles: [{category: 8, type: "fiche visit", content: [], confidential: 0, finished: false, deadline: "", message: ""}], 
+//         studentFiles: [
+//         {category: 1, type: "final report", content: [], confidential: 1, finished: false, deadline: "", message: ""}, 
+//         {category: 2, type: "CdC", content: [], confidential: 1, finished: false, deadline: "", message: ""},
+//         {category: 3, type: "first self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+//         {category: 4, type: "second self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+//         {category: 5, type: "third self-evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},], 
+//         tutorFiles: [
+//         {category: 6, type: "intermediate evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},
+//         {category: 7, type: "final evaluation form", content: [], confidential: 0, finished: false, deadline: "", message: ""},],
+//     },
+// ]; 
 
 
 
@@ -89,10 +89,10 @@ const deadlineList = [];
 
 const manageDeadlineList = []; 
 const manageNotificationList = []; 
-const meetingList = [
-    {id:1, type: "visit", date: "2024-05-07", location: "At School", finished: true},
-    {id:2, type: "defense", date: "2024-05-07", location: "At School", finished: false},
-]; 
+// const meetingList = [
+//     {id:1, type: "visit", date: "2024-05-07", location: "At School", finished: true},
+//     {id:2, type: "defense", date: "2024-05-07", location: "At School", finished: false},
+// ]; 
 
 
 const notificationList = []; 
@@ -110,23 +110,23 @@ const viewerList = [];
 
 module.exports = {
     userList,
-    adminList,
-    authenticationList,
-    companyList,
-    containPropositionList,
-    containReceiverList,
-    containViewerList,
-    deadlineList,
-    fileList,
+    // adminList,
+    // authenticationList,
+    // companyList,
+    // containPropositionList,
+    // containReceiverList,
+    // containViewerList,
+    // deadlineList,
+    // fileList,
     internshipList,
-    manageDeadlineList,
-    manageNotificationList,
-    meetingList,
-    notificationList,
-    propositionList,
-    receiverList,
-    // studentList,
-    // tutorList,
-    viewerList,
+    // manageDeadlineList,
+    // manageNotificationList,
+    // meetingList,
+    // notificationList,
+    // propositionList,
+    // receiverList,
+    // // studentList,
+    // // tutorList,
+    // viewerList,
     
 }

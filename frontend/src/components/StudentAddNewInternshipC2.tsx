@@ -174,17 +174,6 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
         return <div>Loading user data...</div>;
     }
 
-    // const handleInputChange = (section: keyof FormData, field: string) => (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    //     console.log(`User input (${section}.${field}):`, e.target.value);
-    //     setFormData(prevFormData => ({
-    //         ...prevFormData,
-    //         [section]: {
-    //             ...prevFormData[section],
-    //             [field]: e.target.value,
-    //         },
-    //     }));
-    // };
-
 
     const handleInputChange = (
         section: keyof FormData,
@@ -217,10 +206,10 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
         try {   
             const userData = formData.tutor;
             userData.password = formData.tutor.lastName; // the first time, directly use tutor's lastName as password, later can be modified if this declaration of internship is validated by school.
-            // const fileData = formData.file;
+        
             const internshipData = formData.internship;
             console.log("TEST userData: ", userData);
-            // console.log("TEST fileData: ", fileData);
+            
             console.log("TEST internshipData: ", internshipData);
             
 
@@ -314,10 +303,7 @@ const StudentAddNewInternshipC2 = ( { onCompletion }: StudentAddNewInternshipC2P
                         </FormControl>
                     </HStack>
 
-                    {/* <FormControl id="class">
-                        <FormLabel>Internship Type:</FormLabel>
-                        <Input size="sm" value={formData.internship.type} onChange={handleInputChange('internship', 'type')} />
-                    </FormControl> */}
+       
 
                     <FormControl id="internship-type">
                         <FormLabel>Internship Type:</FormLabel>

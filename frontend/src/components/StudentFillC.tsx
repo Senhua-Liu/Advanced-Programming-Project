@@ -166,41 +166,6 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
     }, [latestInternship?.tutorID]);
 
 
-    // const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>, questionKey?: string) => {
-    //     let name: string, value: string;
-    //     if (questionKey) {
-    //         name = questionKey;
-    //         value = (event as React.ChangeEvent<HTMLInputElement>).target.value;
-    //     } else {
-    //         name = event.target.name;
-    //         value = event.target.value;
-    //     }
-    //     setAnswers(prev => ({
-    //         ...prev,
-    //         [name]: value
-    //     }));
-    // };
-
-    // const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | DirectValueChange) => {
-    //     let name: string, value: string;
-    
-    //     if ('target' in event) {
-    //         // Handle as ChangeEvent
-    //         name = event.target.name;
-    //         value = event.target.value;
-    //     } else {
-    //         // Handle as DirectValueChange
-    //         name = event.name;
-    //         value = event.value;
-    //     }
-    
-    //     setAnswers(prev => ({
-    //         ...prev,
-    //         [name]: value
-    //     }));
-    // };
-    
-
     const handleChange = (key: string, value: string) => {
         setAnswers((prevAnswers) => ({
           ...prevAnswers,
@@ -339,8 +304,6 @@ const StudentFillC : React.FC<StudentFillProps> = ({ formTitle, formDeadline, qu
 
                 <Box p={5} borderWidth="1px" borderRadius="lg" width="100%">
                 <VStack spacing={5} gap={10}>
-                    {/* <FormLabel fontSize="2xl" fontWeight="bold" mt={10}>{formTitle}</FormLabel>
-                    <FormLabel color="red">Deadline: {fileDeadline} </FormLabel> */}
                     {Object.entries(questions).map(([key, question]) => (
                     <FormControl key={key}>
                         <FormLabel>{question.text}</FormLabel>

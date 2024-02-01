@@ -108,45 +108,6 @@ const TutorManageMeetingC : React.FC<TutorManageMeetingProps> = ({ meetingType, 
         };
     }, []);
 
-    // const validateMeeting = async () => {
-    //     const updatedMeetingList = selectedInternship.meetingList.map((meeting, index) => {
-    //       if (updatedMeetingList[index].type === meetingType) {
-    //         return { ...meeting, finished: true };
-    //       }
-    //       return meeting;
-    //     });
-    
-    //     try {
-
-    //       const response = await fetch(`YOUR_BACKEND_ENDPOINT/internship/${selectedInternship.id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ ...selectedInternship, meetingList: updatedMeetingList }),
-    //       });
-    
-    //       if (!response.ok) {
-    //         throw new Error('Failed to update meeting status');
-    //       }
-    
-    //       onSubmissionSuccess(); 
-    //       toast({
-    //         title: 'Meeting validated successfully',
-    //         status: 'success',
-    //         duration: 5000,
-    //         isClosable: true,
-    //       });
-    //     } catch (error) {
-    //       toast({
-    //         title: 'Error validating meeting',
-    //         status: 'error',
-    //         duration: 5000,
-    //         isClosable: true,
-    //       });
-    //     }
-    // };
-
     const meetingsOfType = selectedInternship.meetingList.filter(meeting => meeting.type === meetingType);
 
     const validateMeeting = async (meetingIndex: number) => {

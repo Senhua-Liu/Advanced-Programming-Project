@@ -163,34 +163,6 @@ const StudentViewAllFilesC = () => {
                                             </Badge>
                                         </Td>
                                         <Td>
-                                            {/* {file.confidential === 1 && (
-                                                <>
-                                                    <a 
-                                                        href={`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} 
-                                                        target="_blank" 
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <Button size="sm" mr={2} leftIcon={<ViewIcon />}>
-                                                            View
-                                                        </Button>
-                                                    </a> 
-                                                   <Button size="sm" mr={2} leftIcon={<FaPrint />} 
-                                                        onClick={() => { 
-                                                            const printWindow = window.open(`${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`, '_blank');
-                                                            printWindow!.addEventListener('load', () => {
-                                                                printWindow!.print();
-                                                            }, { once: true });
-                                                        }} >
-                                                        Print
-                                                    </Button>
-                                                    <Button size="sm" mr={2} leftIcon={<DownloadIcon />} onClick={() => window.location.href = `${process.env.REACT_APP_BACKENDNODE_URL}/api/internship/download/${internship.id}/${file.category}`} >Download</Button>
-                                                </>
-                                            )}
-                                            {file.confidential === 0 && (
-                                                <>
-                                                    <Button size="sm" mr={2} leftIcon={<ViewIcon />} onClick={() => handleViewFile(file.content)} isDisabled={!file.finished} >View</Button>
-                                                </>
-                                            )} */}
                                             {file.confidential === 1 && (
                                                 <>
                                                     <a 
@@ -247,28 +219,6 @@ const StudentViewAllFilesC = () => {
                     <ModalContent maxW="90vw" >
                         <ModalHeader>File Content</ModalHeader>
                         <ModalCloseButton />
-                        {/* <ModalBody>
-                            {
-                                (() => {
-                                    try {
-                                        const parsedContent = JSON.parse(selectedFileContent);
-                                        if (Array.isArray(parsedContent)) {
-                                            return parsedContent.map((item, index) => (
-                                                <Box key={index} p={4} borderBottom="1px solid gray">
-                                                    <Text fontWeight="bold">{item.text}</Text>
-                                                    <Text mt={2}>{item.answer}</Text>
-                                                </Box>
-                                            ));
-                                        } else {
-                                            return <Text>{JSON.stringify(parsedContent, null, 2)}</Text>;
-                                        }
-                                    } catch (e) {
-                                        return <Text>{selectedFileContent}</Text>;
-                                    }
-                                })()
-                            }
-                        </ModalBody> */}
-
 
                         <ModalBody sx={{ userSelect: "none" }} onCopy={(e) => e.preventDefault()}>
                             {(() => {
@@ -289,8 +239,6 @@ const StudentViewAllFilesC = () => {
                                 }
                             })()}
                         </ModalBody> 
-
-
 
                         <ModalFooter>
                             <Button colorScheme="blue" mr={3} onClick={() => setIsModalOpen(false)}>

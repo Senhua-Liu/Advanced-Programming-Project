@@ -58,7 +58,7 @@ interface Internship {
 
 
 const StudentUploadFilesC = () => {
-    // const user = useUser();
+   
     const [user, setUser] = useState<User | null>(null);
     const [file, setFile] = useState<File | null>(null);
     const [fileType, setFileType] = useState('');
@@ -100,16 +100,11 @@ const StudentUploadFilesC = () => {
     const handleFileChange = (selectedFile: React.SetStateAction<File | null>) => {
         console.log("Selected File: ", selectedFile);
         setFile(selectedFile); 
-        // const file = event.target.files[0];
-        // if (file) {
-        //     setFile(file);
-        // }
+
     };
 
     const handleBrowseClick = () => {
-        // if (fileInputRef.current) {
-        //     fileInputRef.current.click();
-        // }
+
         fileInputRef.current?.click();
     };
 
@@ -117,16 +112,7 @@ const StudentUploadFilesC = () => {
         console.log("TEST handleUpload...");
         console.log("File: ", file, "FileType: ", fileType);
         console.log("TEST latestInternship.id: ", latestInternship?.id);
-        // if ( !file || !fileType || !latestInternship?.id || !user?.user?.id || !latestInternshipId ) {
-        //   toast({
-        //     title: "Error",
-        //     description: "Please select a file and specify the file type.",
-        //     status: "error",
-        //     duration: 9000,
-        //     isClosable: true,
-        //   });
-        //   return;
-        // }
+
         if ( !file || !fileType ) {
             toast({
               title: "Error",
@@ -142,8 +128,7 @@ const StudentUploadFilesC = () => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('fileType', fileType);
-        // formData.append('studentID', user.user.id.toString());
-        // formData.append('internshipId', latestInternship.id.toString());
+  
         console.log("TEST formData: ", formData);
       
         try {
@@ -161,7 +146,7 @@ const StudentUploadFilesC = () => {
               duration: 9000,
               isClosable: true,
             });
-            // Optionally, clear the form or update the UI
+           
           } else {
             throw new Error('Upload failed');
           }
@@ -190,24 +175,12 @@ const StudentUploadFilesC = () => {
                 <VStack spacing={4}>
                 <Heading size="md">Document</Heading>
                 <Text fontSize="sm" textAlign="center" color="red">
-                    DEADLINE OF CdC: 12/10/2023 00:00:00
+                    DEADLINE OF CdC: {latestInternship?.files[1].deadline}
                     <br />
-                    DEADLINE OF FINAL REPORT: 12/31/2023 00:00:00
+                    DEADLINE OF FINAL REPORT: {latestInternship?.files[0].deadline}
                 </Text>
                 <Divider />
-                {/* <Box
-                    p={6}
-                    borderWidth="2px"
-                    borderRadius="lg"
-                    borderColor="gray.300"
-                    w="full"
-                    textAlign="center"
-                    _hover={{ bg: "gray.50" }}
-                    cursor="pointer"
-                >
-                    <AttachmentIcon mx="auto" boxSize={12} />
-                    <Text mt={2}>Drag and drop here or Browse</Text>
-                </Box> */}
+         
 
                 {latestInternship && (
                     <Box p={4} borderWidth="1px" borderRadius="lg" borderColor="gray.300" w="60%" mt={4}>
@@ -231,7 +204,7 @@ const StudentUploadFilesC = () => {
                         onChange={(e) => {
                             if (e.target.files && e.target.files[0]) {
                                 handleFileChange(e.target.files[0]);
-                                // setFile(e.target.files[0]);
+                             
                             }
                         }}
                     />
@@ -242,11 +215,7 @@ const StudentUploadFilesC = () => {
 
                     <Button colorScheme="blue" onClick={handleUpload}>Upload</Button>
                 </HStack>
-                {/* <HStack w="full" justifyContent="space-between">
-                    <Button variant="solid" colorScheme="red">Cancel</Button>
-                    <Button variant="solid" colorScheme="blue">Save in Draft</Button>
-                    <Button variant="solid" colorScheme="green">Save</Button>
-                </HStack> */}
+
                 </VStack>
             </Box>
         </Center>

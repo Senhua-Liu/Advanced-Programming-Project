@@ -89,12 +89,6 @@ const TutorChatC = () => {
           height='400px'
           overflowY='auto'
         >
-          {/* {messages.map((message, index) => (
-            <Box key={index} bg={message.sender === 'Admin' ? 'blue.100' : 'green.100'} p={2} borderRadius='md'>
-              <Text fontWeight='bold'>{message.sender}:</Text>
-              <Text>{message.text}</Text>
-            </Box>
-          ))} */}
             {messages.map((message, index) => (
             <Flex
                 key={index}
