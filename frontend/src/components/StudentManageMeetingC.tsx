@@ -197,8 +197,8 @@ const StudentManageMeetingC = () => {
             <Box w="full" p={5} borderWidth="1px" borderRadius="lg" mb={10}>
                 <Flex justify="center" align="center" flexDir="column">
                     <Heading mb={4} >Meeting</Heading>
-                    <Text fontSize="sm" mb={2} textColor="red" >DEADLINE OF DEFENSE: {latestInternship?.meetingList[1].deadline} </Text>
-                    <Text fontSize="sm" mb={2} textColor="red" >DEADLINE OF VISIT: {latestInternship?.meetingList[0].deadline}</Text>
+                    <Text fontSize="sm" mb={2} textColor="red" >DEADLINE OF DEFENSE: {latestInternship?.meetingList?.find(m => m.type === "defense")?.deadline || "Not set"}</Text>
+                    <Text fontSize="sm" mb={2} textColor="red" >DEADLINE OF VISIT: {latestInternship?.meetingList?.find(m => m.type === "visit")?.deadline || "Not set"}</Text>
                     <Text fontSize="sm" mb={2} textColor="red" >* All fields are need to be chosen.</Text>
                     <Box w="full" maxWidth="1000px">
                         {/* <FormControl mb={4}>

@@ -17,17 +17,19 @@ const Header: React.FC<HeaderProps> = ({userFirstName, userLastName, userEmail, 
   // const user = useUser();
 
 
-
   return (
     <Flex justify="space-between"  flexDir="column" width="100%" height="300px">
         
         <Flex flexDir="row"  bg="#0C2340" align="center"  justify="space-between" height="200px" p={4} >
           <Flex align="center" justify="space-between" gap={10} p={1}>
-              <Link as={RouterLink} to="/">
+              {/* <Link as={RouterLink} to="/"> */}
                   <Image src="../../../assets/efrei.png" alt="icon" width="400px" />
-              </Link>
+              {/* </Link> */}
           </Flex>
-          <Flex align="center" gap={10} mr={4}>
+          <Flex>
+            <Text fontWeight="bold" fontSize="5xl" color="white">INTERNSHIP MANAGEMENT SYSTEM</Text>
+          </Flex>
+          {/* <Flex align="center" gap={10} mr={4}>
               <Link as={RouterLink} to="/">
                 <Flex align="center">
                   <Icon as={FaFileUpload} boxSize={6} mr={2} color="white" />
@@ -52,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({userFirstName, userLastName, userEmail, 
                   <Text fontWeight="bold" fontSize="xl" color="white">Report Validation</Text>
                 </Flex>
               </Link>
-          </Flex>
+          </Flex> */}
         </Flex>
 
         <Flex flexDir="column" justify="flex-start"  mt={-300} p={3} gap={2}>

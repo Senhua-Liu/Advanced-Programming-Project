@@ -197,6 +197,7 @@ const TutorManageMeetingC : React.FC<TutorManageMeetingProps> = ({ meetingType, 
                     <Th>Type</Th>
                     <Th>Date</Th>
                     <Th>Location</Th>
+                    <Th>Deadline</Th>
                     <Th>Action</Th>
                     </Tr>
                 </Thead>
@@ -207,6 +208,7 @@ const TutorManageMeetingC : React.FC<TutorManageMeetingProps> = ({ meetingType, 
                             <Td>{meeting.type}</Td>
                             <Td>{meeting.date}</Td>
                             <Td>{meeting.location}</Td>
+                            <Td>{meeting.deadline}</Td>
                             <Td>
                             <Button colorScheme="blue" mr={3} onClick={() => validateMeeting(index)} disabled={meeting.finished}>
                                 Validate
