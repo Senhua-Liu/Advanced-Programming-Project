@@ -19,7 +19,7 @@ https://github.com/Senhua-Liu/Advanced-Programming-Project
 # 1. Description:
 ## 1.1 Architecture(s)
 ### 1.1.1 General description
-This is a web application designed to facilitate the management of internships, incorporating a range of functionalities from internship tracking to user management. It is structured to support various user roles, including students, tutors, and administrator, providing a tailored experience for each. We should also have a user with type of school teacher (tutor of school), but we don't have time to implement this kind of user and those functionalities belonging to this kind of user.
+This is a web application designed to facilitate the management of internships, incorporating a range of functionalities from internship tracking to user management. It is structured to support various user roles, including students, tutors, and administrator, providing a tailored experience for each. We should also have a user with type of school teacher (tutor of school), but we don't have time to implement this kind of user and those functionalities belonging to this kind of user. All in all, this project employs a RESTful API architecture through its server design, defining how the client (React.js frontend) communicates with the server (Node.js backend) over HTTP to perform CRUD operations on database via Sequelize.
 - Scalability: modular design (REACTJS) allows easy addition of new features or entities.
 - Security: all passwords are hashing. We use userContext and localStorage to get the current logged in user's information and let them go to different interfaces of internship management system. In total, there are 3 user interfaces: student, tutor, admin. For those files of this system, we decided to let final report and CdC be in the normal level, and other files are all in sensitive level. From the project's requirements, all sensitives files can only be viewed, but all normal files can be viewed, printed, downloaded.
 
@@ -47,6 +47,24 @@ Access to all internship reports and documents submitted by students.
 ![](images/student.png)
 ![](images/tutor.png)
 ![](images/admin.png)
+
+Our web application follows a typical model full-stack architecture with a separation of concerns. The backend handles API requests, database operations, and file storage, while the frontend manages user interactions, state management, and presentation. This structure supports scalability, maintainability, and ease of development, with each part of the application focused on specific responsibilities.
+- frontend (reactjs):
+    - Single Page Application (SPA): Utilizes ReactJS, a modern JavaScript library for building user interfaces, to create an SPA. This approach enhances user experience by making the application more responsive and interactive without the need for page reloads.
+    - Components and Context: The application is organized into components (e.g., AdminChatC.tsx, TutorManageInternshipsC.tsx) that manage different parts of the UI. Context API is used for managing global state across components, facilitating data sharing and state management without prop drilling.
+    - Static Assets and Pages: Assets and HTML templates are stored in the public directory, while the src/pages directory likely contains the JSX files for different pages within the application.
+- backend (nodejs):
+    - Express Framework: The server is built with Node.js, using the Express framework to handle HTTP requests and routing. This setup allows for efficient development of both API endpoints (e.g., internshipRoutes.js, userRoutes.js) and middleware for various functionalities.
+    - Database Connection and ORM: Sequelize, an Object-Relational Mapping (ORM) library, is used for database interactions, abstracting complex SQL queries and enhancing code maintainability. Configuration files (config.js, sequelize.js) manage database connections and settings.
+    - Data Models: Models (internship.js, user.js) define the structure of data within the application, mapping directly to database tables. This layer facilitates data retrieval, insertion, and other database operations.
+    - Environment Configuration: Environment variables are managed through .env files, allowing for secure and flexible configuration of database credentials, API keys, and other sensitive information without hardcoding them into the source code.
+    - Mock Data and Scripts: The mockData.js file and scripts (insertInternship.js, insertUser.js) are likely used for seeding the database with initial data for development and testing purposes.
+- overall structure:
+    - Client-server architecture: separate frontend (client) and backend (server). (separate frontend UI and backend logic).
+    - RESTful API: backend exposes RESTful endpoints for data operations, and frontend consumes to display and manipulate data. Express is to define routes and handlers for various HTTP operations. Each route are the CRUD operations (create, read, update, delete) that interact with the MySQL database; Endpoints under the routes folder are the URLs we request to perform specific operations on the server's resources (internships, users). For instance, a GET request to /api/internship might retrieve all internships, while a POST request to /api/user/register could create a new user. As for data formats, all communication between the client and server is typically done using JSON (JavaScript Object Notation), which is easy to read and write and well-supported in JavaScript. As for Statelessness, each request from client to server must contain all the information the server needs to understand the request and cannot take advantage of any stored context on the server. Each request is treated as new. 
+    - Modern full-stack javascript: use js both on front and back to enable a more unified development experience.
+    - Scalability and maintainability: use modular components, services, and modern development practices.
+
 
 
 ## 1.2 Technical choices
