@@ -44,7 +44,7 @@ Access to all internship reports and documents submitted by students.
 
 
 ### 1.1.3 Architecture diagram of our solution
-![](images/use%20case%20-%20student.png)
+![](images/student.png)
 
 
 ## 1.2 Technical choices
@@ -287,3 +287,4 @@ https://www.figma.com/file/dL9itDvLdbiaw4j4IbSLdV/Bridge_Project_-_Form-(Copy)?t
 cf. internship_system.mdj
 
 ## 5.3. Use case / class diagram (Lucidchart)
+https://lucid.app/lucidchart/594d45fb-954f-48a7-b8dd-0d575a64e906/edit?viewport_loc=-965%2C-727%2C1596%2C1501%2C0_0&invitationId=inv_d6132f93-9482-4ef6-8e42-53ad426087b3 
