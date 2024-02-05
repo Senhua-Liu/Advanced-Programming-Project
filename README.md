@@ -18,13 +18,32 @@ https://github.com/Senhua-Liu/Advanced-Programming-Project
 
 # 1. Description:
 ## 1.1 Architecture(s)
-### 1.1.1 Features finished
+### 1.1.1 General description
 This is a web application designed to facilitate the management of internships, incorporating a range of functionalities from internship tracking to user management. It is structured to support various user roles, including students, tutors, and administrator, providing a tailored experience for each. We should also have a user with type of school teacher (tutor of school), but we don't have time to implement this kind of user and those functionalities belonging to this kind of user.
 - Scalability: modular design (REACTJS) allows easy addition of new features or entities.
 - Security: all passwords are hashing. We use userContext and localStorage to get the current logged in user's information and let them go to different interfaces of internship management system. In total, there are 3 user interfaces: student, tutor, admin. For those files of this system, we decided to let final report and CdC be in the normal level, and other files are all in sensitive level. From the project's requirements, all sensitives files can only be viewed, but all normal files can be viewed, printed, downloaded.
 
 
-### 1.1.2 Diagram of our solution
+### 1.1.2 Features finished
+Implement access control with three profiles: admin, tutor, and student.
+- In the tutor space, we can:
+Have access to internship reports and "Cahier des charges" for assigned interns.
+Can validate and provide feedback on reports submitted by interns.
+View and manage the list of interns assigned to them.
+Add or remove interns from their assigned list.
+Customize fields related to internships, such as progress tracking and evaluation criteria.
+- In the student space, we can:
+Submission of internship reports before specified deadlines.
+Access to their own internship reports and feedback provided by tutors.
+View internship guidelines and requirements.
+Search and retrieve internship-related documents using a keyword-based search engine.
+Receive notifications and reminders for upcoming deadlines and milestones.
+- Finally, in the admin space:
+Access to all internship reports and documents submitted by students.
+
+
+
+### 1.1.3 Architecture diagram of our solution
 
 
 
@@ -67,21 +86,30 @@ Precisely for the frontend, we use ReactJS for building a dynamic and responsive
     - /backendNode/models: Sequelize models defining the structure of database tables.
     - /backendNode/routes: Express.js routes to handle API requests.
     - /backendNode/scripts: 2 tables containing initial data to test this web application (need to insert into this web application at the very beginning).
-    - /backendNode/config: 
+    - /backendNode/config: 3 files under this folder are used to manage the database configuration and connection of the application. config.js reads the DB_URL environment variable, parses it using the "url" module to extract the database connection details, and exports configurations for the ORM. db_connection.js works the same as the config.js and it creates a MySQL connection using those details so that this connection can then be used throughout the application to interact with the database directly. sequelize.js initializes and exports a Suquelize instance for ORM-based database interactions. These 3 files ensure flexible, environment-specific database connectivity and interaction methods for the application.
+    - /backendNode/mockData: serve the purpose of providing mock (simulated) data for the application. It is often used during development and testing phases. Developers can use mock data to generate large volumes of data to test the performance and scalability of the application. But for this application, we just have a small database including just 2 tables (user and internship).
 
 - overall structure:
 
 
 ## 1.4 Delivery Methodology
-- 
+- Up to now, we don't do the delivery part for this project, but in the future we might do these steps below to move our codes from development through testing and into production in an automated and reliable manner.
+    - CI/CD configurations: use GitHub Actions workflows to specify the automated tasks that run upon code commits. If we have unit test or integration tests, we should create test scripts within package.json to define commands to run those tests.
+    - Environment management: since we used .env files, we need to separate settings for different environments (.env.development, .env.production). Also, some scripts are needed to add on the package.json to run commands for different environments (npm run start:dev or npm run build:prod).
+    - Monitoring: if possible, we can use Grafana to monitor this web application. It allows use to create dashboards that provide real-time visibility into the performance and health of our system.
 
 
 ## 1.5 Integration of clean code principles
--
+- Single Responsibility Principle (SRP): In React, components should be focused on rendering UI elements and handling user interactions. In Node.js, modules should be designed to perform specific tasks, such as handling HTTP requests, data validation, or database interactions. For example, the components starting with "Admin" on the components folder mean that those components are all for Admin. The same situations are for students and tutors. Each component does their own job.
+- Open/Closed Principle (OCP): In React, components can be extended or composed to add new functionality without modifying existing code. In Node.js, modules can be designed to support extension through dependency injection or by using interfaces and implementations. For example, the datatype of meetingList on the internship table uses JSON, which can add many new fields to handle the "meetingList", the same as files on the internship table.
+- Liskov Substitution Principle (LSP): In React, components should adhere to their defined contracts and behave consistently when substituted or extended. In Node.js, modules should implement consistent interfaces to ensure interoperability and compatibility.
+- Interface Segregation Principle (ISP): In React, components should expose only the necessary props and methods required for their intended use. In Node.js, modules should provide well-defined interfaces tailored to their specific functionality, avoiding unnecessary dependencies.
+- Dependency Inversion Principle (DIP): In React, components should rely on abstractions (props, context, hooks) rather than directly accessing lower-level implementation details. In Node.js, modules should use dependency injection or inversion of control containers to manage dependencies and promote decoupling.
+- Naming: Our variable names are clear and indicative of their purpose, avoiding cryptic abbreviations or single-letter names. We also use meaningful and descriptive names for folders, variables, functions, classes, and other identifiers throughout the codebase. For example, for all components on the frontend folder, they all have a "C" letter at the end, which means that this file is a "component". 
 
 
 ## 1.6 Tour of features via a demo
-- Link:
+- Link: 
 - Creativity of our solution:
 - the most difficult part to implement:
 - Reason:
@@ -102,11 +130,13 @@ Precisely for the frontend, we use ReactJS for building a dynamic and responsive
 - For those questions of different forms and files, all should be stocked on the backend database, rather than hardcoding on the frontend side. Another model called question and another router called questionRoutes.js should be created. Each time, the questionnaire of the forms should be fetched directly from the backend database. Also, the admin should be able to add/modify questions of all forms.
 - Those components on the frontend should be divided into smaller one (atoms, molecules, organisms, templates, pages).
 
+
 ### 1.6.2 Can do:
 - Real-time notifications: using WebSockets for real-time updates to tutors and students.
 - Analytics Dashboard: For insights into internship trends and student performance.
 - Mobile Responsiveness: Ensuring the application is fully responsive and accessible on mobile devices.
-
+- Integrate the real-time collaboration tools for the meeting part.
+- Add more security features on the login part such as Oauth 2.0 login to connect to myEfrei. 
 
 
 # 2. Used tools:
@@ -117,6 +147,7 @@ Precisely for the frontend, we use ReactJS for building a dynamic and responsive
 - Node
 - Figma
 - StarUML
+- Lucidchart
 
 
 # 3. Manual (steps to run application on your computer):
@@ -255,3 +286,4 @@ https://www.figma.com/file/dL9itDvLdbiaw4j4IbSLdV/Bridge_Project_-_Form-(Copy)?t
 ## 5.2. UML (abandoned version)
 cf. internship_system.mdj
 
+## 5.3. Use case / class diagram (Lucidchart)
