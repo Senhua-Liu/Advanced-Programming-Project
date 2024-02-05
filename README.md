@@ -44,7 +44,7 @@ Access to all internship reports and documents submitted by students.
 
 
 ### 1.1.3 Architecture diagram of our solution
-
+![](images/use%20case%20-%20student.png)
 
 
 ## 1.2 Technical choices
