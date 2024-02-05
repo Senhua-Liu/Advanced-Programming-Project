@@ -109,12 +109,12 @@ Precisely for the frontend, we use ReactJS for building a dynamic and responsive
 
 
 ## 1.6 Tour of features via a demo
-- Link: 
-- Creativity of our solution:
-- the most difficult part to implement:
-- Reason:
-- If this type of project done by other totally different group of students:
-- the three most important things got from this project:
+- Link: https://efrei365net-my.sharepoint.com/:f:/g/personal/huiting_feng_efrei_net/EgacvPC0DKRCmbGKlkTIXyIBA5zfuyHuMuKK7_qCzK83aQ?e=hhjhYz
+- Creativity of our solution: use Sequelize (ORM) to handle database (developer friendly); simple to use the system for all users; the whole system design is simple and understandable
+- the most difficult part to implement: the devops part and the other functionalities non-finished
+- Reason: Without enough time to implement and still new to use well those tools/languages
+- If this type of project done by other totally different group of students: they might more focus on backend and devops, and they might choose Java sprint boot to code this project, since the tendance of industry is using this language.
+- the three most important things got from this project: choose technical stacks as soon as possible and everyone should know well those chosen languages, design well the architecture at first if possible, do the backend along with the frontend and should not wait until the frontend is finished, because the frontend part is changing all the time.
 
 
 
