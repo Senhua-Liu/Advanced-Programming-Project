@@ -111,7 +111,8 @@ Precisely for the frontend, we use ReactJS for building a dynamic and responsive
 
 
 ## 1.6 Tour of features via a demo
-- Link: https://efrei365net-my.sharepoint.com/:f:/g/personal/huiting_feng_efrei_net/EgacvPC0DKRCmbGKlkTIXyIBA5zfuyHuMuKK7_qCzK83aQ?e=hhjhYz
+- Link of all features: https://efrei365net-my.sharepoint.com/:f:/g/personal/huiting_feng_efrei_net/EgacvPC0DKRCmbGKlkTIXyIBA5zfuyHuMuKK7_qCzK83aQ?e=hhjhYz
+- Link of demo with some features: https://youtu.be/zxrEg9C3g_k
 - Creativity of our solution: use Sequelize (ORM) to handle database (developer friendly); simple to use the system for all users; the whole system design is simple and understandable
 - the most difficult part to implement: the devops part and the other functionalities non-finished
 - Reason: Without enough time to implement and still new to use well those tools/languages
@@ -290,3 +291,6 @@ cf. internship_system.mdj
 
 ## 5.3. Use case / class diagram (Lucidchart)
 https://lucid.app/lucidchart/594d45fb-954f-48a7-b8dd-0d575a64e906/edit?viewport_loc=-965%2C-727%2C1596%2C1501%2C0_0&invitationId=inv_d6132f93-9482-4ef6-8e42-53ad426087b3 
+
+## 5.4. Video demo
+https://youtu.be/zxrEg9C3g_k 
