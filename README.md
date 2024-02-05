@@ -5,6 +5,9 @@
 Build a secure, maintainable, and user-friendly web application for EFREI Paris's internship management needs. 
 Allow for efficient development and has the potential to incorporate advanced features in future iterations.
 
+## Github link:
+https://github.com/Senhua-Liu/Advanced-Programming-Project
+
 ## Contributors (EFREI Paris M2 SE1):
 
     Camille FOUR
@@ -14,8 +17,14 @@ Allow for efficient development and has the potential to incorporate advanced fe
 
 
 # 1. Description:
-## 1.1 Architecture(s) - diagram
-### 1.1.1 
+## 1.1 Architecture(s)
+### 1.1.1 Features finished
+This is a web application designed to facilitate the management of internships, incorporating a range of functionalities from internship tracking to user management. It is structured to support various user roles, including students, tutors, and administrator, providing a tailored experience for each. We should also have a user with type of school teacher (tutor of school), but we don't have time to implement this kind of user and those functionalities belonging to this kind of user.
+- Scalability: modular design (REACTJS) allows easy addition of new features or entities.
+- Security: all passwords are hashing. We use userContext and localStorage to get the current logged in user's information and let them go to different interfaces of internship management system. In total, there are 3 user interfaces: student, tutor, admin. For those files of this system, we decided to let final report and CdC be in the normal level, and other files are all in sensitive level. From the project's requirements, all sensitives files can only be viewed, but all normal files can be viewed, printed, downloaded.
+
+
+### 1.1.2 Diagram of our solution
 
 
 
@@ -50,9 +59,16 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 
 Precisely for the frontend, we use ReactJS for building a dynamic and responsive UI and use Chakra-UI for design components. For the backend, we use NodeJS with Express.js framework for handling server side logic and API endpoints. creation. As for the database, we use sequelize with MySQL for data persistence, managing relationships between internship records, user details, and other related data. 
 
-- modules: 
-- packages:
-- files:
+- modules: Components for UI (e.g., forms, lists, modals), services for API calls, contexts for state management, and utilities for common functions. Controllers for business logic, models for database schemas, routes for API endpoints, and utilities for common operations like password hashing. 
+- key packages and files:
+    - .env: environment variables for database credentials, and the url of backend so that the frontend can reach to the backend.
+    - /frontend: Contains all client-side code, including subdirectories for components, contexts, pages, assets, and a authenticate.tsx file which is used to control all routers.
+    - /backendNode: Hosts the server-side code, including models,controllers, routes and database configuration files.
+    - /backendNode/models: Sequelize models defining the structure of database tables.
+    - /backendNode/routes: Express.js routes to handle API requests.
+    - /backendNode/scripts: 2 tables containing initial data to test this web application (need to insert into this web application at the very beginning).
+    - /backendNode/config: 
+
 - overall structure:
 
 
