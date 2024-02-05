@@ -14,25 +14,30 @@ Allow for efficient development and has the potential to incorporate advanced fe
 
 
 # 1. Description:
-## 1.1 Technical choices
+## 1.1 Architecture(s) - diagram
+### 1.1.1 
+
+
+
+## 1.2 Technical choices
 
     Frontend: React, Chakra UI, TypeScript
     Backend: Node.js, Express
     Database: MySQL(Sequelize)
 
 
-## 1.1.1 Frontend: 
+## 1.2.1 Frontend: 
 - React: A JavaScript library for building user interfaces. It's an excellent choice for building complex, interactive web applications. React's component-based architecture makes it easy to manage the state and lifecycle of various UI elements, which is ideal for project's requirement of a user-friendly and intuitive interface.
 - Chakra UI: This is a simple, modular, and accessible component library that gives us the building blocks to build React applications. Chakra UI will speed up the development process and ensure that the application is accessible and visually appealing.
 - TypeScript: A superset of JavaScript that adds static types. Using TypeScript is a wise choice for enhancing code quality, making it easier to maintain, understand, and catch errors early.
 
-## 1.1.2 Backend:
+## 1.2.2 Backend:
 Node.js & Express: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine, and Express is a fast, unopinionated, minimalist web framework for Node.js. This combination is lightweight, efficient, and highly scalable, suitable for handling a large number of simultaneous connections which might be the case with numerous students accessing the system.
 
-## 1.1.3 Database
+## 1.2.3 Database
 MySQL with Sequelize: MySQL is a robust and widely-used relational database management system. Sequelize, an ORM for Node.js, will simplify database queries and allow easier manipulation of data. It supports strong data modeling and robust transaction support, which is vital for maintaining the integrity of students' reports and metadata.
 
-## 1.1.4 Analysis
+## 1.2.4 Analysis
 - Scalability & Performance: Node.js and MySQL are scalable solutions that can handle growth in data and user load. React's efficient DOM updates (via its virtual DOM) will keep the UI fast and responsive.
 - Security: Managing sensitive internship reports requires a focus on security. The stack supports robust authentication and authorization mechanisms, and Sequelize helps prevent SQL injection attacks.
 - Maintainability: The use of TypeScript, along with the modular nature of React and Node.js, aids in keeping the codebase maintainable and well-structured.
@@ -41,22 +46,37 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 - Risk and Innovation: Incorporating advanced features like AI/ML for document analysis or advanced search could be a challenging yet innovative addition. Also, using modern architectural patterns like microservices (if deemed necessary) can enhance the project's architecture.
 
 
+## 1.3 Technical presentation
 
-## 1.2 MVP
+Precisely for the frontend, we use ReactJS for building a dynamic and responsive UI and use Chakra-UI for design components. For the backend, we use NodeJS with Express.js framework for handling server side logic and API endpoints. creation. As for the database, we use sequelize with MySQL for data persistence, managing relationships between internship records, user details, and other related data. 
 
-
-## 1.3 Architecture(s)
+- modules: 
+- packages:
+- files:
+- overall structure:
 
 
 ## 1.4 Delivery Methodology
+- 
 
 
 ## 1.5 Integration of clean code principles
+-
 
 
-## 1.6 Future enhancements
+## 1.6 Tour of features via a demo
+- Link:
+- Creativity of our solution:
+- the most difficult part to implement:
+- Reason:
+- If this type of project done by other totally different group of students:
+- the three most important things got from this project:
 
-must do:
+
+
+## 1.6 Future enhancements to implement later
+
+### 1.6.1 Must do:
 - Provide notifications from admin to students and tutors, about the deadline of files/meetings, and about the some public or private messages that admin wants to talk to the students and tutors.
 - Implement the chat part so that admin can talk to students and tutors
 - Implement the keyword keyword search for each internship and each file, so that all users (admin, student, tutor) can easily search those internships or files on their account
@@ -66,7 +86,7 @@ must do:
 - For those questions of different forms and files, all should be stocked on the backend database, rather than hardcoding on the frontend side. Another model called question and another router called questionRoutes.js should be created. Each time, the questionnaire of the forms should be fetched directly from the backend database. Also, the admin should be able to add/modify questions of all forms.
 - Those components on the frontend should be divided into smaller one (atoms, molecules, organisms, templates, pages).
 
-can do:
+### 1.6.2 Can do:
 - Real-time notifications: using WebSockets for real-time updates to tutors and students.
 - Analytics Dashboard: For insights into internship trends and student performance.
 - Mobile Responsiveness: Ensuring the application is fully responsive and accessible on mobile devices.
@@ -77,13 +97,13 @@ can do:
 - Visual studio code
 - Git
 - Postman
-- MySQL
+- MySQL (MySQL Workbench)
 - Node
 - Figma
 - StarUML
 
 
-# 3. Manual (run application on your computer):
+# 3. Manual (steps to run application on your computer):
 - git clone this project on the computer
 - enter into this folder/project and open it with Visual Studio Code
 - create a database called internship_system on the computer using MySQL Workbench
@@ -140,7 +160,7 @@ can do:
 ## 4.2 Frontend (used technology)
 
 
-## 4.3 MySQL Database
+## 4.3 MySQL Database (credentails)
 An old version of MySQL database (cf. the uploaded UML document) was abandoned, because we found that it was difficult to handle so many associations (foreign keys) on the real development of web application. Right now, the new database only contains 2 tables (user and internship). Internship has 2 foreign keys (studentID and tutorID). Here below are the structure of database, and the database's details can be checked from the backendNode folder. The preset database is in the ./backendNode/data/mockData.js file.
 
 
@@ -215,4 +235,7 @@ For your information, this web application use .com for all tutor's email, .fr f
 # 5. References: 
 ## 5.1. Figma 
 https://www.figma.com/file/dL9itDvLdbiaw4j4IbSLdV/Bridge_Project_-_Form-(Copy)?type=design&node-id=0%3A1&mode=design&t=BifjF3Fi9aKz1euO-1  
+
+## 5.2. UML (abandoned version)
+cf. internship_system.mdj
 
