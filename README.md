@@ -81,6 +81,7 @@ MySQL with Sequelize: MySQL is a robust and widely-used relational database mana
 Precisely for the frontend, we use ReactJS for building a dynamic and responsive UI and use Chakra-UI for design components. For the backend, we use NodeJS with Express.js framework for handling server side logic and API endpoints. creation. As for the database, we use sequelize with MySQL for data persistence, managing relationships between internship records, user details, and other related data. 
 
 - modules: Components for UI (e.g., forms, lists, modals), services for API calls, contexts for state management, and utilities for common functions. Controllers for business logic, models for database schemas, routes for API endpoints, and utilities for common operations like password hashing. 
+
 - key packages and files:
     - .env: environment variables for database credentials, and the url of backend so that the frontend can reach to the backend.
     - /frontend: Contains all client-side code, including subdirectories for components, contexts, pages, assets, and a authenticate.tsx file which is used to control all routers.
@@ -91,7 +92,6 @@ Precisely for the frontend, we use ReactJS for building a dynamic and responsive
     - /backendNode/config: 3 files under this folder are used to manage the database configuration and connection of the application. config.js reads the DB_URL environment variable, parses it using the "url" module to extract the database connection details, and exports configurations for the ORM. db_connection.js works the same as the config.js and it creates a MySQL connection using those details so that this connection can then be used throughout the application to interact with the database directly. sequelize.js initializes and exports a Suquelize instance for ORM-based database interactions. These 3 files ensure flexible, environment-specific database connectivity and interaction methods for the application.
     - /backendNode/mockData: serve the purpose of providing mock (simulated) data for the application. It is often used during development and testing phases. Developers can use mock data to generate large volumes of data to test the performance and scalability of the application. But for this application, we just have a small database including just 2 tables (user and internship).
 
-- overall structure:
 
 
 ## 1.4 Delivery Methodology
