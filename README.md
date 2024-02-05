@@ -38,7 +38,7 @@ Access to their own internship reports and feedback provided by tutors.
 View internship guidelines and requirements.
 Search and retrieve internship-related documents using a keyword-based search engine.
 Receive notifications and reminders for upcoming deadlines and milestones.
-- Finally, in the admin space:
+- Finally, in the admin space (only one admin):
 Access to all internship reports and documents submitted by students.
 
 
@@ -47,6 +47,9 @@ Access to all internship reports and documents submitted by students.
 ![](images/student.png)
 ![](images/tutor.png)
 ![](images/admin.png)
+
+
+![](images/architecture.png)
 
 Our web application follows a typical model full-stack architecture with a separation of concerns. The backend handles API requests, database operations, and file storage, while the frontend manages user interactions, state management, and presentation. This structure supports scalability, maintainability, and ease of development, with each part of the application focused on specific responsibilities.
 - frontend (reactjs):
@@ -307,8 +310,9 @@ https://www.figma.com/file/dL9itDvLdbiaw4j4IbSLdV/Bridge_Project_-_Form-(Copy)?t
 ## 5.2. UML (abandoned version)
 cf. internship_system.mdj
 
-## 5.3. Use case / class diagram (Lucidchart)
+## 5.3. Diagrams (Lucidchart)
 https://lucid.app/lucidchart/594d45fb-954f-48a7-b8dd-0d575a64e906/edit?viewport_loc=-965%2C-727%2C1596%2C1501%2C0_0&invitationId=inv_d6132f93-9482-4ef6-8e42-53ad426087b3 
+https://lucid.app/lucidchart/594d45fb-954f-48a7-b8dd-0d575a64e906/edit?viewport_loc=-340%2C607%2C1587%2C1501%2C0_0&invitationId=inv_d6132f93-9482-4ef6-8e42-53ad426087b3 
 
-## 5.4. Video demo
+## 5.4. Video demo (Youtube)
 https://youtu.be/zxrEg9C3g_k 
