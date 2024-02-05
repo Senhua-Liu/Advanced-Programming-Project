@@ -44,10 +44,15 @@ Access to all internship reports and documents submitted by students.
 
 
 ### 1.1.3 Architecture diagram of our solution
+- use case:
 ![](images/student.png)
 ![](images/tutor.png)
 ![](images/admin.png)
+- old version of class diagram:
+![](images/old_class.png)
+- new version of class diagram:
 ![](images/class.png)
+- architecture: 
 ![](images/architecture.png)
 
 Our web application follows a typical model full-stack architecture with a separation of concerns. The backend handles API requests, database operations, and file storage, while the frontend manages user interactions, state management, and presentation. This structure supports scalability, maintainability, and ease of development, with each part of the application focused on specific responsibilities.
