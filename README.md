@@ -47,8 +47,7 @@ Access to all internship reports and documents submitted by students.
 ![](images/student.png)
 ![](images/tutor.png)
 ![](images/admin.png)
-
-
+![](images/class.png)
 ![](images/architecture.png)
 
 Our web application follows a typical model full-stack architecture with a separation of concerns. The backend handles API requests, database operations, and file storage, while the frontend manages user interactions, state management, and presentation. This structure supports scalability, maintainability, and ease of development, with each part of the application focused on specific responsibilities.
@@ -301,6 +300,7 @@ Here are the predefined database users' information, which are useful to login t
     student7@efrei.net, student7
  
 For your information, this web application use .com for all tutor's email, .fr for admin's email, .net for student's email. Also, all users passwords are irreversible (package of bcryptjs).
+![](images/class.png)
 
 
 # 5. References: 
