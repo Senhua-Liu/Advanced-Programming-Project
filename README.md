@@ -45,6 +45,8 @@ Access to all internship reports and documents submitted by students.
 
 ### 1.1.3 Architecture diagram of our solution
 ![](images/student.png)
+![](images/tutor.png)
+![](images/admin.png)
 
 
 ## 1.2 Technical choices
